@@ -1,0 +1,22 @@
+li {
+    display: inline-block; 
+    margin: 15px;
+} 
+
+.link-styles {
+    text-decoration: none;
+    color:white;
+}
+
+.header-wrap {
+    display: flex;
+    align-items: center;
+}
+
+/* .header-nav-item {
+    font-size: 20px;
+} */
+
+.header-wrap {
+    padding-left: 250px;
+}
