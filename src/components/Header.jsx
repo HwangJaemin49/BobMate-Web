@@ -6,7 +6,7 @@ import "./Header.css";
 
 export default function Header() {
   return (
-    <div className='header-container' >
+    <div className='header-container' style = {{height: '108px'}} >
       <div className='header-wrap'>
         <div className='header-wrap-left' style={ {display: 'flex', alignItems: 'center', fontSize: '30px'}}>
           <img className="bob" alt="bob" src={headerLogo} style={{paddingRight: '10px' }}/>
