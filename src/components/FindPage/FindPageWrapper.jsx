@@ -5,7 +5,7 @@ import StepBox from './StepBox';
 
 const FindPageWrapper = ({ children, step, prevLink, nextLink }) => {
   return (
-    <MaxWidthWrapper className='px-10 my-auto md:px-60'>
+    <MaxWidthWrapper className='px-10 mb-5 lg:mb-20 md:mb-10 md:px-20'>
       <div className='flex flex-col items-center'>
         <StepBox>{step}</StepBox>
         {children}

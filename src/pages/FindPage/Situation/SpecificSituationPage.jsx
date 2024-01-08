@@ -10,7 +10,11 @@ const SpecificSituationPage = () => {
       <Banner title={'밥 친구를 찾으러 가 볼까요?'}>
         <StepCircle step={2} />
       </Banner>
-      <FindPageWrapper step='2단계'>
+      <FindPageWrapper
+        step='2단계'
+        prevLink='/find/select-page'
+        nextLink='/find/select-content'
+      >
         <div>sadf</div>
       </FindPageWrapper>
     </MaxWidthWrapper>
