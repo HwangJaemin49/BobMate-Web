@@ -4,12 +4,13 @@ import FindPageWrapper from '../../components/FindPage/FindPageWrapper';
 import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import RoundButton from '../../components/FindPage/RoundButton';
 import Title from '../../components/FindPage/Title';
+import StepCircle from '../../components/FindPage/StepCircle';
 
 const ContentSelectPage = () => {
   return (
     <MaxWidthWrapper>
       <Banner title={'밥 친구를 찾으러 가 볼까요?'}>
-        <div>banner</div>
+        <StepCircle step={3} />
       </Banner>
       <FindPageWrapper step='3단계' prevLink='/' nextLink='/'>
         <Title>{'어떤 콘텐츠를 볼까요?'}</Title>

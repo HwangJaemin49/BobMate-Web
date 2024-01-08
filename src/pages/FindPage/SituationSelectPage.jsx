@@ -4,6 +4,7 @@ import FindPageWrapper from '../../components/FindPage/FindPageWrapper';
 import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import RoundButton from '../../components/FindPage/RoundButton';
 import Title from '../../components/FindPage/Title';
+import StepCircle from '../../components/FindPage/StepCircle';
 
 const links = { normalLink: '/find/normal', specificLink: '/find/specific' };
 
@@ -13,7 +14,7 @@ const SituationPage = () => {
   return (
     <MaxWidthWrapper>
       <Banner title={'밥 친구를 찾으러 가 볼까요?'}>
-        <div>banner</div>
+        <StepCircle step={1} />
       </Banner>
       <FindPageWrapper step='1단계' prevLink='/' nextLink={nextLink}>
         <Title>{'식사 상황을 선택해 주세요!'}</Title>

@@ -6,9 +6,9 @@ const RoundButton = ({ title, isSelected, children, className }) => {
   return (
     <MaxWidthWrapper
       className={classNames(
-        'rounded-full bg-slate-300 flex flex-col items-center justify-around text-center p-10 m-5',
+        'rounded-full bg-gray-300 flex flex-col items-center justify-around text-center p-10 m-5',
         'hover:scale-105 hover:bg-slate-400 transition-transform ease-in-out duration-500 ',
-        { 'scale-105 bg-slate-400': isSelected },
+        { 'scale-105 bg-gray-400': isSelected },
         className
       )}
     >
