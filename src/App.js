@@ -11,7 +11,7 @@ function App() {
     <div className='root-wrap'>
       <BrowserRouter>
         <div id='wrapper'>
-          {/* <Header /> */}
+          <Header />
           <div id='main-content'>
             <Routes>
               <Route
