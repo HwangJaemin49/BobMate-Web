@@ -1,0 +1,11 @@
+import React from 'react';
+
+const StepBox = ({ children }) => {
+  return (
+    <div className='py-0.5 px-1.5 my-6 border-2 border-slate-950 rounded-md'>
+      {children}
+    </div>
+  );
+};
+
+export default StepBox;
