@@ -1,7 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import SituationPage from './pages/FindPage/SituationPage';
+import SituationSelectPage from './pages/FindPage/SituationSelectPage';
+import NormalSituationPage from './pages/FindPage/Situation/NormalSituationPage';
+import SpecificSituationPage from './pages/FindPage/Situation/SpecificSituationPage';
+import ContentSelectPage from './pages/FindPage/ContentSelectPage';
 
 function App() {
   return (
@@ -12,8 +15,17 @@ function App() {
           <div id='main-content'>
             <Routes>
               <Route
-                path='/find-page'
-                element={<SituationPage></SituationPage>}
+                path='/find/select-page'
+                element={<SituationSelectPage />}
+              />
+              <Route path='/find/normal' element={<NormalSituationPage />} />
+              <Route
+                path='/find/specific'
+                element={<SpecificSituationPage />}
+              />
+              <Route
+                path='/find/select-content'
+                element={<ContentSelectPage />}
               />
             </Routes>
           </div>
