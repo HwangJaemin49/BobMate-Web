@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import MaxWidthWrapper from '../MaxWidthWrapper';
+import MaxWidthWrapper from '../../MaxWidthWrapper';
 
 const RoundBox = ({ title, isSelected, className }) => {
   return (

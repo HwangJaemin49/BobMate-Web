@@ -7,7 +7,7 @@ const Circle = ({ isNow, children, className }) => {
       className={classNames(
         'rounded-full bg-white w-4 h-4 p-1 border-2 border-slate-950 text-xs text-center',
         'flex justify-center items-center',
-        { 'bg-gray-950 text-white': isNow },
+        { 'bg-gray-900 text-white': isNow },
         className
       )}
     >

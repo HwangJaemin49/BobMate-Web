@@ -3,14 +3,14 @@ import React from 'react';
 
 const Title = ({ children, className }) => {
   return (
-    <div
+    <h2
       className={classNames(
         'text-2xl sm:text-3xl font-black text-center lg:m-6 md:m-3 lg:text-4xl',
         className
       )}
     >
       {children}
-    </div>
+    </h2>
   );
 };
 
