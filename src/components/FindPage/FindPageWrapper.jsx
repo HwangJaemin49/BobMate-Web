@@ -2,10 +2,19 @@ import React from 'react';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import NextButton from './NextButton';
 import StepBox from './StepBox';
+import classNames from 'classnames';
 
-const FindPageWrapper = ({ children, step, prevOnClick, nextOnClick }) => {
+const FindPageWrapper = ({
+  children,
+  step,
+  prevOnClick,
+  nextOnClick,
+  className,
+}) => {
   return (
-    <MaxWidthWrapper className='px-10 mb-5 lg:mb-20 md:mb-10 md:px-20'>
+    <MaxWidthWrapper
+      className={classNames('px-10 mb-5 lg:mb-20 md:mb-10 md:px-20', className)}
+    >
       <div className='flex flex-col items-center'>
         <StepBox>{step}</StepBox>
         {children}

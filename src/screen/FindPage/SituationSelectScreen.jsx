@@ -46,18 +46,20 @@ const SituationPage = () => {
       nextOnClick={nextOnClick}
     >
       <Title>{'식사 상황을 선택해 주세요!'}</Title>
-      <MaxWidthWrapper className='flex flex-wrap justify-between'>
+      <MaxWidthWrapper className='flex flex-wrap justify-evenly'>
         <RoundButton
-          className='w-48 h-48 lg:w-56 lg:h-56'
+          className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'
           title='일반 상황'
           onClick={onNormalSituationClick}
+          isSelected={secondStep === TYPES.normal}
         >
           {'내 상황을 직접 설명할께요'}
         </RoundButton>
         <RoundButton
-          className='w-48 h-48 lg:w-56 lg:h-56'
+          className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'
           title='특정 상황'
           onClick={onSpecificSituationClick}
+          isSelected={secondStep === TYPES.specific}
         >
           {"'밥 친구'가 알려주는 상황으로 선택할께요"}
         </RoundButton>

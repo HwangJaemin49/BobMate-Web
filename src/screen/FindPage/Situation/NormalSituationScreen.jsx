@@ -28,9 +28,10 @@ const NormalSituationPage = () => {
       step='2단계'
       prevOnClick={prevOnClick}
       nextOnClick={nextOnClick}
+      className='lg:px-60'
     >
       <Title>지금 당신의 기분을 선택해주세요!</Title>
-      <section className='flex flex-wrap-reverse justify-evenly '>
+      <section className='flex flex-wrap-reverse justify-center'>
         <RoundButton
           title='기쁨'
           className='lg:mx-8 md:mx-6 h-36 w-36 lg:w-48 lg:h-48'
