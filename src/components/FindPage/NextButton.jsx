@@ -1,18 +1,17 @@
 import classNames from 'classnames';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const NextButton = ({ children, link }) => {
+const NextButton = ({ children, onClick }) => {
   return (
-    <Link
-      to={link}
+    <div
       className={classNames(
         'mx-2 py-1 px-3 border-2 border-slate-950 rounded-md',
         'hover:scale-105 transition-transform ease-in-out duration-500'
       )}
+      onClick={onClick}
     >
       {children}
-    </Link>
+    </div>
   );
 };
 
