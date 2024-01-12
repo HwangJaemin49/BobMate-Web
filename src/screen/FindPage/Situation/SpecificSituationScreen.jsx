@@ -8,9 +8,9 @@ import {
   setSecond,
 } from '../../../states/StepState';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
-import Title from '../../../components/FindPage/Title';
 import MaxWidthWrapper from '../../../components/MaxWidthWrapper';
 import RoundSituation from '../../../components/FindPage/Situation/RoundSituation';
+import Typography from '../../../components/FindPage/Typography';
 
 const SpecificSituationPage = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const SpecificSituationPage = () => {
         nextOnClick={nextOnClick}
         className='flex flex-col items-center'
       >
-        <Title>지금 당신의 상황을 선택해주세요!</Title>
+        <Typography.H1>지금 당신의 상황을 선택해주세요!</Typography.H1>
         <MaxWidthWrapper className='flex flex-col mt-4 mb-4'>
           <RoundSituation className='self-start'>
             비 오늘 날 혼술하는 중

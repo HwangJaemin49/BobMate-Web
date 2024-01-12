@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import FindPageWrapper from '../../../components/FindPage/FindPageWrapper';
 import RoundButton from '../../../components/FindPage/RoundButton';
-import Title from '../../../components/FindPage/Title';
 import RoundBox from '../../../components/FindPage/Situation/RoundBox';
 import { useDispatch } from 'react-redux';
 import {
@@ -10,6 +9,7 @@ import {
   plusStep,
   setSecond,
 } from '../../../states/StepState';
+import Typography from '../../../components/FindPage/Typography';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
 
 const NormalSituationPage = () => {
@@ -35,7 +35,7 @@ const NormalSituationPage = () => {
         nextOnClick={nextOnClick}
         className='lg:px-60'
       >
-        <Title>지금 당신의 기분을 선택해주세요!</Title>
+        <Typography.H1>지금 당신의 기분을 선택해주세요!</Typography.H1>
         <section className='flex flex-wrap-reverse justify-center'>
           <RoundButton
             title='기쁨'
@@ -59,9 +59,9 @@ const NormalSituationPage = () => {
           />
         </section>
 
-        <Title className='my-10 lg:my-20 md:my-20'>
+        <Typography.H1 className='my-10 lg:my-20 md:my-20'>
           식사 구성원을 선택해주세요!
-        </Title>
+        </Typography.H1>
 
         <section className='grid grid-cols-1 mb-8 lg:grid-cols-2 md:grid-cols-2 gap-y-10 gap-x-8 sm:gap-x-6 lg:gap-x-16 lg:gap-y-14'>
           <RoundBox title='혼자' className='w-40 lg:w-60 lg:h-30' />

@@ -1,6 +1,7 @@
 import React from 'react';
 import MaxWidthWrapper from '../../MaxWidthWrapper';
 import classNames from 'classnames';
+import Typography from '../Typography';
 
 const SituationTitle = ({ title, children }) => {
   return (
@@ -11,8 +12,8 @@ const SituationTitle = ({ title, children }) => {
         'flex flex-col items-start justify-between'
       )}
     >
-      <h1 className='mb-3 text-2xl font-black sm:text-3xl'>{title}</h1>
-      <p className='break-keep'>{children}</p>
+      <Typography.H2 className='mb-3 sm:text-3xl'>{title}</Typography.H2>
+      <Typography.Body1 className='break-keep'>{children}</Typography.Body1>
       <hr className='w-full mt-2 border-black border-1'></hr>
     </MaxWidthWrapper>
   );

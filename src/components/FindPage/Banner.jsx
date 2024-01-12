@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import Typography from './Typography';
 
 const Banner = ({ title, children, className }) => {
   return (
@@ -9,7 +10,9 @@ const Banner = ({ title, children, className }) => {
         className
       )}
     >
-      <div className='text-xl font-bold lg:text-3xl max-w-prose'>{title}</div>
+      <Typography.H2 className='text-xl font-bold lg:text-3xl max-w-prose'>
+        {title}
+      </Typography.H2>
       {children}
     </div>
   );

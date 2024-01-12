@@ -2,10 +2,10 @@ import React, { useCallback } from 'react';
 import FindPageWrapper from '../../components/FindPage/FindPageWrapper';
 import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import RoundButton from '../../components/FindPage/RoundButton';
-import Title from '../../components/FindPage/Title';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { TYPES, plusStep, setSecond } from '../../states/StepState';
+import Typography from '../../components/FindPage/Typography';
 
 const SituationPage = () => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const SituationPage = () => {
       prevOnClick={prevOnClick}
       nextOnClick={nextOnClick}
     >
-      <Title>{'식사 상황을 선택해 주세요!'}</Title>
+      <Typography.H1>{'식사 상황을 선택해 주세요!'}</Typography.H1>
       <MaxWidthWrapper className='flex flex-wrap justify-evenly'>
         <RoundButton
           className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'

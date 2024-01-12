@@ -1,11 +1,12 @@
 import classNames from 'classnames';
 import React from 'react';
+import Typography from './Typography';
 
 const Circle = ({ isNow, children, className }) => {
   return (
-    <div
+    <Typography.Caption
       className={classNames(
-        'rounded-full w-4 h-4 p-1 border-2 border-black text-xs text-center',
+        'rounded-full w-4 h-4 p-1 border-2 border-black text-center tracking-normal',
         'flex justify-center items-center',
         { 'bg-black text-white': isNow },
         { 'bg-white': !isNow },
@@ -13,7 +14,7 @@ const Circle = ({ isNow, children, className }) => {
       )}
     >
       {children}
-    </div>
+    </Typography.Caption>
   );
 };
 
