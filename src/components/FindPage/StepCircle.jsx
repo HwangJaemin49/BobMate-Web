@@ -5,9 +5,10 @@ const Circle = ({ isNow, children, className }) => {
   return (
     <div
       className={classNames(
-        'rounded-full bg-white w-4 h-4 p-1 border-2 border-slate-950 text-xs text-center',
+        'rounded-full w-4 h-4 p-1 border-2 border-black text-xs text-center',
         'flex justify-center items-center',
-        { 'bg-gray-900 text-white': isNow },
+        { 'bg-black text-white': isNow },
+        { 'bg-white': !isNow },
         className
       )}
     >

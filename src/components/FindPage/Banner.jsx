@@ -5,7 +5,7 @@ const Banner = ({ title, children, className }) => {
   return (
     <div
       className={classNames(
-        'flex flex-col items-center py-5 bg-gray-300 md:pb-8 md:pt-12',
+        'flex flex-col items-center py-5 bg-grayscale-200 md:pb-8 md:pt-12',
         className
       )}
     >

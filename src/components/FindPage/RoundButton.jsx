@@ -1,14 +1,13 @@
 import classNames from 'classnames';
 import React from 'react';
-import MaxWidthWrapper from '../MaxWidthWrapper';
 
 const RoundButton = ({ title, onClick, isSelected, children, className }) => {
   return (
     <div
       className={classNames(
-        'rounded-full bg-gray-300 flex flex-col items-center justify-around text-center p-10 m-5',
-        'hover:scale-105 hover:bg-gray-400 transition-transform ease-in-out duration-200 ',
-        { 'scale-105 bg-gray-400': isSelected },
+        'rounded-full bg-grayscale-200 flex flex-col items-center justify-around text-center p-10 m-5',
+        'hover:scale-105 hover:bg-grayscale-300 transition-transform ease-in-out duration-200 ',
+        { 'scale-105 bg-grayscale-400': isSelected },
         className
       )}
       onClick={onClick}

@@ -5,7 +5,7 @@ const Title = ({ children, className }) => {
   return (
     <h2
       className={classNames(
-        'text-2xl sm:text-3xl font-black text-center lg:m-6 md:m-3 lg:text-4xl',
+        'text-[50px] sm:text-3xl font-bold text-center lg:m-6 md:m-3 lg:text-4xl tracking-[-1px]',
         className
       )}
     >
