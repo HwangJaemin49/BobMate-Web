@@ -45,7 +45,7 @@ const initialState = {
 };
 
 // Declare Reducer
-export default function Account(state = initialState, action) {
+export default function Reducer(state = initialState, action) {
   switch (action.type) {
     case SET_SECOND:
       return { ...state, secondStep: action.secondStep };

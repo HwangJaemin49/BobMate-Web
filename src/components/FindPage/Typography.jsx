@@ -88,14 +88,14 @@ const Typography = {
   },
   Caption: ({ className, children }) => {
     return (
-      <caption
+      <div
         className={classNames(
           className,
           'tracking-[-1px] text-[12px] font-medium'
         )}
       >
         {children}
-      </caption>
+      </div>
     );
   },
 };

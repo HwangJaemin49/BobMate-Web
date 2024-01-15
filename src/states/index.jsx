@@ -1,14 +1,18 @@
 import { combineReducers } from 'redux';
 import StepState from './StepState';
+import NormalSituationState from './NormalSituationState';
+import ContentState from './ContentState';
 import { configureStore } from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({
   StepState,
+  NormalSituationState,
+  ContentState,
 });
 
 export const store = configureStore({
   reducer: rootReducer,
-  devTools: true, // 기본은 true로 설정되어있다. 개발자 도구의 사용 여부를 정한다.
+  devTools: true,
 });
 
 export default rootReducer;
