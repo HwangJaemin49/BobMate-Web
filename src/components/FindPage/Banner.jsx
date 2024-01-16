@@ -18,4 +18,4 @@ const Banner = ({ title, children, className }) => {
   );
 };
 
-export default Banner;
+export default React.memo(Banner);

@@ -1,28 +1,38 @@
 import React, { useCallback } from 'react';
 import FindPageWrapper from '../../../components/FindPage/FindPageWrapper';
-import { useDispatch } from 'react-redux';
-import {
-  TYPES,
-  minusStep,
-  plusStep,
-  setSecond,
-} from '../../../states/StepState';
+import { useDispatch, useSelector } from 'react-redux';
+import { minusStep, plusStep } from '../../../states/StepState';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
 import MaxWidthWrapper from '../../../components/MaxWidthWrapper';
 import RoundSituation from '../../../components/FindPage/Situation/RoundSituation';
 import Typography from '../../../components/FindPage/Typography';
+import classNames from 'classnames';
+import { SelectSituation } from '../../../states/SpecificSituationState';
 
 const SpecificSituationPage = () => {
   const dispatch = useDispatch();
+  const { select, situations } = useSelector((state) => {
+    return state.SpecificSituationState;
+  });
 
   const prevOnClick = useCallback(() => {
     dispatch(minusStep());
-    dispatch(setSecond(TYPES.nil));
   }, [dispatch]);
 
   const nextOnClick = useCallback(() => {
-    dispatch(plusStep());
-  }, [dispatch]);
+    if (select >= 0 && select <= 3) {
+      dispatch(plusStep());
+    }
+  }, [dispatch, select]);
+
+  const onClick = useCallback(
+    (e) => {
+      const value = parseInt(e.currentTarget.value);
+      dispatch(SelectSituation(value));
+    },
+    [dispatch]
+  );
+
   return (
     <>
       <SituationTitle title='특정 상황'>
@@ -36,18 +46,19 @@ const SpecificSituationPage = () => {
       >
         <Typography.H1>지금 당신의 상황을 선택해주세요!</Typography.H1>
         <MaxWidthWrapper className='flex flex-col mt-4 mb-4'>
-          <RoundSituation className='self-start'>
-            비 오늘 날 혼술하는 중
-          </RoundSituation>
-          <RoundSituation className='self-end'>
-            너무 짜증나서 야식먹는 중
-          </RoundSituation>
-          <RoundSituation className='self-start'>
-            자취방에서 친구들과 치킨 먹는중
-          </RoundSituation>
-          <RoundSituation className='self-end'>
-            시험 기간 기념 떡볶이 먹는 중
-          </RoundSituation>
+          {situations.map((item, index) => {
+            return (
+              <RoundSituation
+                className={classNames({ 'self-end': index % 2 !== 0 })}
+                key={item}
+                isSelected={select === index}
+                value={index}
+                onClick={onClick}
+              >
+                {item}
+              </RoundSituation>
+            );
+          })}
         </MaxWidthWrapper>
       </FindPageWrapper>
     </>

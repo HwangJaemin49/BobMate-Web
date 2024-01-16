@@ -19,4 +19,4 @@ const SituationTitle = ({ title, children }) => {
   );
 };
 
-export default SituationTitle;
+export default React.memo(SituationTitle);

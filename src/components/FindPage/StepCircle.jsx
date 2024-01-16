@@ -30,4 +30,4 @@ const StepCircle = ({ step }) => {
   );
 };
 
-export default StepCircle;
+export default React.memo(StepCircle);

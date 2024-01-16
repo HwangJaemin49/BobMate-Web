@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import MaxWidthWrapper from '../../MaxWidthWrapper';
 
-const RoundBox = ({ title, isSelected, className, value, onClick }) => {
+const RoundBox = ({ children, isSelected, className, value, onClick }) => {
   return (
     <button value={value} onClick={onClick}>
       <MaxWidthWrapper
@@ -13,7 +13,9 @@ const RoundBox = ({ title, isSelected, className, value, onClick }) => {
           className
         )}
       >
-        <div className='text-xl font-bold lg:text-2xl max-w-prose'>{title}</div>
+        <div className='text-xl font-bold lg:text-2xl max-w-prose'>
+          {children}
+        </div>
       </MaxWidthWrapper>
     </button>
   );

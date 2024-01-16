@@ -3,12 +3,7 @@ import FindPageWrapper from '../../../components/FindPage/FindPageWrapper';
 import RoundButton from '../../../components/FindPage/RoundButton';
 import RoundBox from '../../../components/FindPage/Situation/RoundBox';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  TYPES,
-  minusStep,
-  plusStep,
-  setSecond,
-} from '../../../states/StepState';
+import { minusStep, plusStep } from '../../../states/StepState';
 import Typography from '../../../components/FindPage/Typography';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
 import {
@@ -57,7 +52,6 @@ const NormalSituationPage = () => {
 
   const prevOnClick = useCallback(() => {
     dispatch(minusStep());
-    dispatch(setSecond(TYPES.nil));
   }, [dispatch]);
 
   const nextOnClick = useCallback(() => {
@@ -99,13 +93,14 @@ const NormalSituationPage = () => {
           {memberPerks.map((item) => {
             return (
               <RoundBox
-                title={item.title}
                 key={item.title}
                 isSelected={member[item.value]}
                 className='w-40 lg:w-60 lg:h-30'
                 value={item.value}
                 onClick={onRoundBoxClick}
-              />
+              >
+                {item.title}
+              </RoundBox>
             );
           })}
         </section>

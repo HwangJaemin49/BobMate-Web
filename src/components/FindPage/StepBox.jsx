@@ -9,4 +9,4 @@ const StepBox = ({ children }) => {
   );
 };
 
-export default StepBox;
+export default React.memo(StepBox);

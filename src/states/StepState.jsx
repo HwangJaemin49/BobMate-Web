@@ -5,13 +5,12 @@ const PLUS_STEP = 'StepState/PLUS_STEP';
 const MINUS_STEP = 'StepState/MINUS_STEP';
 
 // Action Creating functions
-export const TYPES = { normal: 'normal', specific: 'specific', nil: null };
+export const TYPES = { normal: 'normal', specific: 'specific' };
 
 /**
  * @param {TYPES} secondStep :  TYPES의 요소를 인자로 받음.
  * normal: 일반 상황
  * specific: 특정 상황
- * nil: null, 초기화를 위해 사용.
  */
 export const setSecond = (secondStep) => ({
   type: SET_SECOND,
