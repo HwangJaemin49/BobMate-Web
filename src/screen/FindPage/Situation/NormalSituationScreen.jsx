@@ -50,8 +50,11 @@ const NormalSituationPage = () => {
     if (member.select < 0 || member.select > 3) {
       return;
     }
+    if (Object.values(mood).every((item) => item === false)) {
+      return;
+    }
     dispatch(plusStep());
-  }, [dispatch, member.select]);
+  }, [dispatch, member.select, mood]);
 
   return (
     <>
