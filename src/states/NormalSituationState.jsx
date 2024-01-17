@@ -1,6 +1,6 @@
 // Action Types
 const SET_MOOD = 'NormalState/SET_MOOD';
-const SET_MEMBER = 'NormalState/SET_MEMBER';
+const SELECT_MEMBER = 'NormalState/SELECT_MEMBER';
 
 // Action Creating functions
 export const MoodTypes = {
@@ -15,15 +15,13 @@ export const setMood = (what) => ({
   what,
 });
 
-export const MemberTypes = {
-  alone: 'alone',
-  family: 'family',
-  friend: 'friend',
-  lover: 'lover',
-};
-export const setMember = (who) => ({
-  type: SET_MEMBER,
-  who,
+/**
+ * @param {*} index: index number type , 0 <= index <= 3
+ * @returns
+ */
+export const SelectMember = (index) => ({
+  type: SELECT_MEMBER,
+  index,
 });
 
 // Declare Initial state
@@ -36,10 +34,8 @@ const initialState = {
     anger: false,
   },
   member: {
-    alone: false,
-    family: false,
-    friend: false,
-    lover: false,
+    select: -1,
+    members: ['혼자', '가족', '친구', '연인'],
   },
 };
 
@@ -50,10 +46,12 @@ export default function Reducer(state = initialState, action) {
       let newMood = { ...state.mood };
       newMood[action.what] = !state.mood[action.what];
       return { ...state, mood: newMood };
-    case SET_MEMBER:
-      let newMember = { ...state.member };
-      newMember[action.who] = !state.member[action.who];
-      return { ...state, member: newMember };
+    case SELECT_MEMBER:
+      const index = action.index;
+      if (index < 0 || index > 3) {
+        return state;
+      }
+      return { ...state, member: { ...state.member, select: index } };
     default:
       return state;
   }

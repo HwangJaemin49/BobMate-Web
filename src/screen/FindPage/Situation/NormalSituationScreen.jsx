@@ -7,9 +7,8 @@ import { minusStep, plusStep } from '../../../states/StepState';
 import Typography from '../../../components/FindPage/Typography';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
 import {
-  MemberTypes,
   MoodTypes,
-  setMember,
+  SelectMember,
   setMood,
 } from '../../../states/NormalSituationState';
 
@@ -19,13 +18,6 @@ const moodPerks = [
   { title: '슬픔', value: MoodTypes.sadness },
   { title: '우울', value: MoodTypes.depression },
   { title: '분노', value: MoodTypes.anger },
-];
-
-const memberPerks = [
-  { title: '혼자', value: MemberTypes.alone },
-  { title: '가족', value: MemberTypes.family },
-  { title: '친구', value: MemberTypes.friend },
-  { title: '연인', value: MemberTypes.lover },
 ];
 
 const NormalSituationPage = () => {
@@ -44,8 +36,8 @@ const NormalSituationPage = () => {
 
   const onRoundBoxClick = useCallback(
     (e) => {
-      const value = e.currentTarget.value;
-      dispatch(setMember(value));
+      const value = parseInt(e.currentTarget.value);
+      dispatch(SelectMember(value));
     },
     [dispatch]
   );
@@ -55,8 +47,11 @@ const NormalSituationPage = () => {
   }, [dispatch]);
 
   const nextOnClick = useCallback(() => {
+    if (member.select < 0 || member.select > 3) {
+      return;
+    }
     dispatch(plusStep());
-  }, [dispatch]);
+  }, [dispatch, member.select]);
 
   return (
     <>
@@ -70,7 +65,7 @@ const NormalSituationPage = () => {
         className='lg:px-60'
       >
         <Typography.H1>지금 당신의 기분을 선택해주세요!</Typography.H1>
-        <section className='flex flex-wrap-reverse justify-center'>
+        <section className='flex flex-wrap justify-center '>
           {moodPerks.map((item) => {
             return (
               <RoundButton
@@ -78,7 +73,7 @@ const NormalSituationPage = () => {
                 title={item.title}
                 isSelected={mood[item.value]}
                 value={item.value}
-                className='lg:mx-8 md:mx-6 h-36 w-36 lg:w-48 lg:h-48'
+                className=' lg:mx-8 md:mx-6 h-36 w-36 lg:w-48 lg:h-48'
                 onClick={onRoundButtonClick}
               />
             );
@@ -90,16 +85,16 @@ const NormalSituationPage = () => {
         </Typography.H1>
 
         <section className='grid grid-cols-1 mb-8 lg:grid-cols-2 md:grid-cols-2 gap-y-10 gap-x-8 sm:gap-x-6 lg:gap-x-16 lg:gap-y-14'>
-          {memberPerks.map((item) => {
+          {member.members.map((item, index) => {
             return (
               <RoundBox
-                key={item.title}
-                isSelected={member[item.value]}
+                key={item}
+                isSelected={index === member.select}
                 className='w-40 lg:w-60 lg:h-30'
-                value={item.value}
+                value={index}
                 onClick={onRoundBoxClick}
               >
-                {item.title}
+                {item}
               </RoundBox>
             );
           })}
