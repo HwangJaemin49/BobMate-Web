@@ -1,0 +1,45 @@
+.btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .modal-close-btn, .modal-withdraw-btn {
+    width: 100px; /* 또는 필요한 크기로 설정 */
+    padding: 10px; /* 또는 필요한 패딩 값으로 설정 */
+    margin: 5px,0, 0, 0; /* 또는 필요한 마진 값으로 설정 */
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .modal-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #ffffff;
+    width: 600px;
+    height: 400px;
+    padding: 15px;
+    /* margin: 0, 0, 0, 0; */
+    justify-content: center;
+    /* align-items: center; */
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .modal-inner {
+    background-color: #ffffff;
+    /* text-align: left; 텍스트를 왼쪽 정렬로 설정 */
+    /* margin-left: 30px; 예시로 추가한 왼쪽 마진 값 */
+    margin: 0, auto, 0, 60px;
+  }
