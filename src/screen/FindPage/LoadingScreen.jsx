@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { TYPES as StepTYPES } from '../../states/StepState';
 
-const LoadingScreen = () => {
+const LoadingScreen = ({ completeLoading }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -34,6 +34,14 @@ const LoadingScreen = () => {
   }, [StepState, ContentState]);
 
   useEffect(() => {
+    const tempApi = () => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('temp api called!');
+          resolve();
+        }, 3000);
+      });
+    };
     /**
      *
      * 이 페이지에서는 항상 api호출.
@@ -44,7 +52,8 @@ const LoadingScreen = () => {
     const callCheck = async () => {
       try {
         await check();
-        // call api
+        await tempApi(); // call api
+        completeLoading(['temp', 'temp', 'temp']);
       } catch (err) {
         console.log(err.message);
         navigate('/find');
@@ -52,7 +61,7 @@ const LoadingScreen = () => {
     };
 
     callCheck();
-  }, [navigate, dispatch, check]);
+  }, [navigate, dispatch, check, completeLoading]);
 
   return (
     <MaxWidthWrapper className='flex flex-col items-center justify-center py-20 sm:py-30 '>

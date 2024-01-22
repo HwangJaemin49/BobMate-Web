@@ -5,6 +5,7 @@ import SpecificSituationState from './SpecificSituationState';
 import ContentState from './ContentState';
 import ResultState from './ResultState';
 import { configureStore } from '@reduxjs/toolkit';
+// import ReduxThunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
   StepState,
@@ -16,7 +17,9 @@ const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: rootReducer,
-  devTools: true,
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware().concat(ReduxThunk),
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export default rootReducer;

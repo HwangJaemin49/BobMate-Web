@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import Banner from '../../components/FindPage/Banner';
 import LoadingScreen from '../../screen/FindPage/LoadingScreen';
+import FindResultScreen from '../../screen/FindPage/FindResultScreen';
 import AdvertiseBox from '../../containers/AdvertiseBox';
 
 const FindResultPage = () => {
+  const [results, setResults] = useState([null, null, null]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const completeLoading = useCallback((results) => {
+    setResults(results);
+    setIsLoading(false);
+  }, []);
 
   return (
     <MaxWidthWrapper>
@@ -15,7 +22,11 @@ const FindResultPage = () => {
       >
         {isLoading && <AdvertiseBox />}
       </Banner>
-      {isLoading ? <LoadingScreen /> : <FindResultPage />}
+      {isLoading ? (
+        <LoadingScreen completeLoading={completeLoading} />
+      ) : (
+        <FindResultScreen results={results} />
+      )}
     </MaxWidthWrapper>
   );
 };
