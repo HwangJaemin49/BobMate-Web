@@ -3,6 +3,7 @@ import StepState from './StepState';
 import NormalSituationState from './NormalSituationState';
 import SpecificSituationState from './SpecificSituationState';
 import ContentState from './ContentState';
+import ResultState from './ResultState';
 import { configureStore } from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   NormalSituationState,
   SpecificSituationState,
   ContentState,
+  ResultState,
 });
 
 export const store = configureStore({

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import FindPageWrapper from '../../../components/FindPage/FindPageWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { minusStep, plusStep } from '../../../states/StepState';
@@ -7,13 +7,20 @@ import MaxWidthWrapper from '../../../components/MaxWidthWrapper';
 import RoundSituation from '../../../components/FindPage/Situation/RoundSituation';
 import Typography from '../../../components/FindPage/Typography';
 import classNames from 'classnames';
-import { SelectSituation } from '../../../states/SpecificSituationState';
+import {
+  SelectSituation,
+  resetSpecificState,
+} from '../../../states/SpecificSituationState';
 
 const SpecificSituationPage = () => {
   const dispatch = useDispatch();
   const { select, situations } = useSelector((state) => {
     return state.SpecificSituationState;
   });
+
+  useEffect(() => {
+    dispatch(resetSpecificState());
+  }, [dispatch]);
 
   const prevOnClick = useCallback(() => {
     dispatch(minusStep());

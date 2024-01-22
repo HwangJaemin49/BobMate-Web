@@ -20,12 +20,12 @@ export const setMood = (what) => ({
  * @param {*} index: index number type , 0 <= index <= 3
  * @returns
  */
-export const SelectMember = (index) => ({
+export const selectMember = (index) => ({
   type: SELECT_MEMBER,
   index,
 });
 
-export const ResetNormalState = () => ({
+export const resetNormalState = () => ({
   type: RESET,
 });
 

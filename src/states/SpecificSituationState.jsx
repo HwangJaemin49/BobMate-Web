@@ -13,7 +13,7 @@ export const SelectSituation = (index) => ({
   index,
 });
 
-export const ResetSpecificState = () => ({
+export const resetSpecificState = () => ({
   type: RESET,
 });
 
