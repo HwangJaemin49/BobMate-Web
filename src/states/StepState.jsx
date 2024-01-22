@@ -4,6 +4,8 @@ const SET_SECOND = 'StepState/SET_SECOND';
 const PLUS_STEP = 'StepState/PLUS_STEP';
 const MINUS_STEP = 'StepState/MINUS_STEP';
 
+const RESET = 'StepState/RESET';
+
 // Action Creating functions
 export const TYPES = { normal: 'normal', specific: 'specific' };
 
@@ -37,6 +39,10 @@ export const minusStep = () => ({
   type: MINUS_STEP,
 });
 
+export const resetStepState = () => ({
+  type: RESET,
+});
+
 // Declare Initial state
 const initialState = {
   secondStep: null,
@@ -52,6 +58,8 @@ export default function Reducer(state = initialState, action) {
       return { ...state, nowStep: state.nowStep + 1 };
     case MINUS_STEP:
       return { ...state, nowStep: state.nowStep - 1 };
+    case RESET:
+      return { nowStep: 1, secondStep: null };
     default:
       return state;
   }

@@ -1,5 +1,6 @@
 // Action Types
 const SELECT_SITUATION = 'SpecificState/SELECT_SITUATION';
+const RESET = 'SpecificState/RESET';
 
 // Action Creating functions
 /**
@@ -10,6 +11,10 @@ const SELECT_SITUATION = 'SpecificState/SELECT_SITUATION';
 export const SelectSituation = (index) => ({
   type: SELECT_SITUATION,
   index,
+});
+
+export const ResetSpecificState = () => ({
+  type: RESET,
 });
 
 // Declare Initial state
@@ -37,6 +42,8 @@ export default function Reducer(state = initialState, action) {
         return state;
       }
       return { ...state, select: index };
+    case RESET:
+      return { ...state, select: -1 };
     default:
       return state;
   }

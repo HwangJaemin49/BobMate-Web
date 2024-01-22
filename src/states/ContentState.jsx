@@ -5,6 +5,7 @@ const SET_CONTENT = 'ContentState/SET_CONTENT';
 export const TYPES = {
   videoContent: 'videoContent',
   textContent: 'textContent',
+  nil: null,
 };
 
 export const setContent = (content) => ({
