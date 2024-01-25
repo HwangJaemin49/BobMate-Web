@@ -3,6 +3,7 @@ const SET_SECOND = 'StepState/SET_SECOND';
 
 const PLUS_STEP = 'StepState/PLUS_STEP';
 const MINUS_STEP = 'StepState/MINUS_STEP';
+const END_STEP = 'StepState/END_STEP';
 
 const RESET = 'StepState/RESET';
 
@@ -39,6 +40,10 @@ export const minusStep = () => ({
   type: MINUS_STEP,
 });
 
+export const endStep = () => ({
+  type: END_STEP,
+});
+
 export const resetStepState = () => ({
   type: RESET,
 });
@@ -58,6 +63,8 @@ export default function Reducer(state = initialState, action) {
       return { ...state, nowStep: state.nowStep + 1 };
     case MINUS_STEP:
       return { ...state, nowStep: state.nowStep - 1 };
+    case END_STEP:
+      return { ...state, nowStep: 4 };
     case RESET:
       return { nowStep: 1, secondStep: null };
     default:

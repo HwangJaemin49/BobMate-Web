@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import FindPageWrapper from '../../../components/FindPage/FindPageWrapper';
 import RoundButton from '../../../components/FindPage/RoundButton';
 import RoundBox from '../../../components/FindPage/Situation/RoundBox';
@@ -8,7 +8,6 @@ import Typography from '../../../components/FindPage/Typography';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
 import {
   MoodTypes,
-  resetNormalState,
   selectMember,
   setMood,
 } from '../../../states/NormalSituationState';
@@ -26,10 +25,6 @@ const NormalSituationPage = () => {
   const { mood, member } = useSelector((state) => {
     return state.NormalSituationState;
   });
-
-  useEffect(() => {
-    dispatch(resetNormalState());
-  }, [dispatch]);
 
   const onRoundButtonClick = useCallback(
     (e) => {

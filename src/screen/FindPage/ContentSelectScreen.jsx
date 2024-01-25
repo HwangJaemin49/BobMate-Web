@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import FindPageWrapper from '../../components/FindPage/FindPageWrapper';
 import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import RoundButton from '../../components/FindPage/RoundButton';
@@ -15,10 +15,6 @@ const ContentSelectPage = () => {
   const content = useSelector((state) => {
     return state.ContentState.content;
   });
-
-  useEffect(() => {
-    dispatch(setContent(TYPES.nil));
-  }, [dispatch]);
 
   const prevOnClick = useCallback(() => {
     dispatch(minusStep());

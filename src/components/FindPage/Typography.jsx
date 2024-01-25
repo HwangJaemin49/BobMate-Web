@@ -7,7 +7,7 @@ const Typography = {
       <div
         className={classNames(
           className,
-          'tracking-[-1px] font-bold text-[50px]'
+          'leading-[50px] font-bold text-[50px]'
         )}
       >
         {children}
@@ -16,36 +16,21 @@ const Typography = {
   },
   H1: ({ className, children }) => {
     return (
-      <h1
-        className={classNames(
-          className,
-          'tracking-[-1px] font-bold text-[38px]'
-        )}
-      >
+      <h1 className={classNames(className, 'leading- font-bold text-[38px]')}>
         {children}
       </h1>
     );
   },
   H2: ({ className, children }) => {
     return (
-      <h2
-        className={classNames(
-          className,
-          'tracking-[-1px] font-bold text-[28px]'
-        )}
-      >
+      <h2 className={classNames(className, 'leading- font-bold text-[28px]')}>
         {children}
       </h2>
     );
   },
   H3: ({ className, children }) => {
     return (
-      <h3
-        className={classNames(
-          className,
-          'tracking-[-1px] font-bold text-[22px]'
-        )}
-      >
+      <h3 className={classNames(className, 'leading- font-bold text-[22px]')}>
         {children}
       </h3>
     );
@@ -53,10 +38,7 @@ const Typography = {
   SubH: ({ className, children }) => {
     return (
       <h4
-        className={classNames(
-          className,
-          'tracking-[-1px] text-[18px] font-semibold'
-        )}
+        className={classNames(className, 'leading- text-[18px] font-semibold')}
       >
         {children}
       </h4>
@@ -65,10 +47,7 @@ const Typography = {
   Body1: ({ className, children }) => {
     return (
       <div
-        className={classNames(
-          className,
-          'tracking-[-1px] text-[16px] font-medium'
-        )}
+        className={classNames(className, 'leading- text-[16px] font-medium')}
       >
         {children}
       </div>
@@ -77,10 +56,7 @@ const Typography = {
   Body2: ({ className, children }) => {
     return (
       <div
-        className={classNames(
-          className,
-          'tracking-[-1px] text-[14px] font-medium'
-        )}
+        className={classNames(className, 'leading- text-[14px] font-medium')}
       >
         {children}
       </div>
@@ -89,10 +65,7 @@ const Typography = {
   Caption: ({ className, children }) => {
     return (
       <div
-        className={classNames(
-          className,
-          'tracking-[-1px] text-[12px] font-medium'
-        )}
+        className={classNames(className, 'leading- text-[12px] font-medium')}
       >
         {children}
       </div>

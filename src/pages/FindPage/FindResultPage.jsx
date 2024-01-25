@@ -17,7 +17,7 @@ const FindResultPage = () => {
   return (
     <MaxWidthWrapper>
       <Banner
-        className='pt-10 pb-10 md:pb-12'
+        className='pt-10 pb-10 md:pb-14'
         title={isLoading || '밥 친구 찾기 완료!'}
       >
         {isLoading && <AdvertiseBox />}

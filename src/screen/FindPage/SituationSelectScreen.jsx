@@ -1,15 +1,10 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import FindPageWrapper from '../../components/FindPage/FindPageWrapper';
 import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import RoundButton from '../../components/FindPage/RoundButton';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  TYPES,
-  plusStep,
-  resetStepState,
-  setSecond,
-} from '../../states/StepState';
+import { TYPES, plusStep, setSecond } from '../../states/StepState';
 import Typography from '../../components/FindPage/Typography';
 
 const SituationPage = () => {
@@ -22,10 +17,6 @@ const SituationPage = () => {
   const secondStep = useSelector((state) => {
     return state.StepState.secondStep;
   });
-
-  useEffect(() => {
-    dispatch(resetStepState());
-  }, [dispatch]);
 
   const prevOnClick = useCallback(() => {
     /*첫 페이지에서 메인 화면으로 넘어가게 된다면, Redux State의 secondStep을 초기화 함. */
