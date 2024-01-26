@@ -15,7 +15,6 @@ module.exports = {
       'yellow-50': '#FFFDE5',
       black: '#000000',
       white: '#FFFFFF',
-      primary: 'yellow-600',
     },
     extend: {
       colors: {
@@ -28,10 +27,7 @@ module.exports = {
         'grayscale-200': '#D9D9D9',
         'grayscale-100': '#E9E9E9',
         'grayscale-50': '#F5F5F5',
-        'neutral-800': 'grayscale-800',
-        'neutral-400': 'grayscale-400',
-        'neutral-300': 'grayscale-300',
-        'neutral-50': 'grayscale-50',
+        background: '#FAFAFA',
       },
     },
   },

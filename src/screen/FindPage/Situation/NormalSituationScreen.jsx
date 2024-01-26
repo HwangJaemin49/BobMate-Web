@@ -13,11 +13,11 @@ import {
 } from '../../../states/NormalSituationState';
 
 const moodPerks = [
-  { title: '기쁨', value: MoodTypes.joy },
-  { title: '즐거움', value: MoodTypes.pleasure },
-  { title: '슬픔', value: MoodTypes.sadness },
-  { title: '우울', value: MoodTypes.depression },
-  { title: '분노', value: MoodTypes.anger },
+  { content: '기쁨', title: '😊', value: MoodTypes.joy },
+  { content: '즐거움', title: '😆', value: MoodTypes.pleasure },
+  { content: '슬픔', title: '😢', value: MoodTypes.sadness },
+  { content: '우울', title: '😔', value: MoodTypes.depression },
+  { content: '분노', title: '😡', value: MoodTypes.anger },
 ];
 
 const NormalSituationPage = () => {
@@ -67,27 +67,29 @@ const NormalSituationPage = () => {
         nextOnClick={nextOnClick}
         className='lg:px-60'
       >
-        <Typography.H1>지금 당신의 기분을 선택해주세요!</Typography.H1>
+        <Typography.H2>지금 당신의 기분을 선택해주세요!</Typography.H2>
         <section className='flex flex-wrap justify-center '>
           {moodPerks.map((item) => {
             return (
               <RoundButton
-                key={item.title}
+                key={item.content}
                 title={item.title}
                 isSelected={mood[item.value]}
                 value={item.value}
-                className=' lg:mx-8 md:mx-6 h-36 w-36 lg:w-48 lg:h-48'
+                className='lg:mx-8 md:mx-6 h-36 w-36 lg:w-48 lg:h-48'
                 onClick={onRoundButtonClick}
-              />
+              >
+                {item.content}
+              </RoundButton>
             );
           })}
         </section>
 
-        <Typography.H1 className='my-10 lg:my-20 md:my-20'>
+        <Typography.H1 className='mb-10 my-28'>
           식사 구성원을 선택해주세요!
         </Typography.H1>
 
-        <section className='grid grid-cols-1 mb-8 lg:grid-cols-2 md:grid-cols-2 gap-y-10 gap-x-8 sm:gap-x-6 lg:gap-x-16 lg:gap-y-14'>
+        <section className='grid grid-cols-1 mb-8 lg:grid-cols-2 md:grid-cols-2 gap-x-4 gap-y-4'>
           {member.members.map((item, index) => {
             return (
               <RoundBox

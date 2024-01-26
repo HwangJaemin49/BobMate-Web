@@ -44,7 +44,7 @@ const SpecificSituationPage = () => {
         nextOnClick={nextOnClick}
         className='flex flex-col items-center'
       >
-        <Typography.H1>지금 당신의 상황을 선택해주세요!</Typography.H1>
+        <Typography.H2>지금 당신의 상황을 선택해주세요!</Typography.H2>
         <MaxWidthWrapper className='flex flex-col mt-4 mb-4'>
           {situations.map((item, index) => {
             return (

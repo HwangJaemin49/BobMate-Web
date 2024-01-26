@@ -40,7 +40,7 @@ const ContentSelectPage = () => {
       prevOnClick={prevOnClick}
       nextOnClick={nextOnClick}
     >
-      <Typography.H1>{'어떤 콘텐츠를 볼까요?'}</Typography.H1>
+      <Typography.H2>{'어떤 콘텐츠를 볼까요?'}</Typography.H2>
       <MaxWidthWrapper className='flex flex-wrap justify-evenly'>
         <RoundButton
           className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'

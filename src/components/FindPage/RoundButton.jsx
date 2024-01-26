@@ -12,9 +12,9 @@ const RoundButton = ({
   return (
     <button
       className={classNames(
-        'rounded-full bg-grayscale-200 flex flex-col items-center justify-around text-center p-10 m-5',
-        'hover:scale-105 hover:bg-grayscale-300 transition-transform ease-in-out duration-200 ',
-        { 'scale-105 bg-grayscale-400': isSelected },
+        'rounded-full bg-white flex flex-col items-center justify-around text-center p-10 m-5 border-black border-2',
+        'hover:scale-105  transition-transform ease-in-out duration-200 ',
+        { 'scale-105': isSelected },
         className
       )}
       value={value}

@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import MaxWidthWrapper from '../../components/MaxWidthWrapper';
-import { MoonLoader } from 'react-spinners';
 import Typography from '../../components/FindPage/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { TYPES as StepTYPES, endStep } from '../../states/StepState';
+import { LogoIcon } from '../../components/Icons/LogoIcon';
 
 const LoadingScreen = ({ completeLoading }) => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const LoadingScreen = ({ completeLoading }) => {
     }
 
     if (StepState.secondStep === StepTYPES.normal) {
-    } else {
+    } else if (StepState.secondStep === StepTYPES.specific) {
     }
 
     if (!ContentState.content) {
@@ -97,8 +97,14 @@ const LoadingScreen = ({ completeLoading }) => {
 
   return (
     <MaxWidthWrapper className='flex flex-col items-center justify-center py-20 sm:py-30 '>
-      <Typography.H1>밥 친구를 찾는 중...</Typography.H1>
-      <MoonLoader className='mt-4' />
+      <LogoIcon width='85' height='80' className='mb-8' />
+      <Typography.H2>
+        내게 딱 맞는 밥 친구를
+        <br /> 찾고 있어요!
+      </Typography.H2>
+      <Typography.Body2 className='mt-6'>
+        잠시만 기다려주세요! :&#41;
+      </Typography.Body2>
     </MaxWidthWrapper>
   );
 };
