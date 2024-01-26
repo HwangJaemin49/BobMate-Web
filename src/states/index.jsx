@@ -1,14 +1,25 @@
 import { combineReducers } from 'redux';
 import StepState from './StepState';
+import NormalSituationState from './NormalSituationState';
+import SpecificSituationState from './SpecificSituationState';
+import ContentState from './ContentState';
+import ResultState from './ResultState';
 import { configureStore } from '@reduxjs/toolkit';
+// import ReduxThunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
   StepState,
+  NormalSituationState,
+  SpecificSituationState,
+  ContentState,
+  ResultState,
 });
 
 export const store = configureStore({
   reducer: rootReducer,
-  devTools: true, // 기본은 true로 설정되어있다. 개발자 도구의 사용 여부를 정한다.
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware().concat(ReduxThunk),
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export default rootReducer;

@@ -4,23 +4,23 @@ import Typography from './Typography';
 
 const Circle = ({ isNow, children, className }) => {
   return (
-    <Typography.Caption
+    <div
       className={classNames(
-        'rounded-full w-4 h-4 p-1 border-2 border-black text-center tracking-normal',
+        'rounded-full w-6 h-6 border-2 border-black',
         'flex justify-center items-center',
-        { 'bg-black text-white': isNow },
+        { 'bg-yellow-600 ': isNow },
         { 'bg-white': !isNow },
         className
       )}
     >
-      {children}
-    </Typography.Caption>
+      <Typography.Body2>{children}</Typography.Body2>
+    </div>
   );
 };
 
 const StepCircle = ({ step }) => {
   return (
-    <div className='flex items-center mt-5'>
+    <div className='flex items-center justify-between mt-5'>
       <Circle isNow={step === 1}>1</Circle>
       <div className='w-5 border-t-2 border-black'></div>
       <Circle isNow={step === 2}>2</Circle>
@@ -30,4 +30,4 @@ const StepCircle = ({ step }) => {
   );
 };
 
-export default StepCircle;
+export default React.memo(StepCircle);

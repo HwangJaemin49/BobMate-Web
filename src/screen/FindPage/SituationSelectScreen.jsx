@@ -45,7 +45,7 @@ const SituationPage = () => {
       prevOnClick={prevOnClick}
       nextOnClick={nextOnClick}
     >
-      <Typography.H1>{'식사 상황을 선택해 주세요!'}</Typography.H1>
+      <Typography.H2>{'식사 상황을 선택해 주세요!'}</Typography.H2>
       <MaxWidthWrapper className='flex flex-wrap justify-evenly'>
         <RoundButton
           className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'

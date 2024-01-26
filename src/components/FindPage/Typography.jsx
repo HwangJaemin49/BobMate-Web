@@ -1,103 +1,113 @@
 import classNames from 'classnames';
 import React from 'react';
 
+const all = 'text-center break-keep';
+
 const Typography = {
-  Title: ({ className, children }) => {
+  Title: React.memo(({ className, children }) => {
     return (
       <div
         className={classNames(
           className,
-          'tracking-[-1px] font-bold text-[50px]'
+          'leading-[50px] font-bold text-[50px]',
+          all
         )}
       >
         {children}
       </div>
     );
-  },
-  H1: ({ className, children }) => {
+  }),
+  H1: React.memo(({ className, children }) => {
     return (
       <h1
         className={classNames(
           className,
-          'tracking-[-1px] font-bold text-[38px]'
+          'leading- font-bold text-[38px] ',
+          all
         )}
       >
         {children}
       </h1>
     );
-  },
-  H2: ({ className, children }) => {
+  }),
+  H2: React.memo(({ className, children }) => {
     return (
       <h2
         className={classNames(
           className,
-          'tracking-[-1px] font-bold text-[28px]'
+          'leading- font-bold text-[28px] ',
+          all
         )}
       >
         {children}
       </h2>
     );
-  },
-  H3: ({ className, children }) => {
+  }),
+  H3: React.memo(({ className, children }) => {
     return (
       <h3
         className={classNames(
           className,
-          'tracking-[-1px] font-bold text-[22px]'
+          'leading- font-bold text-[22px] ',
+          all
         )}
       >
         {children}
       </h3>
     );
-  },
-  SubH: ({ className, children }) => {
+  }),
+  SubH: React.memo(({ className, children }) => {
     return (
       <h4
         className={classNames(
           className,
-          'tracking-[-1px] text-[18px] font-semibold'
+          'leading- text-[18px] font-semibold',
+          all
         )}
       >
         {children}
       </h4>
     );
-  },
-  Body1: ({ className, children }) => {
+  }),
+  Body1: React.memo(({ className, children }) => {
     return (
       <div
         className={classNames(
           className,
-          'tracking-[-1px] text-[16px] font-medium'
+          'leading- text-[16px] font-medium ',
+          all
         )}
       >
         {children}
       </div>
     );
-  },
-  Body2: ({ className, children }) => {
+  }),
+  Body2: React.memo(({ className, children }) => {
     return (
       <div
         className={classNames(
           className,
-          'tracking-[-1px] text-[14px] font-medium'
+          'leading- text-[14px] font-medium ',
+          all
         )}
       >
         {children}
       </div>
     );
-  },
-  Caption: ({ className, children }) => {
+  }),
+  Caption: React.memo(({ className, children }) => {
     return (
-      <caption
+      <div
         className={classNames(
           className,
-          'tracking-[-1px] text-[12px] font-medium'
+          'leading- text-[12px] font-medium ',
+          all
         )}
       >
         {children}
-      </caption>
+      </div>
     );
-  },
+  }),
 };
 
 export default Typography;

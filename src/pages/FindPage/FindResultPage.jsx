@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import Banner from '../../components/FindPage/Banner';
 import LoadingScreen from '../../screen/FindPage/LoadingScreen';
+// import FindResultScreen from '../../screen/FindPage/FindResultScreen';
 import AdvertiseBox from '../../containers/AdvertiseBox';
+import FindDone from '../FindDone';
 
 const FindResultPage = () => {
+  const [results, setResults] = useState([null, null, null]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    /**
-     * 이 페이지에서는 항상 api호출.
-     * api에 들어가는 데이터는 redux state에 저장되어 있고,
-     * redux 데이터가 채워져 있지 않은 상황 ex) find-page로 바로 접속
-     * 일 때는 오류 처리, 혹은 첫 페이지로 보내기
-     */
-  }, [isLoading]);
+  const completeLoading = useCallback((results) => {
+    setResults(results);
+    setIsLoading(false);
+  }, []);
 
   return (
-    <MaxWidthWrapper>
-      <Banner
-        className='pt-10 pb-10 md:pb-12'
-        title={isLoading || '밥 친구 찾기 완료!'}
-      >
+    <MaxWidthWrapper className='bg-background'>
+      <Banner className='pt-10 pb-14' title={isLoading || '밥 친구 찾기 완료!'}>
         {isLoading && <AdvertiseBox />}
       </Banner>
-      {isLoading ? <LoadingScreen /> : <FindResultPage />}
+      {isLoading ? (
+        <LoadingScreen completeLoading={completeLoading} />
+      ) : (
+        <FindDone results={results} />
+      )}
     </MaxWidthWrapper>
   );
 };

@@ -19,8 +19,12 @@ const FindPageWrapper = ({
         <StepBox>{step}</StepBox>
         {children}
         <div className='flex items-center justify-center my-6'>
-          <NextButton onClick={prevOnClick}>이전</NextButton>
-          <NextButton onClick={nextOnClick}>다음</NextButton>
+          <NextButton className='bg-grayscale-100' onClick={prevOnClick}>
+            이전
+          </NextButton>
+          <NextButton className='bg-yellow-600' onClick={nextOnClick}>
+            다음
+          </NextButton>
         </div>
       </div>
     </MaxWidthWrapper>
