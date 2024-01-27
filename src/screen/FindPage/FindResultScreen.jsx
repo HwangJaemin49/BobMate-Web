@@ -1,7 +1,13 @@
 import React from 'react';
 
-const FindResultScreen = () => {
-  return <div>오늘의 밥 친구는?</div>;
+const FindResultScreen = ({ results }) => {
+  return (
+    <div>
+      {results.map((item) => {
+        return <div>{item}</div>;
+      })}
+    </div>
+  );
 };
 
 export default FindResultScreen;

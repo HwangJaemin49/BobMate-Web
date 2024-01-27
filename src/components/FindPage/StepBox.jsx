@@ -3,10 +3,10 @@ import Typography from './Typography';
 
 const StepBox = ({ children }) => {
   return (
-    <Typography.Body2 className='py-0.5 px-1.5 mt-8 mb-2 border-2 border-black rounded-md'>
+    <Typography.Body1 className='px-4 py-2 mt-16 mb-6 text-white rounded-[10px]  bg-grayscale-800 w-[72px] h-[37px]'>
       {children}
-    </Typography.Body2>
+    </Typography.Body1>
   );
 };
 
-export default StepBox;
+export default React.memo(StepBox);

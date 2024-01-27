@@ -22,6 +22,12 @@ code {
   src: url('./components/fonts/Pretendard-SemiBold.woff') format('truetype');
 }
 
+@font-face {
+  font-family: "Pretendard-Bold";
+  font-weight: bold;
+  src: url("./components/fonts/Pretendard-Bold.woff") format("truetype");
+}
+
 body {
   font-family: 'Pretendard-SemiBold';
 }
