@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import ProfileIcon from '../images/person-icon.png';
-import StyledInput from './StyledInput';
+import StyledInput from './StyledInputWrapper';
 import SaveButton from './SaveButton';
 import './UserProfileEdit.css';
 
@@ -71,11 +71,13 @@ const UserProfileEdit = () => {
 
   return (
     <div style={{ flexDirection: 'column', display: 'flex', width: '70%', height: '70%', paddingTop: '100px', paddingBottom:'100px' }}>
-      <h2 style={{ textAlign: 'center' }}>프로필 편집</h2>
-      <div style={{ marginLeft: '200px', display: 'flex', flexDirection: 'column' }}>
+      <h2 style={{ textAlign: 'center', fontSize:'20px' }}>프로필 편집</h2>
+      <div style={{ marginLeft: '200px', display: 'flex', flexDirection: 'column', paddingTop:'40px' }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
           <label style={{ marginLeft: '10px', marginRight: '10px' }}>프로필 사진</label>
-          <div style={{ width: '100px', height: '100px', borderRadius: '70%', overflow: 'hidden', backgroundImage: { ProfileIcon }, backgroundSize: 'cover', backgroundColor: 'blue' }} />
+          <div style={{ width: '100px', height: '100px', borderRadius: '70%', 
+          overflow: 'hidden', backgroundImage: { ProfileIcon }, backgroundSize: 'cover', 
+          backgroundColor: 'white', border:'1px #e9e9e9 solid', marginLeft:'100px' }} />
           <input type="file" onChange={handleProfilePictureChange} style={{ marginLeft: '10px' }} />
           {profilePicture && (
             <div style={{ marginLeft: '10px' }}>
@@ -86,32 +88,33 @@ const UserProfileEdit = () => {
         </div>
         <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '10px', marginBottom: '10px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', marginRight: '10px' }}>
-            <label style={{ marginBottom: '10px' }}>닉네임</label>
-            <label style={{ marginBottom: '10px' }}>이메일</label>
-            <label style={{ marginBottom: '10px' }}>현재 비밀번호</label>
-            <label style={{ marginBottom: '10px' }}>새 비밀번호</label>
-            <label style={{ marginBottom: '10px' }}>새 비밀번호 확인</label>
+            <label style={{ marginBottom: '23px' }}>닉네임</label>
+            <label style={{ marginBottom: '23px' }}>이메일</label>
+            <label style={{ marginBottom: '23px' }}>현재 비밀번호</label>
+            <label style={{ marginBottom: '23px' }}>새 비밀번호</label>
+            <label style={{ marginBottom: '23px' }}>새 비밀번호 확인</label>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div style={{ flexDirection: 'row' , marginBottom: '10px' }}>
-              <input type="text" value={nickname} onChange={handleNicknameChange} style={{marginLeft: '78px'}}/>
-              <button style={{ marginLeft: '10px' }}>중복확인</button>
+            <div style={{ flexDirection: 'row' ,marginLeft:'-10px', marginBottom: '10px' }}>
+              <StyledInput type="text" value={nickname} onChange={handleNicknameChange} placeholder="새 닉네임을 입력해 주세요" style={{marginLeft: '78px'}}/>
+              <button style={{ marginLeft: '10px', border:'2px solid black', padding:'3px', borderRadius:'10%' }}>중복확인</button>
             </div>
-            <input type="email" value={email} onChange={handleEmailChange} style={{ marginBottom: '10px' }} />
-            <input type="password" value={currentPassword} onChange={handleCurrentPasswordChange} style={{ marginBottom: '10px' }} />
-            <input type="password" value={newPassword} onChange={handleNewPasswordChange} style={{ marginBottom: '10px' }} />
-            <input
+            <StyledInput type="email" value={email} onChange={handleEmailChange} placeholder="예: bapchingu@bap.com"style={{ marginBottom: '10px' }} />
+            <StyledInput type="password" value={currentPassword} onChange={handleCurrentPasswordChange} placeholder="현재 비밀번호를 입력해 주세요" style={{ marginBottom: '10px' }} />
+            <StyledInput type="password" value={newPassword} onChange={handleNewPasswordChange} placeholder="새 비밀번호를 입력해 주세요" style={{ marginBottom: '10px' }} />
+            <StyledInput
               type="password"
               value={confirmNewPassword}
               onChange={handleConfirmNewPasswordChange}
               style={{ marginBottom: '10px' }}
+              placeholder='새 비밀번호를 한 번 더 입력해 주세요'
             />
           </div>
         </div>
       </div>
       <div className={'btn-wrapper'}>
-        <button onClick={handleSaveChanges} style={{marginBottom:'10px'}} >변경사항 저장</button>
-        <button className={'modal-open-btn'} onClick={() => setModalOpen(true)}  style={{marginBottom:'10px'}}> 
+        <SaveButton onClick={handleSaveChanges} style={{marginBottom:'10px'}} >변경사항 저장</SaveButton>
+        <button className={'modal-open-btn'} onClick={() => setModalOpen(true)}  style={{marginTop:'10px', marginBottom:'10px', textDecoration:'underline'}}> 
           회원 탈퇴
         </button>
       </div>
@@ -123,14 +126,14 @@ const UserProfileEdit = () => {
           }
         }}>
           <div className={'modal-content'}>
-
-            <h3 className={'modal-inner'}>OOO님, 정말 탈퇴하시겠어요?</h3>
-            <p className={'modal-inner'}>! 탈퇴 시, 더 이상 해당 계정으로 밥 친구를 이용할 수 없습니다.</p>
-            <p className={'modal-inner'}>! 탈퇴 시, 고객님의 모든 활동 기록이 삭제되며 삭제된 정보는 복구할 수 없습니다.</p>
-
-            <h4 className={'modal-inner'}>그래도 회원 탈퇴를 진행할까요?</h4>
-            <div className="btn-wrapper">
-              <SaveButton type="button" className={'modal-close-btn'} onClick={() => setModalOpen(false)}>취소</SaveButton>
+            <div style={{paddingLeft:'30px'}}>
+              <h3 className={'modal-inner'} style={{fontSize:'25px', marginBottom:'20px'}}>OOO님, 정말 탈퇴하시겠어요?</h3>
+              <p className={'modal-inner'} style={{marginBottom:'10px'}}>! 탈퇴 시, 더 이상 해당 계정으로 밥 친구를 이용할 수 없습니다.</p>
+              <p className={'modal-inner'}style={{marginBottom:'30px'}}>! 탈퇴 시, 고객님의 모든 활동 기록이 삭제되며 삭제된 정보는 복구할 수 없습니다.</p>
+            </div>
+            <h4 className={'modal-inner'}style={{fontSize:'20px', marginBottom:'10px', textAlign:'center'}}>그래도 회원 탈퇴를 진행할까요?</h4>
+            <div className="btn-wrapper" style={{display:'flex', flexDirection:'row', justifyContent:'center'}}>
+              <SaveButton type="button" className={'modal-close-btn'} style={{backgroundColor:'#d9d9d9'}}onClick={() => setModalOpen(false)}>취소</SaveButton>
               <SaveButton type="button" className={'modal-withdraw-btn'} onClick={nextModalConfirm}>확인</SaveButton>
             </div>
           </div>
@@ -143,12 +146,18 @@ const UserProfileEdit = () => {
           }
         }}>
           <div className={'modal-content'}>
-            <h3 className={'modal-inner'}>너무 아쉬워요</h3>
-            <p className={'modal-inner'}>회원 탈퇴를 위해 현재 사용 중인 비밀번호를 입력해주세요.</p>
-            <StyledInput placeholder="비밀번호를 입력해 주세요"></StyledInput>
-            <div className="btn-wrapper">
-            <SaveButton className={'modal-close-btn'} onClick={() => setNextModalOpen(false)}>취소</SaveButton>
-            <SaveButton className={'modal-withdraw-btn'} onClick={endModalConfirm}>확인</SaveButton>
+            <div style={{paddingLeft:'30px'}}>
+              <h3 className={'modal-inner'} style={{fontSize:'25px', marginBottom:'20px'}}>너무 아쉬워요 😢</h3>
+              <p className={'modal-inner'} style={{marginBottom:'10px'}}>회원 탈퇴를 위해 현재 사용 중인 비밀번호를 입력해주세요.</p>
+              <StyledInput placeholder="현재 비밀번호를 입력해 주세요" isCentered={false} style={{width:'450px' }}></StyledInput>
+            </div>
+            
+            <div className="btn-wrapper" 
+            style={{display:'flex', flexDirection:'row', alignContent:'center', justifyContent:'right', marginRight:'40px',
+            marginTop:'30px'}}>
+              <SaveButton className={'modal-close-btn'}  style={{backgroundColor:'#d9d9d9'}}
+                onClick={() => setNextModalOpen(false)}>취소</SaveButton>
+              <SaveButton className={'modal-withdraw-btn'} onClick={endModalConfirm}>회원 탈퇴</SaveButton>
             </div>
             </div>
         </div>
@@ -161,8 +170,10 @@ const UserProfileEdit = () => {
         }}>
           {/*마지막 모달 컴포넌트를 렌더링*/}
           <div className={'modal-content'}>
-            <h3 className={'modal-inner'}>회원 탈퇴가 완료되었어요.</h3>
-            <p className={'modal-inner'}>그동안 밥 친구를 이용해 주셔서 감사합니다 </p>
+            <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+              <h3 className={'modal-inner'} style={{fontSize:'25px', marginBottom:'20px'}}>회원 탈퇴가 완료되었어요.</h3>
+              <p className={'modal-inner'} style={{marginBottom:'10px'}}>그동안 밥 친구를 이용해 주셔서 감사합니다 :)</p>
+            </div>
             <div className="btn-wrapper">
             <SaveButton className={'modal-close-btn'} onClick={() => setEndModalOpen(false)}>확인</SaveButton>
             </div>
