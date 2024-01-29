@@ -16,7 +16,7 @@ const FindResultPage = () => {
   }, []);
 
   return (
-    <MaxWidthWrapper className='bg-background'>
+    <MaxWidthWrapper className='bg-background font-pre'>
       <Banner className='pt-10 pb-14' title={isLoading || '밥 친구 찾기 완료!'}>
         {isLoading && <AdvertiseBox />}
       </Banner>

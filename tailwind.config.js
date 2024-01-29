@@ -2,6 +2,9 @@
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    fontFamily: {
+      pre: ['Pretendard'],
+    },
     colors: {
       'yellow-900': '#FE7A00',
       'yellow-800': '#FEA700',

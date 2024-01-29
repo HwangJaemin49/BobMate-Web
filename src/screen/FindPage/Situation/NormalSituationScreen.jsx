@@ -56,22 +56,25 @@ const NormalSituationPage = () => {
         className='px-60'
       >
         <Typography.H2>지금 당신의 기분을 선택해주세요!</Typography.H2>
-        <section className='flex flex-wrap justify-center '>
-          {mood.moods.map((item, index) => {
-            return (
-              <RoundButton
-                key={item.key}
-                title={item.icon}
-                isSelected={index === mood.select}
-                value={index}
-                className='lg:mx-8 md:mx-6 h-[228px] w-[228px]'
-                onClick={onRoundButtonClick}
-              >
-                {item.content}
-              </RoundButton>
-            );
-          })}
-        </section>
+        {[mood.moods.slice(0, 2), mood.moods.slice(2)].map((row, rowIndex) => (
+          <section className='flex justify-around '>
+            {row.map((item, index) => {
+              const realIndex = index + rowIndex * 2;
+              return (
+                <RoundButton
+                  key={item.key}
+                  title={item.icon}
+                  isSelected={realIndex === mood.select}
+                  value={realIndex}
+                  className='lg:mx-8 md:mx-6 h-[228px] w-[228px]'
+                  onClick={onRoundButtonClick}
+                >
+                  {item.content}
+                </RoundButton>
+              );
+            })}
+          </section>
+        ))}
 
         <Typography.H1 className='mb-10 my-28'>
           식사 구성원을 선택해주세요!
