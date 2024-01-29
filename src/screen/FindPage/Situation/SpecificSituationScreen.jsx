@@ -3,11 +3,10 @@ import FindPageWrapper from '../../../components/FindPage/FindPageWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { minusStep, plusStep } from '../../../states/StepState';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
-import MaxWidthWrapper from '../../../components/MaxWidthWrapper';
-import RoundSituation from '../../../components/FindPage/Situation/RoundSituation';
 import Typography from '../../../components/FindPage/Typography';
 import classNames from 'classnames';
 import { SelectSituation } from '../../../states/SpecificSituationState';
+import SituationButton from '../../../components/FindPage/Situation/SituationButton';
 
 const SpecificSituationPage = () => {
   const dispatch = useDispatch();
@@ -42,13 +41,13 @@ const SpecificSituationPage = () => {
         step='2단계'
         prevOnClick={prevOnClick}
         nextOnClick={nextOnClick}
-        className='flex flex-col items-center'
+        className='px-80'
       >
         <Typography.H2>지금 당신의 상황을 선택해주세요!</Typography.H2>
-        <MaxWidthWrapper className='flex flex-col mt-4 mb-4'>
+        <div className='flex flex-col w-full mt-4 mb-4'>
           {situations.map((item, index) => {
             return (
-              <RoundSituation
+              <SituationButton
                 className={classNames({ 'self-end': index % 2 !== 0 })}
                 key={item}
                 isSelected={select === index}
@@ -56,10 +55,10 @@ const SpecificSituationPage = () => {
                 onClick={onClick}
               >
                 {item}
-              </RoundSituation>
+              </SituationButton>
             );
           })}
-        </MaxWidthWrapper>
+        </div>
       </FindPageWrapper>
     </>
   );

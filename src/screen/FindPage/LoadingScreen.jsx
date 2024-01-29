@@ -41,6 +41,8 @@ const LoadingScreen = ({ completeLoading }) => {
     if (!ContentState.content) {
       throw new Error('third page is not processed!');
     }
+
+    /* eslint-disable-next-line */
   }, [
     StepState,
     NormalSituationState,
@@ -64,7 +66,7 @@ const LoadingScreen = ({ completeLoading }) => {
   }, [dispatch, navigate, check]);
 
   useEffect(() => {
-    const tempApi = () => {
+    const tempApi = (_state) => {
       return new Promise((resolve) => {
         setTimeout(() => {
           console.log('temp api called!');
@@ -83,7 +85,12 @@ const LoadingScreen = ({ completeLoading }) => {
 
     const callApi = async () => {
       try {
-        await tempApi(); // call api
+        await tempApi({
+          StepState,
+          NormalSituationState,
+          SpecificSituationState,
+          ContentState,
+        }); // call api
         completeLoading(['temp', 'temp', 'temp']);
       } catch (err) {
         console.log(err.message);
@@ -93,7 +100,15 @@ const LoadingScreen = ({ completeLoading }) => {
     if (isChecked) {
       callApi();
     }
-  }, [isChecked, dispatch, completeLoading]);
+  }, [
+    isChecked,
+    dispatch,
+    completeLoading,
+    StepState,
+    NormalSituationState,
+    SpecificSituationState,
+    ContentState,
+  ]);
 
   return (
     <MaxWidthWrapper className='flex flex-col items-center justify-center py-20 sm:py-30 '>

@@ -14,7 +14,7 @@ const SituationTitle = ({ title, children }) => {
     >
       <Typography.H3 className='mb-3'>{title}</Typography.H3>
       <Typography.SubH className=''>{children}</Typography.SubH>
-      <hr className='w-full mt-2 border-2 border-solid border-grayscale-800'></hr>
+      <hr className='w-full mt-2 border-t-2 border-solid border-grayscale-800'></hr>
     </MaxWidthWrapper>
   );
 };

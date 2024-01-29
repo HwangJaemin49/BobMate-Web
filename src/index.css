@@ -23,9 +23,9 @@ code {
 }
 
 @font-face {
-  font-family: "Pretendard-Bold";
+  font-family: 'Pretendard-Bold';
   font-weight: bold;
-  src: url("./components/fonts/Pretendard-Bold.woff") format("truetype");
+  src: url('./components/fonts/Pretendard-Bold.woff') format('truetype');
 }
 
 body {

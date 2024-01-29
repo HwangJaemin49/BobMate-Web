@@ -48,7 +48,7 @@ const SituationPage = () => {
       <Typography.H2>{'식사 상황을 선택해 주세요!'}</Typography.H2>
       <MaxWidthWrapper className='flex flex-wrap justify-evenly'>
         <RoundButton
-          className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'
+          className='w-[330px] h-[330px]'
           title='일반 상황'
           onClick={onNormalSituationClick}
           isSelected={secondStep === TYPES.normal}
@@ -56,7 +56,7 @@ const SituationPage = () => {
           {'내 상황을 직접 설명할께요'}
         </RoundButton>
         <RoundButton
-          className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'
+          className='w-[330px] h-[330px]'
           title='특정 상황'
           onClick={onSpecificSituationClick}
           isSelected={secondStep === TYPES.specific}

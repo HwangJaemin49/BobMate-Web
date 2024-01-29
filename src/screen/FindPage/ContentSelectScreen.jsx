@@ -43,7 +43,7 @@ const ContentSelectPage = () => {
       <Typography.H2>{'어떤 콘텐츠를 볼까요?'}</Typography.H2>
       <MaxWidthWrapper className='flex flex-wrap justify-evenly'>
         <RoundButton
-          className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'
+          className='w-[330px] h-[330px]'
           title='영상 콘텐츠'
           onClick={onVideoContentClick}
           isSelected={content === TYPES.videoContent}
@@ -51,7 +51,7 @@ const ContentSelectPage = () => {
           {'영화, 드라마, 예능 프로그램, 다큐멘터리 등'}
         </RoundButton>
         <RoundButton
-          className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'
+          className='w-[330px] h-[330px]'
           title='텍스트 콘텐츠'
           onClick={onTextContentClick}
           isSelected={content === TYPES.textContent}

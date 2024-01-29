@@ -1,19 +1,12 @@
 // Action Types
-const SET_MOOD = 'NormalState/SET_MOOD';
+const SELECT_MOOD = 'NormalState/SELECT_MOOD';
 const SELECT_MEMBER = 'NormalState/SELECT_MEMBER';
 const RESET = 'NormalState/RESET';
 
 // Action Creating functions
-export const MoodTypes = {
-  joy: 'joy',
-  pleasure: 'pleasure',
-  sadness: 'sadness',
-  depression: 'depression',
-  anger: 'anger',
-};
-export const setMood = (what) => ({
-  type: SET_MOOD,
-  what,
+export const selectMood = (index) => ({
+  type: SELECT_MOOD,
+  index,
 });
 
 /**
@@ -32,43 +25,61 @@ export const resetNormalState = () => ({
 // Declare Initial state
 const initialState = {
   mood: {
-    joy: false,
-    pleasure: false,
-    sadness: false,
-    depression: false,
-    anger: false,
+    select: -1,
+    moods: [
+      { icon: '😊‍', content: '기쁨', key: 'joy' },
+      { icon: '😆', content: '즐거움', key: 'pleasure' },
+      { icon: '😢', content: '슬픔', key: 'sadness' },
+      { icon: '😔', content: '우울', key: 'gloomy' },
+      { icon: '😡', content: '분노', key: 'anger' },
+    ],
   },
   member: {
     select: -1,
-    members: ['혼자', '가족', '친구', '연인'],
+    members: [
+      { icon: '🙋‍♀️', content: '혼자' },
+      { icon: '👨‍👩‍👧‍👦', content: '가족' },
+      { icon: '👯', content: '친구' },
+      { icon: '👫', content: '연인' },
+    ],
   },
 };
 
 // Declare Reducer
 export default function Reducer(state = initialState, action) {
   switch (action.type) {
-    case SET_MOOD:
-      let newMood = { ...state.mood };
-      newMood[action.what] = !state.mood[action.what];
-      return { ...state, mood: newMood };
-    case SELECT_MEMBER:
-      const index = action.index;
-      if (index < 0 || index > 3) {
+    case SELECT_MOOD:
+      const moodIndex = action.index;
+      if (moodIndex < 0 || moodIndex > 4) {
         return state;
       }
-      return { ...state, member: { ...state.member, select: index } };
+      return { ...state, mood: { ...state.mood, select: moodIndex } };
+    case SELECT_MEMBER:
+      const memberIndex = action.index;
+      if (memberIndex < 0 || memberIndex > 3) {
+        return state;
+      }
+      return { ...state, member: { ...state.member, select: memberIndex } };
     case RESET:
       return {
         mood: {
-          joy: false,
-          pleasure: false,
-          sadness: false,
-          depression: false,
-          anger: false,
+          select: -1,
+          moods: [
+            { icon: '😊‍', content: '기쁨', key: 'joy' },
+            { icon: '😆', content: '즐거움', key: 'pleasure' },
+            { icon: '😢', content: '슬픔', key: 'sadness' },
+            { icon: '😔', content: '우울', key: 'gloomy' },
+            { icon: '😡', content: '분노', key: 'anger' },
+          ],
         },
         member: {
           select: -1,
-          members: ['혼자', '가족', '친구', '연인'],
+          members: [
+            { icon: '🙋‍♀️', content: '혼자' },
+            { icon: '👨‍👩‍👧‍👦', content: '가족' },
+            { icon: '👯', content: '친구' },
+            { icon: '👫', content: '연인' },
+          ],
         },
       };
     default:

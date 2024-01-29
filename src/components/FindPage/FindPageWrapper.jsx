@@ -13,19 +13,17 @@ const FindPageWrapper = ({
 }) => {
   return (
     <MaxWidthWrapper
-      className={classNames('px-10 mb-5 lg:mb-20 md:mb-10 md:px-20', className)}
+      className={classNames(' flex flex-col items-center', className)}
     >
-      <div className='flex flex-col items-center'>
-        <StepBox>{step}</StepBox>
-        {children}
-        <div className='flex items-center justify-center my-6'>
-          <NextButton className='bg-grayscale-100' onClick={prevOnClick}>
-            이전
-          </NextButton>
-          <NextButton className='bg-yellow-600' onClick={nextOnClick}>
-            다음
-          </NextButton>
-        </div>
+      <StepBox>{step}</StepBox>
+      {children}
+      <div className='flex items-center justify-center my-6'>
+        <NextButton className='bg-grayscale-100' onClick={prevOnClick}>
+          이전
+        </NextButton>
+        <NextButton className='bg-yellow-600' onClick={nextOnClick}>
+          다음
+        </NextButton>
       </div>
     </MaxWidthWrapper>
   );
