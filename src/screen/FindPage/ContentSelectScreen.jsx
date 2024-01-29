@@ -41,14 +41,19 @@ const ContentSelectPage = () => {
       nextOnClick={nextOnClick}
     >
       <Typography.H2>{'어떤 콘텐츠를 볼까요?'}</Typography.H2>
-      <MaxWidthWrapper className='flex flex-wrap justify-evenly'>
+      {/*3xl은 1920px 기준이며, 1920px-min-width로 하는 media query.
+        3xl 기준대로 패딩을 잡으면, 노트북 화면에서는 화면이 이상하게 보여서 별도로 추가.
+        */}
+      <MaxWidthWrapper className='flex flex-wrap justify-between mt-[80px] px-[300px] 3xl:px-[540px]'>
         <RoundButton
           className='w-[330px] h-[330px]'
-          title='영상 콘텐츠'
           onClick={onVideoContentClick}
           isSelected={content === TYPES.videoContent}
         >
-          {'영화, 드라마, 예능 프로그램, 다큐멘터리 등'}
+          <Typography.H3>{'영상 콘텐츠'}</Typography.H3>
+          <Typography.Body2>
+            {'영화, 드라마, 예능 프로그램, 다큐멘터리 등'}
+          </Typography.Body2>
         </RoundButton>
         <RoundButton
           className='w-[330px] h-[330px]'
@@ -56,7 +61,8 @@ const ContentSelectPage = () => {
           onClick={onTextContentClick}
           isSelected={content === TYPES.textContent}
         >
-          {'웹툰, 웹소설 등'}
+          <Typography.H3>{'텍스트 콘텐츠'}</Typography.H3>
+          <Typography.Body2>{'웹툰, 웹소설 등'}</Typography.Body2>
         </RoundButton>
       </MaxWidthWrapper>
     </FindPageWrapper>

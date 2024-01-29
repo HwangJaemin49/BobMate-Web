@@ -33,7 +33,7 @@ const FindMatePage = () => {
   }, [nowStep, dispatch]);
 
   return (
-    <MaxWidthWrapper className='pb-10 bg-background font-pre'>
+    <MaxWidthWrapper className='bg-background font-pre'>
       <Banner title={'밥 친구를 찾으러 가 볼까요?'}>
         <StepCircle step={nowStep} />
       </Banner>

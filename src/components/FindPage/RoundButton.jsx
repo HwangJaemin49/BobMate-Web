@@ -1,14 +1,6 @@
 import classnames from 'classnames';
-import Typography from './Typography';
 
-const RoundButton = ({
-  title,
-  onClick,
-  value,
-  isSelected,
-  children,
-  className,
-}) => {
+const RoundButton = ({ onClick, value, isSelected, children, className }) => {
   return (
     <button
       className={classnames(
@@ -20,8 +12,7 @@ const RoundButton = ({
       value={value}
       onClick={onClick}
     >
-      <Typography.H3>{title}</Typography.H3>
-      {children ? <Typography.Body2>{children}</Typography.Body2> : <></>}
+      {children}
     </button>
   );
 };

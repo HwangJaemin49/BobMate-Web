@@ -41,14 +41,19 @@ const SpecificSituationPage = () => {
         step='2단계'
         prevOnClick={prevOnClick}
         nextOnClick={nextOnClick}
-        className='px-80'
+        className='px-80 3xl:px-[462px]'
       >
-        <Typography.H2>지금 당신의 상황을 선택해주세요!</Typography.H2>
-        <div className='flex flex-col w-full mt-4 mb-4'>
+        <Typography.H2 className='mb-20'>
+          지금 당신의 기분을 선택해주세요!
+        </Typography.H2>
+        <div className='flex flex-col items-start w-full'>
           {situations.map((item, index) => {
             return (
               <SituationButton
-                className={classNames({ 'self-end': index % 2 !== 0 })}
+                className={classNames(
+                  { 'self-end': index % 2 !== 0 },
+                  { 'mb-2': index !== 4 }
+                )}
                 key={item}
                 isSelected={select === index}
                 value={index}

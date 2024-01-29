@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { TYPES as StepTYPES, endStep } from '../../states/StepState';
 import { LogoIcon } from '../../components/Icons/LogoIcon';
+import Banner from '../../components/FindPage/Banner';
+import AdvertiseBox from '../../containers/AdvertiseBox';
 
 const LoadingScreen = ({ completeLoading }) => {
   const navigate = useNavigate();
@@ -51,6 +53,24 @@ const LoadingScreen = ({ completeLoading }) => {
     dispatch,
   ]);
 
+  // const [defaultWait, setDefaultWait] = useState(false);
+  const getResult = useCallback(() => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        // setDefaultWait(true);
+        resolve();
+      }, 3000);
+
+      // call api in here
+
+      // if (defaultWait) {
+      //   resolve();
+      // }
+    });
+
+    /* eslint-disable-next-line */
+  }, [StepState, NormalSituationState, SpecificSituationState, ContentState]);
+
   useEffect(() => {
     const callCheck = async () => {
       try {
@@ -66,15 +86,6 @@ const LoadingScreen = ({ completeLoading }) => {
   }, [dispatch, navigate, check]);
 
   useEffect(() => {
-    const tempApi = (_state) => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          console.log('temp api called!');
-          resolve();
-        }, 3000);
-      });
-    };
-
     /**
      *
      * 이 페이지에서는 항상 api호출.
@@ -85,12 +96,7 @@ const LoadingScreen = ({ completeLoading }) => {
 
     const callApi = async () => {
       try {
-        await tempApi({
-          StepState,
-          NormalSituationState,
-          SpecificSituationState,
-          ContentState,
-        }); // call api
+        await getResult(); // call api
         completeLoading(['temp', 'temp', 'temp']);
       } catch (err) {
         console.log(err.message);
@@ -100,27 +106,22 @@ const LoadingScreen = ({ completeLoading }) => {
     if (isChecked) {
       callApi();
     }
-  }, [
-    isChecked,
-    dispatch,
-    completeLoading,
-    StepState,
-    NormalSituationState,
-    SpecificSituationState,
-    ContentState,
-  ]);
+  }, [isChecked, dispatch, completeLoading, getResult]);
 
   return (
-    <MaxWidthWrapper className='flex flex-col items-center justify-center py-20 sm:py-30 '>
-      <LogoIcon width='85' height='80' className='mb-8' />
-      <Typography.H2>
-        내게 딱 맞는 밥 친구를
-        <br /> 찾고 있어요!
-      </Typography.H2>
-      <Typography.Body2 className='mt-6'>
-        잠시만 기다려주세요! :&#41;
-      </Typography.Body2>
-    </MaxWidthWrapper>
+    <>
+      <Banner>
+        <AdvertiseBox />
+      </Banner>
+      <MaxWidthWrapper className='flex flex-col items-center justify-center pt-[200px] pb-[240px]'>
+        <LogoIcon width='85' height='80' />
+        <Typography.H3 className='my-10'>
+          내게 딱 맞는 밥 친구를
+          <br /> 찾고 있어요!
+        </Typography.H3>
+        <Typography.Body2>잠시만 기다려주세요! :&#41;</Typography.Body2>
+      </MaxWidthWrapper>
+    </>
   );
 };
 

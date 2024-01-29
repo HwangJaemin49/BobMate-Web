@@ -20,6 +20,9 @@ module.exports = {
       white: '#FFFFFF',
     },
     extend: {
+      screens: {
+        '3xl': '1920px',
+      },
       colors: {
         'grayscale-800': '#262626',
         'grayscale-700': '#434343',

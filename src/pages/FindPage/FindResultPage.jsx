@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import MaxWidthWrapper from '../../components/MaxWidthWrapper';
-import Banner from '../../components/FindPage/Banner';
 import LoadingScreen from '../../screen/FindPage/LoadingScreen';
 // import FindResultScreen from '../../screen/FindPage/FindResultScreen';
-import AdvertiseBox from '../../containers/AdvertiseBox';
+// import AdvertiseBox from '../../containers/AdvertiseBox';
+// import Banner from '../../components/FindPage/Banner';
 import FindDone from '../FindDone';
 
 const FindResultPage = () => {
@@ -17,9 +17,9 @@ const FindResultPage = () => {
 
   return (
     <MaxWidthWrapper className='bg-background font-pre'>
-      <Banner className='pt-10 pb-14' title={isLoading || '밥 친구 찾기 완료!'}>
+      {/* <Banner className='' title={isLoading || '밥 친구 찾기 완료!'}>
         {isLoading && <AdvertiseBox />}
-      </Banner>
+      </Banner> */}
       {isLoading ? (
         <LoadingScreen completeLoading={completeLoading} />
       ) : (

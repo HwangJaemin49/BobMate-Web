@@ -13,11 +13,14 @@ const FindPageWrapper = ({
 }) => {
   return (
     <MaxWidthWrapper
-      className={classNames(' flex flex-col items-center', className)}
+      className={classNames(
+        'pb-[240px] pt-[120px] flex flex-col items-center',
+        className
+      )}
     >
-      <StepBox>{step}</StepBox>
+      <StepBox className='mb-[40px]'>{step}</StepBox>
       {children}
-      <div className='flex items-center justify-center my-6'>
+      <div className='flex items-center justify-center my-[120px]'>
         <NextButton className='bg-grayscale-100' onClick={prevOnClick}>
           이전
         </NextButton>

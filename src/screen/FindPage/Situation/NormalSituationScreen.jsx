@@ -7,6 +7,7 @@ import Typography from '../../../components/FindPage/Typography';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
 import { selectMember, selectMood } from '../../../states/NormalSituationState';
 import MemberBox from '../../../components/FindPage/Situation/MemberBox';
+import classNames from 'classnames';
 
 const NormalSituationPage = () => {
   const dispatch = useDispatch();
@@ -53,34 +54,37 @@ const NormalSituationPage = () => {
         step='2단계'
         prevOnClick={prevOnClick}
         nextOnClick={nextOnClick}
-        className='px-60'
       >
-        <Typography.H2>지금 당신의 기분을 선택해주세요!</Typography.H2>
+        <Typography.H2 className='mb-20'>
+          지금 당신의 기분을 선택해주세요!
+        </Typography.H2>
         {[mood.moods.slice(0, 2), mood.moods.slice(2)].map((row, rowIndex) => (
-          <section className='flex justify-around '>
+          <section className='flex'>
             {row.map((item, index) => {
               const realIndex = index + rowIndex * 2;
               return (
                 <RoundButton
                   key={item.key}
-                  title={item.icon}
                   isSelected={realIndex === mood.select}
                   value={realIndex}
-                  className='lg:mx-8 md:mx-6 h-[228px] w-[228px]'
+                  className={classNames('h-[228px] w-[228px] sm:mx-[90px]', {
+                    'mt-10': rowIndex === 1,
+                  })}
                   onClick={onRoundButtonClick}
                 >
-                  {item.content}
+                  <Typography.H3>{item.icon}</Typography.H3>
+                  <Typography.SubH>{item.content}</Typography.SubH>
                 </RoundButton>
               );
             })}
           </section>
         ))}
 
-        <Typography.H1 className='mb-10 my-28'>
+        <Typography.H2 className='mb-20 my-[200px]'>
           식사 구성원을 선택해주세요!
-        </Typography.H1>
+        </Typography.H2>
 
-        <section className='grid grid-cols-1 mb-8 lg:grid-cols-2 md:grid-cols-2 gap-x-4 gap-y-4'>
+        <section className='grid grid-cols-1 mb-8 lg:grid-cols-2 md:grid-cols-2 gap-x-6 gap-y-6'>
           {member.members.map((item, index) => {
             return (
               <MemberBox
