@@ -59,7 +59,7 @@ const NormalSituationScreen = () => {
           지금 당신의 기분을 선택해주세요!
         </Typography.H2>
         {[mood.moods.slice(0, 2), mood.moods.slice(2)].map((row, rowIndex) => (
-          <section className='flex'>
+          <div className='flex' key={rowIndex}>
             {row.map((item, index) => {
               const realIndex = index + rowIndex * 2;
               return (
@@ -77,14 +77,14 @@ const NormalSituationScreen = () => {
                 </RoundButton>
               );
             })}
-          </section>
+          </div>
         ))}
 
         <Typography.H2 className='mb-20 my-[200px]'>
           식사 구성원을 선택해주세요!
         </Typography.H2>
 
-        <section className='grid grid-cols-1 mb-8 lg:grid-cols-2 md:grid-cols-2 gap-x-6 gap-y-6'>
+        <div className='grid grid-cols-1 mb-8 lg:grid-cols-2 md:grid-cols-2 gap-x-6 gap-y-6'>
           {member.members.map((item, index) => {
             return (
               <MemberBox
@@ -98,7 +98,7 @@ const NormalSituationScreen = () => {
               </MemberBox>
             );
           })}
-        </section>
+        </div>
       </FindPageWrapper>
     </>
   );
