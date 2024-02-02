@@ -98,9 +98,22 @@ const LoadingScreen = ({ completeLoading }) => {
      * redux 데이터가 채워져 있지 않은 상황 ex) find-page로 바로 접속
      * 일 때는 오류 처리, 혹은 첫 페이지로 보내기
      */
+
+    const waitingTime = 3000; // 3초
     const callApi = async () => {
       try {
+        const startTime = Date.now();
         const result = await getResult(); // call api
+        const endTime = Date.now();
+
+        // API 호출이 3초 이상 걸렸는지 확인
+        const elapsedTime = endTime - startTime;
+        if (elapsedTime < waitingTime) {
+          // 3초 전에 API 호출이 완료된 경우, 남은 시간만큼 대기
+          await new Promise((resolve) =>
+            setTimeout(resolve, waitingTime - elapsedTime)
+          );
+        }
         console.log(`api 호출 완료!`);
         console.log(result);
         completeLoading(result);

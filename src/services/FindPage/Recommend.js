@@ -12,10 +12,11 @@ export const normalRecommendApi = async ({
   withWhom,
   contentType,
 }) => {
-  // 해당 api가 아닌 듯 하지만, 일단 임의로 연결해두었습니다
+  return ['temp', 'temp', 'temp'];
+
+  /* eslint-disable-next-line */
   const { data } = await api.get(
-    // `contents/recommend/daily?emotion=${emotion}&withWhom=${withWhom}&contentType=${contentType}`
-    'contents/top3?section=0'
+    `contents/recommend/daily?emotion=${emotion}&withWhom=${withWhom}&contentType=${contentType}`
   );
   if (!data.isSuccess) {
     throw new Error(data.message);
