@@ -4,9 +4,9 @@ import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import RoundButton from '../../components/FindPage/RoundButton';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { minusStep } from '../../states/StepState';
+import { minusStep } from '../../store/StepState';
 import Typography from '../../components/FindPage/Typography';
-import { TYPES, setContent } from '../../states/ContentState';
+import { TYPES, setContent } from '../../store/ContentState';
 
 const ContentSelectPage = () => {
   const navigate = useNavigate();

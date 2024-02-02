@@ -2,14 +2,14 @@ import React, { useCallback } from 'react';
 import FindPageWrapper from '../../../components/FindPage/FindPageWrapper';
 import RoundButton from '../../../components/FindPage/RoundButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { minusStep, plusStep } from '../../../states/StepState';
+import { minusStep, plusStep } from '../../../store/StepState';
 import Typography from '../../../components/FindPage/Typography';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
-import { selectMember, selectMood } from '../../../states/NormalSituationState';
+import { selectMember, selectMood } from '../../../store/NormalSituationState';
 import MemberBox from '../../../components/FindPage/Situation/MemberBox';
 import classNames from 'classnames';
 
-const NormalSituationPage = () => {
+const NormalSituationScreen = () => {
   const dispatch = useDispatch();
   const { mood, member } = useSelector((state) => {
     return state.NormalSituationState;
@@ -88,7 +88,7 @@ const NormalSituationPage = () => {
           {member.members.map((item, index) => {
             return (
               <MemberBox
-                key={item.content}
+                key={item.key}
                 isSelected={index === member.select}
                 value={index}
                 onClick={onRoundBoxClick}
@@ -104,4 +104,4 @@ const NormalSituationPage = () => {
   );
 };
 
-export default NormalSituationPage;
+export default NormalSituationScreen;

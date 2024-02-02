@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import FindPageWrapper from '../../../components/FindPage/FindPageWrapper';
 import { useDispatch, useSelector } from 'react-redux';
-import { minusStep, plusStep } from '../../../states/StepState';
+import { minusStep, plusStep } from '../../../store/StepState';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
 import Typography from '../../../components/FindPage/Typography';
 import classNames from 'classnames';
-import { SelectSituation } from '../../../states/SpecificSituationState';
+import { SelectSituation } from '../../../store/SpecificSituationState';
 import SituationButton from '../../../components/FindPage/Situation/SituationButton';
 
 const SpecificSituationPage = () => {

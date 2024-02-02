@@ -4,7 +4,7 @@ import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import RoundButton from '../../components/FindPage/RoundButton';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { TYPES, plusStep, setSecond } from '../../states/StepState';
+import { TYPES, plusStep, setSecond } from '../../store/StepState';
 import Typography from '../../components/FindPage/Typography';
 
 const SituationPage = () => {

@@ -3,16 +3,17 @@ import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import Typography from '../../components/FindPage/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { TYPES as StepTYPES, endStep } from '../../states/StepState';
+import { TYPES as StepTYPES, TYPES, endStep } from '../../store/StepState';
 import { LogoIcon } from '../../components/Icons/LogoIcon';
 import Banner from '../../components/FindPage/Banner';
 import AdvertiseBox from '../../containers/AdvertiseBox';
+import { normalRecommendApi } from '../../services/FindPage/Recommend';
 
 const LoadingScreen = ({ completeLoading }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  /* states */
+  /* get states */
   const StepState = useSelector((state) => state.StepState);
   const NormalSituationState = useSelector(
     (state) => state.NormalSituationState
@@ -37,6 +38,12 @@ const LoadingScreen = ({ completeLoading }) => {
     }
 
     if (StepState.secondStep === StepTYPES.normal) {
+      if (
+        NormalSituationState.mood.select === -1 ||
+        NormalSituationState.member.select === -1
+      ) {
+        throw new Error('second page is not processed!');
+      }
     } else if (StepState.secondStep === StepTYPES.specific) {
     }
 
@@ -53,21 +60,20 @@ const LoadingScreen = ({ completeLoading }) => {
     dispatch,
   ]);
 
-  // const [defaultWait, setDefaultWait] = useState(false);
-  const getResult = useCallback(() => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        // setDefaultWait(true);
-        resolve();
-      }, 3000);
+  const getResult = useCallback(async () => {
+    let results = null;
+    const contentType = ContentState.content;
 
-      // call api in here
+    if (StepState.secondStep === TYPES.normal) {
+      const { mood, member } = NormalSituationState;
+      const emotion = mood.moods[mood.select].key;
+      const withWhom = member.members[member.select].key;
+      results = await normalRecommendApi({ emotion, withWhom, contentType });
+    } else if (StepState.secondStep === TYPES.specific) {
+      results = ['none', 'none'];
+    }
 
-      // if (defaultWait) {
-      //   resolve();
-      // }
-    });
-
+    return results;
     /* eslint-disable-next-line */
   }, [StepState, NormalSituationState, SpecificSituationState, ContentState]);
 
@@ -83,30 +89,32 @@ const LoadingScreen = ({ completeLoading }) => {
     };
 
     callCheck();
-  }, [dispatch, navigate, check]);
+  }, [navigate, check]);
 
   useEffect(() => {
     /**
-     *
      * 이 페이지에서는 항상 api호출.
      * api에 들어가는 데이터는 redux state에 저장되어 있고,
      * redux 데이터가 채워져 있지 않은 상황 ex) find-page로 바로 접속
      * 일 때는 오류 처리, 혹은 첫 페이지로 보내기
      */
-
     const callApi = async () => {
       try {
-        await getResult(); // call api
-        completeLoading(['temp', 'temp', 'temp']);
+        const result = await getResult(); // call api
+        console.log(`api 호출 완료!`);
+        console.log(result);
+        completeLoading(result);
       } catch (err) {
+        // 오류 처리 필요
         console.log(err.message);
+        window.alert(err.message);
       }
     };
 
     if (isChecked) {
       callApi();
     }
-  }, [isChecked, dispatch, completeLoading, getResult]);
+  }, [isChecked, completeLoading, getResult]);
 
   return (
     <>

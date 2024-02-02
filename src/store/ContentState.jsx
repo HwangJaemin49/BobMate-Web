@@ -3,8 +3,8 @@ const SET_CONTENT = 'ContentState/SET_CONTENT';
 
 // Action Creating functions
 export const TYPES = {
-  videoContent: 'videoContent',
-  textContent: 'textContent',
+  videoContent: 'VIDEO',
+  textContent: 'TEXT',
   nil: null,
 };
 

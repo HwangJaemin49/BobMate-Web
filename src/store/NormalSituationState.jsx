@@ -27,20 +27,20 @@ const initialState = {
   mood: {
     select: -1,
     moods: [
-      { icon: '😊‍', content: '기쁨', key: 'joy' },
-      { icon: '😆', content: '즐거움', key: 'pleasure' },
-      { icon: '😢', content: '슬픔', key: 'sadness' },
-      { icon: '😔', content: '우울', key: 'gloomy' },
-      { icon: '😡', content: '분노', key: 'anger' },
+      { icon: '😊‍', content: '기쁨', key: 'GLAD' },
+      { icon: '😆', content: '즐거움', key: 'EXCITED' },
+      { icon: '😢', content: '슬픔', key: 'SAD' },
+      { icon: '😔', content: '우울', key: 'GLOOMY' },
+      { icon: '😡', content: '분노', key: 'ANGRY' },
     ],
   },
   member: {
     select: -1,
     members: [
-      { icon: '🙋‍♀️', content: '혼자' },
-      { icon: '👨‍👩‍👧‍👦', content: '가족' },
-      { icon: '👯', content: '친구' },
-      { icon: '👫', content: '연인' },
+      { icon: '🙋‍♀️', content: '혼자', key: 'ALONE' },
+      { icon: '👨‍👩‍👧‍👦', content: '가족', key: 'FAMILY' },
+      { icon: '👯', content: '친구', key: 'FRIEND' },
+      { icon: '👫', content: '연인', key: 'LOVER' },
     ],
   },
 };
