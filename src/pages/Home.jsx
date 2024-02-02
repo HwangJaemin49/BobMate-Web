@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
 import bannerLogo from "../components/images/banner_bowl_rice.png";
 import Ad from '../components/Ad';
 import Footer from "../components/Footer";
 import Content from "../components/Content";
 import Introduce from "../components/Introduce";
+import FoodRecommend from "../components/FoodRecommend";
 
 
 
@@ -44,35 +45,7 @@ export default function Home() {
         <div className="food-content" style={{fontSize:"40px", textAlign:"center"}}>
           <br />🍚 오늘은 이 메뉴 어때요?<br /><br />
         </div>
-        <div className="foodRecomendation" style={{width: "850px", display:"block", margin:"0px auto", height:"800px"}}>
-          <div className="firstLine" style={{height: "320px", width: "850px"}}>
-            <div className="breakfast" style={{float:"left", fontSize:"25px", paddingRight:"15px"}}>
-                  아침
-                  <div className="foodImage" style={{width:"400px", height:"250px", backgroundColor:"#D9D9D9", borderRadius: "30px", marginTop:"10px", marginBottom:"10px"}}></div>
-                  <div className="foodDescription" style={{fontSize: "20px"}}>텍스트 예시입니다.</div>
-              </div>
-              <div className="lunch" style={{display:"inline-block", fontSize:"25px"}}>
-                점심
-                <div className="foodImage" style={{width:"400px", height:"250px", backgroundColor:"#D9D9D9", borderRadius: "30px", marginTop:"10px", marginBottom:"10px"}}></div>
-                <div className="foodDescription" style={{fontSize: "20px"}}>텍스트 예시입니다.</div>
-              </div>
-
-          </div><br /><br />
-          <div className="secondLine" style={{width:"850px", height: "300px"}}>
-            <div className="dinner" style={{float:"left", fontSize:"25px", paddingRight:"15px"}}>
-                저녁
-                <div className="foodImage" style={{width:"400px", height:"250px", backgroundColor:"#D9D9D9", borderRadius: "30px", marginTop:"10px", marginBottom:"10px"}}></div>
-                <div className="foodDescription" style={{fontSize: "20px"}}>텍스트 예시입니다.</div>
-            </div>
-            <div className="others" style={{display:"inline-block", fontSize:"25px"}}>
-              간식/야식
-              <div className="foodImage" style={{width:"400px", height:"250px", backgroundColor:"#D9D9D9", borderRadius: "30px", marginTop:"10px", marginBottom:"10px"}}></div>
-              <div className="foodDescription" style={{fontSize: "20px"}}>텍스트 예시입니다.</div>
-            </div>
-
-          </div>
-
-        </div>
+        <FoodRecommend />
         <Footer />
         
       </div>

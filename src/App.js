@@ -10,8 +10,12 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import EmailFind from './pages/EmailFind';
 import PasswordFind from './pages/PasswordFind';
+import KakaoLogin from './components/KakaoLogin';
+
 
 function App() {
+
+
   return (
     <div className='root-wrap'>
       <BrowserRouter>
@@ -28,6 +32,7 @@ function App() {
               <Route path='/signup' element={<Signup />} />
               <Route path='/emailfind' element={<EmailFind />} />
               <Route path='/pwfind' element={<PasswordFind />} />
+              <Route path='http://ec2-43-202-23-75.ap-northeast-2.compute.amazonaws.com/callback' element={<KakaoLogin />} />
             </Routes>
           </div>
         </div>
