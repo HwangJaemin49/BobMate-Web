@@ -4,7 +4,7 @@ import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import RoundButton from '../../components/FindPage/RoundButton';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { TYPES, plusStep, setSecond } from '../../states/StepState';
+import { TYPES, plusStep, setSecond } from '../../store/StepState';
 import Typography from '../../components/FindPage/Typography';
 
 const SituationPage = () => {
@@ -46,22 +46,24 @@ const SituationPage = () => {
       nextOnClick={nextOnClick}
     >
       <Typography.H2>{'식사 상황을 선택해 주세요!'}</Typography.H2>
-      <MaxWidthWrapper className='flex flex-wrap justify-evenly'>
+      <MaxWidthWrapper className='flex flex-wrap justify-between mt-[80px] px-[300px] 3xl:px-[540px]'>
         <RoundButton
-          className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'
-          title='일반 상황'
+          className='w-[330px] h-[330px] px-[34px]'
           onClick={onNormalSituationClick}
           isSelected={secondStep === TYPES.normal}
         >
-          {'내 상황을 직접 설명할께요'}
+          <Typography.H3>{'일반 상황'}</Typography.H3>
+          <Typography.Body2>{'내 상황을 직접 설명할께요'}</Typography.Body2>
         </RoundButton>
         <RoundButton
-          className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'
-          title='특정 상황'
+          className='w-[330px] h-[330px] px-[34px]'
           onClick={onSpecificSituationClick}
           isSelected={secondStep === TYPES.specific}
         >
-          {"'밥 친구'가 알려주는 상황으로 선택할께요"}
+          <Typography.H3>{'특정 상황'}</Typography.H3>
+          <Typography.Body2>
+            {"'밥 친구'가 알려주는 상황으로 선택할께요"}
+          </Typography.Body2>
         </RoundButton>
       </MaxWidthWrapper>
     </FindPageWrapper>

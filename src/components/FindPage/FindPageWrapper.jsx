@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import NextButton from './NextButton';
 import StepBox from './StepBox';
 import classNames from 'classnames';
+import scrollUp from '../../utils/scrollUp';
 
 const FindPageWrapper = ({
   children,
@@ -11,21 +12,26 @@ const FindPageWrapper = ({
   nextOnClick,
   className,
 }) => {
+  useEffect(() => {
+    scrollUp();
+  }, []);
+
   return (
     <MaxWidthWrapper
-      className={classNames('px-10 mb-5 lg:mb-20 md:mb-10 md:px-20', className)}
+      className={classNames(
+        'pb-[240px] pt-[120px] flex flex-col items-center',
+        className
+      )}
     >
-      <div className='flex flex-col items-center'>
-        <StepBox>{step}</StepBox>
-        {children}
-        <div className='flex items-center justify-center my-6'>
-          <NextButton className='bg-grayscale-100' onClick={prevOnClick}>
-            이전
-          </NextButton>
-          <NextButton className='bg-yellow-600' onClick={nextOnClick}>
-            다음
-          </NextButton>
-        </div>
+      <StepBox className='mb-[40px]'>{step}</StepBox>
+      {children}
+      <div className='flex items-center justify-center my-[120px]'>
+        <NextButton className='bg-grayscale-100' onClick={prevOnClick}>
+          이전
+        </NextButton>
+        <NextButton className='bg-yellow-600' onClick={nextOnClick}>
+          다음
+        </NextButton>
       </div>
     </MaxWidthWrapper>
   );

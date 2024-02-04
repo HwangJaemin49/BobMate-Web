@@ -9,7 +9,7 @@ const Typography = {
       <div
         className={classNames(
           className,
-          'leading-[50px] font-bold text-[50px]',
+          'leading-[50px] font-bold text-[72px]',
           all
         )}
       >
@@ -22,7 +22,7 @@ const Typography = {
       <h1
         className={classNames(
           className,
-          'leading- font-bold text-[38px] ',
+          'leading- font-bold text-[60px] ',
           all
         )}
       >
@@ -35,7 +35,7 @@ const Typography = {
       <h2
         className={classNames(
           className,
-          'leading- font-bold text-[28px] ',
+          'leading- font-bold text-[48px] ',
           all
         )}
       >
@@ -48,7 +48,7 @@ const Typography = {
       <h3
         className={classNames(
           className,
-          'leading- font-bold text-[22px] ',
+          'leading- font-bold text-[36px] ',
           all
         )}
       >
@@ -61,7 +61,7 @@ const Typography = {
       <h4
         className={classNames(
           className,
-          'leading- text-[18px] font-semibold',
+          'leading- text-[24px] font-semibold',
           all
         )}
       >
@@ -74,7 +74,7 @@ const Typography = {
       <div
         className={classNames(
           className,
-          'leading- text-[16px] font-medium ',
+          'leading- text-[21px] font-medium ',
           all
         )}
       >
@@ -87,7 +87,7 @@ const Typography = {
       <div
         className={classNames(
           className,
-          'leading- text-[14px] font-medium ',
+          'leading- text-[18px] font-medium ',
           all
         )}
       >
@@ -100,7 +100,7 @@ const Typography = {
       <div
         className={classNames(
           className,
-          'leading- text-[12px] font-medium ',
+          'leading- text-[16px] font-medium ',
           all
         )}
       >

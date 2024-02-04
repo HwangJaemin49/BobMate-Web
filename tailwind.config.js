@@ -2,6 +2,9 @@
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    fontFamily: {
+      pre: ['Pretendard'],
+    },
     colors: {
       'yellow-900': '#FE7A00',
       'yellow-800': '#FEA700',
@@ -17,6 +20,9 @@ module.exports = {
       white: '#FFFFFF',
     },
     extend: {
+      screens: {
+        '3xl': '1920px',
+      },
       colors: {
         'grayscale-800': '#262626',
         'grayscale-700': '#434343',

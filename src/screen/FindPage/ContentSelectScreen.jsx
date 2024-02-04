@@ -4,9 +4,9 @@ import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import RoundButton from '../../components/FindPage/RoundButton';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { minusStep } from '../../states/StepState';
+import { minusStep } from '../../store/StepState';
 import Typography from '../../components/FindPage/Typography';
-import { TYPES, setContent } from '../../states/ContentState';
+import { TYPES, setContent } from '../../store/ContentState';
 
 const ContentSelectPage = () => {
   const navigate = useNavigate();
@@ -41,22 +41,28 @@ const ContentSelectPage = () => {
       nextOnClick={nextOnClick}
     >
       <Typography.H2>{'어떤 콘텐츠를 볼까요?'}</Typography.H2>
-      <MaxWidthWrapper className='flex flex-wrap justify-evenly'>
+      {/*3xl은 1920px 기준이며, 1920px-min-width로 하는 media query.
+        3xl 기준대로 패딩을 잡으면, 노트북 화면에서는 화면이 이상하게 보여서 별도로 추가.
+        */}
+      <MaxWidthWrapper className='flex flex-wrap justify-between mt-[80px] px-[300px] 3xl:px-[540px]'>
         <RoundButton
-          className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'
-          title='영상 콘텐츠'
+          className='w-[330px] h-[330px]'
           onClick={onVideoContentClick}
           isSelected={content === TYPES.videoContent}
         >
-          {'영화, 드라마, 예능 프로그램, 다큐멘터리 등'}
+          <Typography.H3>{'영상 콘텐츠'}</Typography.H3>
+          <Typography.Body2>
+            {'영화, 드라마, 예능 프로그램, 다큐멘터리 등'}
+          </Typography.Body2>
         </RoundButton>
         <RoundButton
-          className='w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56'
+          className='w-[330px] h-[330px]'
           title='텍스트 콘텐츠'
           onClick={onTextContentClick}
           isSelected={content === TYPES.textContent}
         >
-          {'웹툰, 웹소설 등'}
+          <Typography.H3>{'텍스트 콘텐츠'}</Typography.H3>
+          <Typography.Body2>{'웹툰, 웹소설 등'}</Typography.Body2>
         </RoundButton>
       </MaxWidthWrapper>
     </FindPageWrapper>
