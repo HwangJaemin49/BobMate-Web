@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import NextButton from './NextButton';
 import StepBox from './StepBox';
 import classNames from 'classnames';
+import scrollUp from '../../utils/scrollUp';
 
 const FindPageWrapper = ({
   children,
@@ -11,6 +12,10 @@ const FindPageWrapper = ({
   nextOnClick,
   className,
 }) => {
+  useEffect(() => {
+    scrollUp();
+  }, []);
+
   return (
     <MaxWidthWrapper
       className={classNames(

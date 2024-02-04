@@ -8,6 +8,7 @@ import { LogoIcon } from '../../components/Icons/LogoIcon';
 import Banner from '../../components/FindPage/Banner';
 import AdvertiseBox from '../../containers/AdvertiseBox';
 import { normalRecommendApi } from '../../services/FindPage/Recommend';
+import ResultPageWrapper from '../../components/FindPage/ResultPageWrapper';
 
 const LoadingScreen = ({ completeLoading }) => {
   const navigate = useNavigate();
@@ -130,7 +131,7 @@ const LoadingScreen = ({ completeLoading }) => {
   }, [isChecked, completeLoading, getResult]);
 
   return (
-    <>
+    <ResultPageWrapper>
       <Banner>
         <AdvertiseBox />
       </Banner>
@@ -142,7 +143,7 @@ const LoadingScreen = ({ completeLoading }) => {
         </Typography.H3>
         <Typography.Body2>잠시만 기다려주세요! :&#41;</Typography.Body2>
       </MaxWidthWrapper>
-    </>
+    </ResultPageWrapper>
   );
 };
 
