@@ -6,14 +6,15 @@ const Menu = () => {
 
   const [menu, setMenu] = useState();
   const [likedMenuIds, setLikedMenuIds] = useState([]);
+  const SERVER_URI = process.env.REACT_APP_SERVER_URI;
 
   
   useEffect(() => {
       const fetchData = async () => {
           try {
-              const response = await axios.get('http://43.202.23.75/api/v1/menus');
+              const response = await axios.get(`${SERVER_URI}/menus`);
               setMenu(response.data.result);
-              const likedResponse = await axios.get('http://43.202.23.75/api/v1/likes/menu', {
+              const likedResponse = await axios.get(`${SERVER_URI}/likes/menu`, {
                     headers: {
                         Authorization: `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw`,
                     },
@@ -33,7 +34,7 @@ const Menu = () => {
     try {
         const accessToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw';
 
-        await axios.post(`http://43.202.23.75/api/v1/menus/like?menuId=${menuId}`, {}, {
+        await axios.post(`${SERVER_URI}/menus/like?menuId=${menuId}`, {}, {
             headers: {
                 Authorization: `${accessToken}`,
             },
@@ -51,7 +52,7 @@ const handleUnLike = async (menuId) => {
     try {
         const accessToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw';
 
-        await axios.post(`http://43.202.23.75/api/v1/menus/unlike?menuId=${menuId}`, {}, {
+        await axios.post(`${SERVER_URI}/menus/unlike?menuId=${menuId}`, {}, {
             headers: {
                 Authorization: `${accessToken}`,
             },

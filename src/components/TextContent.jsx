@@ -6,14 +6,15 @@ const Content = () => {
 
     const [content, setContent] = useState();
     const [likedContentIds, setLikedContentIds] = useState([]);
+    const SERVER_URI = process.env.REACT_APP_SERVER_URI;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://43.202.23.75/api/v1/contents/top3?section=1');
+                const response = await axios.get(`${SERVER_URI}/contents/top3?section=1`);
                 setContent(response.data.result);
                 console.log(response.data);
-                const likedResponse = await axios.get('http://43.202.23.75/api/v1/likes/content', {
+                const likedResponse = await axios.get(`${SERVER_URI}/likes/content`, {
                     headers: {
                         Authorization: `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw`,
                     },
@@ -33,7 +34,7 @@ const Content = () => {
         try {
             const accessToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw';
 
-            await axios.post(`http://43.202.23.75/api/v1/contents/like?contentId=${contentId}`, {}, {
+            await axios.post(`${SERVER_URI}/contents/like?contentId=${contentId}`, {}, {
                 headers: {
                     Authorization: `${accessToken}`,
                 },
@@ -51,7 +52,7 @@ const Content = () => {
         try {
             const accessToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw';
 
-            await axios.post(`http://43.202.23.75/api/v1/contents/unlike?contentId=${contentId}`, {}, {
+            await axios.post(`${SERVER_URI}/contents/unlike?contentId=${contentId}`, {}, {
                 headers: {
                     Authorization: `${accessToken}`,
                 },
