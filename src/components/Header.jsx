@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
-import headerLogo from './images/bxs_bowl-rice.png';
+import headerLogo from './images/logo.png';
 import homeLogo from './images/ic_round-home.png';
 import "./Header.css";
 import "./Dropdown";
@@ -23,7 +23,7 @@ export default function Header() {
         {userData.map((item) => (
           <div className='header-wrap'>
 
-            <div className='header-wrap-left' style={ {display: 'flex', alignItems: 'center', fontSize: '30px'}}>
+            <div className='header-wrap-left' style={ {display: 'flex', alignItems: 'center', fontSize: '30px', fontFamily: 'Cafe24surround'}}>
               <img className="bob" alt="bob" src={headerLogo} style={{paddingRight: '10px' }}/>
               밥 친구
             </div>

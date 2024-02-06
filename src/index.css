@@ -28,6 +28,12 @@ code {
   src: url("./components/fonts/Pretendard-Bold.woff") format("truetype");
 }
 
+@font-face {
+  font-family: "Cafe24surround";
+  font-weight: bold;
+  src: url("./components/fonts/Cafe24Ssurround-v2.0.woff") format("truetype");
+}
+
 body {
   font-family: 'Pretendard-SemiBold';
 }
