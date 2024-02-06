@@ -7,11 +7,11 @@ import ProfileEditPage from './components/MyPage/ProfileEditPage';
 import MyPage from './components/MyPage/MyPage';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
-import EmailFind from './pages/EmailFind';
-import PasswordFind from './pages/PasswordFind';
+
 
 function App() {
+
+
   return (
     <div className='root-wrap'>
       <BrowserRouter>
@@ -25,9 +25,6 @@ function App() {
               <Route path='/mypage' element={<MyPage />} />
               <Route path='/profile' element={<ProfileEditPage />} />
               <Route path='/login' element={<Login />} />
-              <Route path='/signup' element={<Signup />} />
-              <Route path='/emailfind' element={<EmailFind />} />
-              <Route path='/pwfind' element={<PasswordFind />} />
             </Routes>
           </div>
         </div>
