@@ -20,7 +20,7 @@ const Circle = ({ isNow, children, className }) => {
 
 const StepCircle = ({ step }) => {
   return (
-    <div className='flex items-center justify-between mt-5'>
+    <div className='flex items-center justify-between '>
       <Circle isNow={step === 1}>1</Circle>
       <div className='w-5 border-t-2 border-black'></div>
       <Circle isNow={step === 2}>2</Circle>

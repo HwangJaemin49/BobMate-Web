@@ -6,11 +6,11 @@ const Banner = ({ title, children, className }) => {
   return (
     <div
       className={classNames(
-        'flex flex-col items-center py-5 bg-yellow-50 md:pb-8 md:pt-12 border-b-[1px] border-grayscale-100',
+        'flex flex-col items-center  bg-yellow-50  border-b-[1px] border-grayscale-100 h-60',
         className
       )}
     >
-      <Typography.H3>{title}</Typography.H3>
+      <Typography.H3 className='mt-[77px] mb-[40px]'>{title}</Typography.H3>
       {children}
     </div>
   );

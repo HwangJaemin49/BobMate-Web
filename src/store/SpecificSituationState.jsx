@@ -26,10 +26,10 @@ export const resetSpecificState = () => ({
 const initialState = {
   select: -1,
   situations: [
-    '비 오는 날 혼술',
-    '너무 짜증 야식',
-    '자취방 친구 치킨',
-    '시험 기간 기념 떡뽁이',
+    '비 오는 날 혼술하는 중',
+    '너무 짜증나서 야식 먹는 중',
+    '자취방에서 친구들과 치킨 먹는 중',
+    '시험 기간 기념 떡볶이 먹는 중',
   ],
 };
 

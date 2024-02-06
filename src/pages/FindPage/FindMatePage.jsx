@@ -7,10 +7,10 @@ import SituationSelectScreen from '../../screen/FindPage/SituationSelectScreen';
 import ContentSelectScreen from '../../screen/FindPage/ContentSelectScreen';
 import NormalSituationScreen from '../../screen/FindPage/Situation/NormalSituationScreen';
 import SpecificSituationScreen from '../../screen/FindPage/Situation/SpecificSituationScreen';
-import { TYPES as StepTYPES, resetStepState } from '../../states/StepState';
-import { resetNormalState } from '../../states/NormalSituationState';
-import { resetSpecificState } from '../../states/SpecificSituationState';
-import { TYPES as ContentTYPES, setContent } from '../../states/ContentState';
+import { TYPES as StepTYPES, resetStepState } from '../../store/StepState';
+import { resetNormalState } from '../../store/NormalSituationState';
+import { resetSpecificState } from '../../store/SpecificSituationState';
+import { TYPES as ContentTYPES, setContent } from '../../store/ContentState';
 
 const FindMatePage = () => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const FindMatePage = () => {
   }, [nowStep, dispatch]);
 
   return (
-    <MaxWidthWrapper className='pb-10 bg-background'>
+    <MaxWidthWrapper className='bg-background font-pre'>
       <Banner title={'밥 친구를 찾으러 가 볼까요?'}>
         <StepCircle step={nowStep} />
       </Banner>
