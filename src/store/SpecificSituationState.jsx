@@ -3,11 +3,13 @@ import { getSpecificSituations } from '../services/FindPage/Recommend';
 
 export const getSituation = createAsyncThunk(
   'SpecificState/GET_SITUATION',
-  async () => {
+  async (_dummy, { rejectWithValue }) => {
     try {
       const results = await getSpecificSituations();
       return results;
-    } catch (err) {}
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
   }
 );
 
@@ -33,7 +35,6 @@ const slice = createSlice({
   reducers: {
     selectSituation: (state, action) => {
       const index = action.payload;
-      console.log(action);
       if (index < 0 || index > 3) {
         return;
       }
@@ -50,14 +51,14 @@ const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getSituation.pending, (state) => {
-      state.situations.status = 'loading';
+      state.situations.status = statusTypes.loading;
     });
     builder.addCase(getSituation.fulfilled, (state, { payload }) => {
-      state.situations.status = 'success';
+      state.situations.status = statusTypes.success;
       state.situations.data = payload;
     });
     builder.addCase(getSituation.rejected, (state, action) => {
-      state.situations.status = 'failed';
+      state.situations.status = statusTypes.failed;
       state.situations.error = action.payload;
     });
   },

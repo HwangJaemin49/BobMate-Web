@@ -38,7 +38,28 @@ export const specificRecommendApi = async ({ contentId, contentType }) => {
 };
 
 export const getSpecificSituations = async () => {
-  return ['temp', 'temp', 'temp', 'temp'];
+  /* eslint-disable-next-line */
+  return [
+    {
+      sentence: 'temp',
+      commentId: 1,
+    },
+
+    {
+      sentence: 'temp2jj',
+      commentId: 2,
+    },
+
+    {
+      sentence: 'tem3jp',
+      commentId: 3,
+    },
+
+    {
+      sentence: 'temp4',
+      commentId: 4,
+    },
+  ];
 
   /* eslint-disable-next-line */
   const { data } = await api.get(`comment/make/situation`);

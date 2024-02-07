@@ -25,6 +25,9 @@ const SpecificSituationPage = () => {
   const situations = useSelector((state) => {
     return state.SpecificSituationState.situations.data;
   });
+  const error = useSelector((state) => {
+    return state.SpecificSituationState.situations.error;
+  });
 
   const isLoading = useMemo(
     () => status === statusTypes.loading || status === statusTypes.none,
@@ -77,7 +80,7 @@ const SpecificSituationPage = () => {
         </Typography.H2>
         <div className='flex flex-col items-start w-full gap-y-2'>
           {status === statusTypes.failed ? (
-            <div>error</div>
+            <Typography.H3 className='self-center'>{error}</Typography.H3>
           ) : (
             situations.map((item, index) => {
               return (
@@ -89,7 +92,11 @@ const SpecificSituationPage = () => {
                   onClick={onClick}
                   disabled={isLoading}
                 >
-                  {item || <Skeleton width='300px' height='30px' />}
+                  {item ? (
+                    item.sentence
+                  ) : (
+                    <Skeleton width='300px' height='30px' />
+                  )}
                 </SituationButton>
               );
             })

@@ -7,8 +7,12 @@ import { TYPES as StepTYPES, TYPES, endStep } from '../../store/StepState';
 import { LogoIcon } from '../../components/Icons/LogoIcon';
 import Banner from '../../components/FindPage/Banner';
 import AdvertiseBox from '../../containers/AdvertiseBox';
-import { normalRecommendApi } from '../../services/FindPage/Recommend';
+import {
+  normalRecommendApi,
+  specificRecommendApi,
+} from '../../services/FindPage/Recommend';
 import ResultPageWrapper from '../../components/FindPage/ResultPageWrapper';
+import { statusTypes } from '../../store/SpecificSituationState';
 
 const LoadingScreen = ({ completeLoading }) => {
   const navigate = useNavigate();
@@ -46,6 +50,12 @@ const LoadingScreen = ({ completeLoading }) => {
         throw new Error('second page is not processed!');
       }
     } else if (StepState.secondStep === StepTYPES.specific) {
+      if (
+        SpecificSituationState.select === -1 ||
+        SpecificSituationState.situations.status !== statusTypes.success
+      ) {
+        throw new Error('second page is not processed!');
+      }
     }
 
     if (!ContentState.content) {
@@ -71,7 +81,9 @@ const LoadingScreen = ({ completeLoading }) => {
       const withWhom = member.members[member.select].key;
       results = await normalRecommendApi({ emotion, withWhom, contentType });
     } else if (StepState.secondStep === TYPES.specific) {
-      results = ['none', 'none', 'none'];
+      const { select, situations } = SpecificSituationState;
+      const contentId = situations.data[select].commentId;
+      results = await specificRecommendApi({ contentId, contentType });
     }
 
     return results;
