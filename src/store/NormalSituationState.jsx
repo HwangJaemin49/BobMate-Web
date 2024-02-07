@@ -51,7 +51,7 @@ const initialState = {
       { icon: aloneImage, content: '혼자', key: 'ALONE' },
       { icon: familyImage, content: '가족', key: 'FAMILY' },
       { icon: friendImage, content: '친구', key: 'FRIEND' },
-      { icon: loverImage, content: '연인', key: 'LOVER' },
+      { icon: loverImage, content: '연인', key: 'COUPLE' },
     ],
   },
 };
@@ -89,7 +89,7 @@ export default function Reducer(state = initialState, action) {
             { icon: aloneImage, content: '혼자', key: 'ALONE' },
             { icon: familyImage, content: '가족', key: 'FAMILY' },
             { icon: friendImage, content: '친구', key: 'FRIEND' },
-            { icon: loverImage, content: '연인', key: 'LOVER' },
+            { icon: loverImage, content: '연인', key: 'COUPLE' },
           ],
         },
       };

@@ -23,3 +23,24 @@ export const normalRecommendApi = async ({
   }
   return data.result;
 };
+
+export const specificRecommendApi = async ({ contentId, contentType }) => {
+  return ['temp', 'temp', 'temp'];
+
+  /* eslint-disable-next-line */
+  const { data } = await api.get(
+    `contents/recommend/special/${contentId}?type=${contentType}`
+  );
+  if (!data.isSuccess) {
+    throw new Error(data.message);
+  }
+  return data.result;
+};
+
+export const getSpecificSituations = async () => {
+  const { data } = await api.get(`comment/make/situation`);
+  if (!data.isSuccess) {
+    throw new Error(data.message);
+  }
+  return data.result;
+};

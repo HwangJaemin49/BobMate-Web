@@ -58,27 +58,33 @@ const NormalSituationScreen = () => {
         <Typography.H2 className='mb-20'>
           지금 당신의 기분을 선택해주세요!
         </Typography.H2>
-        {[mood.moods.slice(0, 2), mood.moods.slice(2)].map((row, rowIndex) => (
-          <div className='flex' key={rowIndex}>
-            {row.map((item, index) => {
-              const realIndex = index + rowIndex * 2;
-              return (
-                <RoundButton
-                  key={item.key}
-                  isSelected={realIndex === mood.select}
-                  value={realIndex}
-                  className={classNames('h-[228px] w-[228px] sm:mx-[90px]', {
-                    'mt-10': rowIndex === 1,
-                  })}
-                  onClick={onRoundButtonClick}
-                >
-                  <img src={item.icon} alt={item.content} className='w-9 h-9' />
-                  <Typography.SubH>{item.content}</Typography.SubH>
-                </RoundButton>
-              );
-            })}
-          </div>
-        ))}
+        <div className='flex flex-col items-center gap-y-10'>
+          {[mood.moods.slice(0, 2), mood.moods.slice(2)].map(
+            (row, rowIndex) => (
+              <div className='flex' key={rowIndex}>
+                {row.map((item, index) => {
+                  const realIndex = index + rowIndex * 2;
+                  return (
+                    <RoundButton
+                      key={item.key}
+                      isSelected={realIndex === mood.select}
+                      value={realIndex}
+                      className={classNames('h-[228px] w-[228px] sm:mx-[90px]')}
+                      onClick={onRoundButtonClick}
+                    >
+                      <img
+                        src={item.icon}
+                        alt={item.content}
+                        className='w-9 h-9'
+                      />
+                      <Typography.SubH>{item.content}</Typography.SubH>
+                    </RoundButton>
+                  );
+                })}
+              </div>
+            )
+          )}
+        </div>
 
         <Typography.H2 className='mb-20 my-[200px]'>
           식사 구성원을 선택해주세요!

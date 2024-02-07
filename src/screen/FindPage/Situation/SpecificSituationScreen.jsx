@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import FindPageWrapper from '../../../components/FindPage/FindPageWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { minusStep, plusStep } from '../../../store/StepState';
@@ -13,6 +13,12 @@ const SpecificSituationPage = () => {
   const { select, situations } = useSelector((state) => {
     return state.SpecificSituationState;
   });
+
+  useEffect(() => {
+    /**
+     * 만약, situations의 값이 비어 있는 상태라면 초기화가 되었거나 한 상태이므로 다시 받아온다.
+     */
+  }, []);
 
   const prevOnClick = useCallback(() => {
     dispatch(minusStep());
@@ -46,14 +52,11 @@ const SpecificSituationPage = () => {
         <Typography.H2 className='mb-20'>
           지금 당신의 기분을 선택해주세요!
         </Typography.H2>
-        <div className='flex flex-col items-start w-full'>
+        <div className='flex flex-col items-start w-full gap-y-2'>
           {situations.map((item, index) => {
             return (
               <SituationButton
-                className={classNames(
-                  { 'self-end': index % 2 !== 0 },
-                  { 'mb-2': index !== 4 }
-                )}
+                className={classNames({ 'self-end': index % 2 !== 0 })}
                 key={item}
                 isSelected={select === index}
                 value={index}

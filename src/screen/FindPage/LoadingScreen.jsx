@@ -71,7 +71,7 @@ const LoadingScreen = ({ completeLoading }) => {
       const withWhom = member.members[member.select].key;
       results = await normalRecommendApi({ emotion, withWhom, contentType });
     } else if (StepState.secondStep === TYPES.specific) {
-      results = ['none', 'none'];
+      results = ['none', 'none', 'none'];
     }
 
     return results;
