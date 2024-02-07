@@ -72,7 +72,7 @@ const NormalSituationScreen = () => {
                   })}
                   onClick={onRoundButtonClick}
                 >
-                  <Typography.H3>{item.icon}</Typography.H3>
+                  <img src={item.icon} alt={item.content} className='w-9 h-9' />
                   <Typography.SubH>{item.content}</Typography.SubH>
                 </RoundButton>
               );
