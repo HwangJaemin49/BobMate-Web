@@ -2,12 +2,12 @@ import {React, useState, useEffect } from 'react'
 import axios from 'axios';
 
 
-const Content = () => {
+const Content = ({accessToken}) => {
 
-    const [content, setContent] = useState();
+    const [content, setContent] = useState([]);
     const [likedContentIds, setLikedContentIds] = useState([]);
     const SERVER_URI = process.env.REACT_APP_SERVER_URI;
-
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -16,7 +16,7 @@ const Content = () => {
                 console.log(response.data);
                 const likedResponse = await axios.get(`${SERVER_URI}/likes/content`, {
                     headers: {
-                        Authorization: `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw`,
+                        Authorization: `${accessToken}`,
                     },
                 });
 
@@ -28,11 +28,11 @@ const Content = () => {
         }
         fetchData();
 
-    }, []);
+    }, [accessToken, SERVER_URI]);
 
     const handleLike = async (contentId) => {
         try {
-            const accessToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw';
+            
 
             await axios.post(`${SERVER_URI}/contents/like?contentId=${contentId}`, {}, {
                 headers: {
@@ -50,7 +50,7 @@ const Content = () => {
 
     const handleUnLike = async (contentId) => {
         try {
-            const accessToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw';
+            
 
             await axios.post(`${SERVER_URI}/contents/unlike?contentId=${contentId}`, {}, {
                 headers: {
@@ -69,20 +69,20 @@ const Content = () => {
     const isLiked = (contentId) => likedContentIds.includes(contentId);
 
 
+
+
     return (
         <div className='content-container' style={{margin: "0px auto", height: "350px", textAlign: "center"}} >
             <div className='first-container' style={{height:"300px"}}>
                 {content && content.map((res, index) => (
                     <div className='textTop3' style={{width:"30%", float:"left"}}>
                         <div className='contentTitle' style={{width: "220px", height:'15px', textAlign:'left', display: "flex", alignItems:"center", marginTop: "20px", marginRight: "10px", fontSize: "20px"}}>
-                            <span style={{}}>{index +1}. {res.name}</span>
+                            <span style={{}}>{index+1}. {res.name}</span>
                             <button style={{ color: isLiked(res.contentId) ? 'red' : 'gray', marginLeft: "10px"}} onClick={() => (isLiked(res.contentId) ? handleUnLike(res.contentId) : handleLike(res.contentId))}>♥</button>
-                            
                         </div><br/>
                         <div style={{}}>
                             <a href={res.linkUrl} target='_blank' rel="noopener noreferrer"><img src={res.imgUrl} alt="텍스트 컨텐츠 Top3" style={{height:"280px", width:"200px", borderRadius: "30px"}}></img></a>
                         </div>
-                        
                         
                     </div>
                     
