@@ -9,8 +9,8 @@ import NormalSituationScreen from '../../screen/FindPage/Situation/NormalSituati
 import SpecificSituationScreen from '../../screen/FindPage/Situation/SpecificSituationScreen';
 import { TYPES as StepTYPES, resetStepState } from '../../store/StepState';
 import { resetNormalState } from '../../store/NormalSituationState';
-import { resetSpecificState } from '../../store/SpecificSituationState';
 import { TYPES as ContentTYPES, setContent } from '../../store/ContentState';
+import { specificStateActions } from '../../store/SpecificSituationState';
 
 const FindMatePage = () => {
   const dispatch = useDispatch();
@@ -26,8 +26,8 @@ const FindMatePage = () => {
   useEffect(() => {
     if (nowStep === 4) {
       dispatch(resetStepState());
-      dispatch(resetNormalState);
-      dispatch(resetSpecificState());
+      dispatch(resetNormalState());
+      dispatch(specificStateActions.reset());
       dispatch(setContent(ContentTYPES.nil));
     }
   }, [nowStep, dispatch]);
