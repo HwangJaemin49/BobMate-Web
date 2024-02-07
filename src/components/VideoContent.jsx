@@ -2,9 +2,9 @@ import {React, useState, useEffect } from 'react'
 import axios from 'axios';
 
 
-const Content = () => {
+const Content = ({accessToken}) => {
 
-    const [content, setContent] = useState();
+    const [content, setContent] = useState([]);
     const [likedContentIds, setLikedContentIds] = useState([]);
     const SERVER_URI = process.env.REACT_APP_SERVER_URI;
     
@@ -16,7 +16,7 @@ const Content = () => {
                 console.log(response.data);
                 const likedResponse = await axios.get(`${SERVER_URI}/likes/content`, {
                     headers: {
-                        Authorization: `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw`,
+                        Authorization: `${accessToken}`,
                     },
                 });
 
@@ -28,11 +28,11 @@ const Content = () => {
         }
         fetchData();
 
-    }, []);
+    }, [accessToken, SERVER_URI]);
 
     const handleLike = async (contentId) => {
         try {
-            const accessToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw';
+            
 
             await axios.post(`${SERVER_URI}/contents/like?contentId=${contentId}`, {}, {
                 headers: {
@@ -50,7 +50,7 @@ const Content = () => {
 
     const handleUnLike = async (contentId) => {
         try {
-            const accessToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw';
+            
 
             await axios.post(`${SERVER_URI}/contents/unlike?contentId=${contentId}`, {}, {
                 headers: {
