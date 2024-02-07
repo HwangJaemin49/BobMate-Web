@@ -37,6 +37,36 @@ export const specificRecommendApi = async ({ contentId, contentType }) => {
   return data.result;
 };
 
+/**
+ "result": [
+        {
+            "food": "피자",
+            "emotion": "EXCITED",
+            "genre": "ROMANCE",
+            "commentId": 3
+        },
+        {
+            "food": "샤브샤브",
+            "emotion": "GLOOMY",
+            "genre": "DRAMA",
+            "commentId": 37
+        },
+        {
+            "food": "치킨",
+            "emotion": "GLOOMY",
+            "genre": "ACTION",
+            "commentId": 4
+        },
+        {
+            "food": "떡볶이",
+            "emotion": "ANGRY",
+            "genre": "ANIMATION",
+            "commentId": 27
+        }
+    ]
+  }
+ */
+
 export const getSpecificSituations = async () => {
   return [
     {
@@ -60,10 +90,37 @@ export const getSpecificSituations = async () => {
     },
   ];
 
-  /* eslint-disable-next-line */
+  // eslint-disable-next-line
   const { data } = await api.get(`comment/make/situation`);
   if (!data.isSuccess) {
     throw new Error(data.message);
   }
-  return data.result;
+
+  const result = data.result.map((item) => {
+    let emotion;
+    switch (emotion) {
+      case 'EXCITED':
+        emotion = '즐거워서';
+        break;
+      case 'GLAD':
+        emotion = '기뻐서';
+        break;
+      case 'GLOOMY':
+        emotion = '우울해서';
+        break;
+      case 'ANGRY':
+        emotion = '화나서';
+        break;
+      case 'SAD':
+        emotion = '슬퍼서';
+        break;
+      default:
+        break;
+    }
+    return {
+      sentence: `${emotion} ${item.food}를 먹는 중`,
+      commentId: item.commentId,
+    };
+  });
+  return result;
 };
