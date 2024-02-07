@@ -38,7 +38,6 @@ export const specificRecommendApi = async ({ contentId, contentType }) => {
 };
 
 export const getSpecificSituations = async () => {
-  /* eslint-disable-next-line */
   return [
     {
       sentence: 'temp',

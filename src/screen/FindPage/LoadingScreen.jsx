@@ -61,8 +61,6 @@ const LoadingScreen = ({ completeLoading }) => {
     if (!ContentState.content) {
       throw new Error('third page is not processed!');
     }
-
-    /* eslint-disable-next-line */
   }, [
     StepState,
     NormalSituationState,
@@ -87,7 +85,6 @@ const LoadingScreen = ({ completeLoading }) => {
     }
 
     return results;
-    /* eslint-disable-next-line */
   }, [StepState, NormalSituationState, SpecificSituationState, ContentState]);
 
   useEffect(() => {
