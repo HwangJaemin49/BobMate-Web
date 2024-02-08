@@ -68,30 +68,30 @@ export const specificRecommendApi = async ({ contentId, contentType }) => {
  */
 
 export const getSpecificSituations = async () => {
-  return [
-    {
-      sentence: 'temp',
-      commentId: 1,
-    },
+  // return [
+  //   {
+  //     sentence: 'temp',
+  //     commentId: 1,
+  //   },
 
-    {
-      sentence: 'temp2jj',
-      commentId: 2,
-    },
+  //   {
+  //     sentence: 'temp2jj',
+  //     commentId: 2,
+  //   },
 
-    {
-      sentence: 'tem3jp',
-      commentId: 3,
-    },
+  //   {
+  //     sentence: 'tem3jp',
+  //     commentId: 3,
+  //   },
 
-    {
-      sentence: 'temp4',
-      commentId: 4,
-    },
-  ];
+  //   {
+  //     sentence: 'temp4',
+  //     commentId: 4,
+  //   },
+  // ];
 
   // eslint-disable-next-line
-  const { data } = await api.get(`comment/make/situation`);
+  const { data } = await api.post(`comment/make/situation`);
   if (!data.isSuccess) {
     throw new Error(data.message);
   }

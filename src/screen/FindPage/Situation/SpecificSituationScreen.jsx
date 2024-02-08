@@ -80,7 +80,7 @@ const SpecificSituationPage = () => {
         </Typography.H2>
         <div className='flex flex-col items-start w-full gap-y-2'>
           {status === statusTypes.failed ? (
-            <Typography.H3 className='self-center'>{error}</Typography.H3>
+            <Typography.Body2 className='self-center'>{error}</Typography.Body2>
           ) : (
             situations.map((item, index) => {
               return (
