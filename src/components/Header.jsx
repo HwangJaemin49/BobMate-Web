@@ -6,21 +6,16 @@ import "./Header.css";
 import "./Dropdown";
 import Dropdown from './Dropdown';
 
-export default function Header() {
-  const userData = [
-    {id: 1, title: "user1"},
-  ];
-
+export default function Header({accessToken}) {
   
 
   const [is_login, setIsLogin] = useState(true);
   const [view, setView] = useState(false);
 
 
-  if(is_login) {
+  if(accessToken) {
     return (
       <div className='header-container' style = {{height: '88px'}} >
-        {userData.map((item) => (
           <div className='header-wrap'>
 
             <div className='header-wrap-left' style={ {display: 'flex', alignItems: 'center', fontSize: '30px', fontFamily: 'Cafe24surround'}}>
@@ -36,7 +31,7 @@ export default function Header() {
               <div className='container'>
                 <input id="dropdown" type='checkbox' />
                 <label className='dropdownLabel' for='dropdown'>
-                  <div>{item.title} 님 ▾</div>
+                  <div>ooo 님 ▾</div>
                 </label>
                 <div className='content'>
                   <Dropdown />
@@ -53,7 +48,6 @@ export default function Header() {
             </ul>
           </div>
 
-        ))}
         </div>
     );
   };

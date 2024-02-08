@@ -12,7 +12,7 @@ import TextContent from "../components/TextContent";
 
 
 
-export default function Home() {
+export default function Home({accessToken}) {
     return (
       <div className="all">
         <div  className="mainBanner" style = {{textAlign: "center", height: "600px"}}>
@@ -36,18 +36,18 @@ export default function Home() {
           </div>
           <div className="videoBest" style={{fontSize:"25px", marginLeft:"100px"}}>
             <div className="videoTitle" style={{fontFamily:"Pretendard-Bold", fontSize: "35px"}}>영상 Best 3</div>
-            <VideoContent /><br /><br />
+            <VideoContent accessToken = {accessToken} /><br /><br />
           </div>
           <div className="textBest" style={{fontSize:"25px", marginLeft:"100px"}}>
           <div className="textTitle" style={{fontFamily:"Pretendard-Bold", fontSize: "35px"}}>텍스트 Best 3</div>
-            <TextContent />
+            <TextContent accessToken = {accessToken} />
           </div>
         </div>
         <br /><Ad /><br />
         <div className="food-content" style={{fontSize:"40px", textAlign:"center"}}>
           <br />🍚 오늘은 이 메뉴 어때요?<br /><br />
         </div>
-        <FoodRecommend />
+        <FoodRecommend accessToken={accessToken}/>
         <Footer />
         
       </div>

@@ -2,7 +2,7 @@ import React, {useState, useEffect } from 'react'
 import axios from "axios";
 
 
-const Menu = () => {
+const Menu = ({accessToken}) => {
 
   const [menu, setMenu] = useState();
   const [likedMenuIds, setLikedMenuIds] = useState([]);
@@ -16,12 +16,13 @@ const Menu = () => {
               setMenu(response.data.result);
               const likedResponse = await axios.get(`${SERVER_URI}/likes/menu`, {
                     headers: {
-                        Authorization: `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw`,
+                        Authorization: `${accessToken}`,
                     },
                 });
 
                 const likedIds = likedResponse.data.result.map(item => item.menuId);
                 setLikedMenuIds(likedIds);
+                console.log(likedIds);
             } catch(e) {
               console.log(e);
             }
@@ -32,8 +33,7 @@ const Menu = () => {
 
   const handleLike = async (menuId) => {
     try {
-        const accessToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw';
-
+        
         await axios.post(`${SERVER_URI}/menus/like?menuId=${menuId}`, {}, {
             headers: {
                 Authorization: `${accessToken}`,
@@ -50,8 +50,7 @@ const Menu = () => {
 
 const handleUnLike = async (menuId) => {
     try {
-        const accessToken = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiZXhwIjoxNzA3MjEwNTI5fQ.SB921FzV18Rkdpc_8QYPNyGpbE9IB2qxzPyn9nahqfFzaLiarmYq1zaxUTGUJfB79rfP4DhTr-WAfHk08AIhYw';
-
+        
         await axios.post(`${SERVER_URI}/menus/unlike?menuId=${menuId}`, {}, {
             headers: {
                 Authorization: `${accessToken}`,
