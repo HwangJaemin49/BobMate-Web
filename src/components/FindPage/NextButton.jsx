@@ -7,7 +7,8 @@ const NextButton = ({ children, className, onClick }) => {
     <button
       className={classNames(
         'mx-3 py-4 px-6 rounded-[10px] w-[102px] h-[57px]',
-        'hover:scale-105  transition-transform ease-in-out duration-100',
+        'hover:scale-105  transition-transform ease-in-out duration-100 ',
+        'flex items-center justify-center',
         className
       )}
       onClick={onClick}

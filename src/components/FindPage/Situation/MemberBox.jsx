@@ -20,7 +20,7 @@ const MemberBox = ({
           className
         )}
       >
-        <Typography.H3>{title}</Typography.H3>
+        <img src={title} alt={children} className='mr-4 w-9 h-9' />
         <Typography.SubH>{children}</Typography.SubH>
       </div>
     </button>

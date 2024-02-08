@@ -1,3 +1,14 @@
+import gladImage from '../assets/images/FindPage/glad-image.jpg';
+import excitedImage from '../assets/images/FindPage/excited-image.jpg';
+import sadImage from '../assets/images/FindPage/sad-image.jpg';
+import gloomyImage from '../assets/images/FindPage/gloomy-image.jpg';
+import angryImage from '../assets/images/FindPage/angry-image.jpg';
+
+import aloneImage from '../assets/images/FindPage/alone-image.jpg';
+import familyImage from '../assets/images/FindPage/family-image.jpg';
+import friendImage from '../assets/images/FindPage/friend-image.jpg';
+import loverImage from '../assets/images/FindPage/lover-image.jpg';
+
 // Action Types
 const SELECT_MOOD = 'NormalState/SELECT_MOOD';
 const SELECT_MEMBER = 'NormalState/SELECT_MEMBER';
@@ -27,20 +38,20 @@ const initialState = {
   mood: {
     select: -1,
     moods: [
-      { icon: '😊‍', content: '기쁨', key: 'GLAD' },
-      { icon: '😆', content: '즐거움', key: 'EXCITED' },
-      { icon: '😢', content: '슬픔', key: 'SAD' },
-      { icon: '😔', content: '우울', key: 'GLOOMY' },
-      { icon: '😡', content: '분노', key: 'ANGRY' },
+      { icon: gladImage, content: '기쁨', key: 'GLAD' },
+      { icon: excitedImage, content: '즐거움', key: 'EXCITED' },
+      { icon: sadImage, content: '슬픔', key: 'SAD' },
+      { icon: gloomyImage, content: '우울', key: 'GLOOMY' },
+      { icon: angryImage, content: '분노', key: 'ANGRY' },
     ],
   },
   member: {
     select: -1,
     members: [
-      { icon: '🙋‍♀️', content: '혼자', key: 'ALONE' },
-      { icon: '👨‍👩‍👧‍👦', content: '가족', key: 'FAMILY' },
-      { icon: '👯', content: '친구', key: 'FRIEND' },
-      { icon: '👫', content: '연인', key: 'LOVER' },
+      { icon: aloneImage, content: '혼자', key: 'ALONE' },
+      { icon: familyImage, content: '가족', key: 'FAMILY' },
+      { icon: friendImage, content: '친구', key: 'FRIEND' },
+      { icon: loverImage, content: '연인', key: 'COUPLE' },
     ],
   },
 };
@@ -65,20 +76,20 @@ export default function Reducer(state = initialState, action) {
         mood: {
           select: -1,
           moods: [
-            { icon: '😊‍', content: '기쁨', key: 'joy' },
-            { icon: '😆', content: '즐거움', key: 'pleasure' },
-            { icon: '😢', content: '슬픔', key: 'sadness' },
-            { icon: '😔', content: '우울', key: 'gloomy' },
-            { icon: '😡', content: '분노', key: 'anger' },
+            { icon: gladImage, content: '기쁨', key: 'GLAD' },
+            { icon: excitedImage, content: '즐거움', key: 'EXCITED' },
+            { icon: sadImage, content: '슬픔', key: 'SAD' },
+            { icon: gloomyImage, content: '우울', key: 'GLOOMY' },
+            { icon: angryImage, content: '분노', key: 'ANGRY' },
           ],
         },
         member: {
           select: -1,
           members: [
-            { icon: '🙋‍♀️', content: '혼자' },
-            { icon: '👨‍👩‍👧‍👦', content: '가족' },
-            { icon: '👯', content: '친구' },
-            { icon: '👫', content: '연인' },
+            { icon: aloneImage, content: '혼자', key: 'ALONE' },
+            { icon: familyImage, content: '가족', key: 'FAMILY' },
+            { icon: friendImage, content: '친구', key: 'FRIEND' },
+            { icon: loverImage, content: '연인', key: 'COUPLE' },
           ],
         },
       };
