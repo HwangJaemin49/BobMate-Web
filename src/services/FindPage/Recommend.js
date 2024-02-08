@@ -92,7 +92,7 @@ export const getSpecificSituations = async () => {
 
   const result = data.result.map((item) => {
     let emotion;
-    switch (emotion) {
+    switch (item.emotion) {
       case 'EXCITED':
         emotion = '즐거워서';
         break;
