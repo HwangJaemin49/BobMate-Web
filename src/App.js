@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import FindMatePage from './pages/FindPage/FindMatePage';
@@ -7,27 +7,34 @@ import ProfileEditPage from './components/MyPage/ProfileEditPage';
 import MyPage from './components/MyPage/MyPage';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
-import EmailFind from './pages/EmailFind';
-import PasswordFind from './pages/PasswordFind';
+import KakaoLogin from './components/KakaoLogin';
+
 
 function App() {
+  const [accessToken, setAccessToken] = useState();
+  useEffect(() => {
+    // 페이지가 로드될 때 로컬 스토리지에서 accessToken 가져오기
+    const storedAccessToken = localStorage.getItem('accessToken');
+    if (storedAccessToken) {
+      setAccessToken(storedAccessToken);
+    }
+  }, []);
+
+
   return (
     <div className='root-wrap'>
       <BrowserRouter>
         <div id='wrapper'>
-          <Header />
+          <Header accessToken={accessToken} />
           <div id='main-content'>
             <Routes>
-              <Route path='/' element={<Home />} />
+              <Route path='/' element={<Home accessToken={accessToken} />} />
               <Route path='/find' element={<FindMatePage />} />
               <Route path='/find-result' element={<FindResultPage />} />
               <Route path='/mypage' element={<MyPage />} />
               <Route path='/profile' element={<ProfileEditPage />} />
               <Route path='/login' element={<Login />} />
-              <Route path='/signup' element={<Signup />} />
-              <Route path='/emailfind' element={<EmailFind />} />
-              <Route path='/pwfind' element={<PasswordFind />} />
+              <Route path='/kakaoLogin' element={<KakaoLogin setAccessToken = {setAccessToken} />} />
             </Routes>
           </div>
         </div>

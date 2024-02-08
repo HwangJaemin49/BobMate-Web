@@ -1,19 +1,50 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import FindPageWrapper from '../../../components/FindPage/FindPageWrapper';
 import { useDispatch, useSelector } from 'react-redux';
-import { minusStep, plusStep } from '../../../states/StepState';
+import { minusStep, plusStep } from '../../../store/StepState';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
-import MaxWidthWrapper from '../../../components/MaxWidthWrapper';
-import RoundSituation from '../../../components/FindPage/Situation/RoundSituation';
 import Typography from '../../../components/FindPage/Typography';
 import classNames from 'classnames';
-import { SelectSituation } from '../../../states/SpecificSituationState';
+import {
+  getSituation,
+  specificStateActions,
+  statusTypes,
+} from '../../../store/SpecificSituationState';
+import SituationButton from '../../../components/FindPage/Situation/SituationButton';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const SpecificSituationPage = () => {
   const dispatch = useDispatch();
-  const { select, situations } = useSelector((state) => {
-    return state.SpecificSituationState;
+  const select = useSelector((state) => {
+    return state.SpecificSituationState.select;
   });
+  const status = useSelector((state) => {
+    return state.SpecificSituationState.situations.status;
+  });
+  const situations = useSelector((state) => {
+    return state.SpecificSituationState.situations.data;
+  });
+  const error = useSelector((state) => {
+    return state.SpecificSituationState.situations.error;
+  });
+
+  const isLoading = useMemo(
+    () => status === statusTypes.loading || status === statusTypes.none,
+    [status]
+  );
+
+  useEffect(() => {
+    /**
+     * 만약, situations의 값이 비어 있는 상태라면 초기화가 되었거나 한 상태이므로 다시 받아온다.
+     */
+    if (
+      situations.every((value) => value === null) &&
+      status === statusTypes.none
+    ) {
+      dispatch(getSituation());
+    }
+  }, [dispatch, situations, status]);
 
   const prevOnClick = useCallback(() => {
     dispatch(minusStep());
@@ -28,7 +59,7 @@ const SpecificSituationPage = () => {
   const onClick = useCallback(
     (e) => {
       const value = parseInt(e.currentTarget.value);
-      dispatch(SelectSituation(value));
+      dispatch(specificStateActions.selectSituation(value));
     },
     [dispatch]
   );
@@ -42,24 +73,35 @@ const SpecificSituationPage = () => {
         step='2단계'
         prevOnClick={prevOnClick}
         nextOnClick={nextOnClick}
-        className='flex flex-col items-center'
+        className='px-80 3xl:px-[462px]'
       >
-        <Typography.H2>지금 당신의 상황을 선택해주세요!</Typography.H2>
-        <MaxWidthWrapper className='flex flex-col mt-4 mb-4'>
-          {situations.map((item, index) => {
-            return (
-              <RoundSituation
-                className={classNames({ 'self-end': index % 2 !== 0 })}
-                key={item}
-                isSelected={select === index}
-                value={index}
-                onClick={onClick}
-              >
-                {item}
-              </RoundSituation>
-            );
-          })}
-        </MaxWidthWrapper>
+        <Typography.H2 className='mb-20'>
+          지금 당신의 기분을 선택해주세요!
+        </Typography.H2>
+        <div className='flex flex-col items-start w-full gap-y-2'>
+          {status === statusTypes.failed ? (
+            <Typography.Body2 className='self-center'>{error}</Typography.Body2>
+          ) : (
+            situations.map((item, index) => {
+              return (
+                <SituationButton
+                  className={classNames({ 'self-end': index % 2 !== 0 })}
+                  key={index}
+                  isSelected={select === index}
+                  value={index}
+                  onClick={onClick}
+                  disabled={isLoading}
+                >
+                  {item ? (
+                    item.sentence
+                  ) : (
+                    <Skeleton width='300px' height='30px' />
+                  )}
+                </SituationButton>
+              );
+            })
+          )}
+        </div>
       </FindPageWrapper>
     </>
   );

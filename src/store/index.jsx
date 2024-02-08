@@ -10,15 +10,13 @@ import { configureStore } from '@reduxjs/toolkit';
 const rootReducer = combineReducers({
   StepState,
   NormalSituationState,
-  SpecificSituationState,
+  SpecificSituationState: SpecificSituationState.reducer,
   ContentState,
   ResultState,
 });
 
 export const store = configureStore({
   reducer: rootReducer,
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(ReduxThunk),
   devTools: process.env.NODE_ENV !== 'production',
 });
 

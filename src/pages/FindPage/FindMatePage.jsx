@@ -7,10 +7,10 @@ import SituationSelectScreen from '../../screen/FindPage/SituationSelectScreen';
 import ContentSelectScreen from '../../screen/FindPage/ContentSelectScreen';
 import NormalSituationScreen from '../../screen/FindPage/Situation/NormalSituationScreen';
 import SpecificSituationScreen from '../../screen/FindPage/Situation/SpecificSituationScreen';
-import { TYPES as StepTYPES, resetStepState } from '../../states/StepState';
-import { resetNormalState } from '../../states/NormalSituationState';
-import { resetSpecificState } from '../../states/SpecificSituationState';
-import { TYPES as ContentTYPES, setContent } from '../../states/ContentState';
+import { TYPES as StepTYPES, resetStepState } from '../../store/StepState';
+import { resetNormalState } from '../../store/NormalSituationState';
+import { TYPES as ContentTYPES, setContent } from '../../store/ContentState';
+import { specificStateActions } from '../../store/SpecificSituationState';
 
 const FindMatePage = () => {
   const dispatch = useDispatch();
@@ -26,14 +26,14 @@ const FindMatePage = () => {
   useEffect(() => {
     if (nowStep === 4) {
       dispatch(resetStepState());
-      dispatch(resetNormalState);
-      dispatch(resetSpecificState());
+      dispatch(resetNormalState());
+      dispatch(specificStateActions.reset());
       dispatch(setContent(ContentTYPES.nil));
     }
   }, [nowStep, dispatch]);
 
   return (
-    <MaxWidthWrapper className='pb-10 bg-background'>
+    <MaxWidthWrapper className='bg-background font-pre'>
       <Banner title={'밥 친구를 찾으러 가 볼까요?'}>
         <StepCircle step={nowStep} />
       </Banner>

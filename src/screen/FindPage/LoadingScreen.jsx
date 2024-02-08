@@ -3,14 +3,22 @@ import MaxWidthWrapper from '../../components/MaxWidthWrapper';
 import Typography from '../../components/FindPage/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { TYPES as StepTYPES, endStep } from '../../states/StepState';
+import { TYPES as StepTYPES, TYPES, endStep } from '../../store/StepState';
 import { LogoIcon } from '../../components/Icons/LogoIcon';
+import Banner from '../../components/FindPage/Banner';
+import AdvertiseBox from '../../containers/AdvertiseBox';
+import {
+  normalRecommendApi,
+  specificRecommendApi,
+} from '../../services/FindPage/Recommend';
+import ResultPageWrapper from '../../components/FindPage/ResultPageWrapper';
+import { statusTypes } from '../../store/SpecificSituationState';
 
 const LoadingScreen = ({ completeLoading }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  /* states */
+  /* get states */
   const StepState = useSelector((state) => state.StepState);
   const NormalSituationState = useSelector(
     (state) => state.NormalSituationState
@@ -35,7 +43,19 @@ const LoadingScreen = ({ completeLoading }) => {
     }
 
     if (StepState.secondStep === StepTYPES.normal) {
+      if (
+        NormalSituationState.mood.select === -1 ||
+        NormalSituationState.member.select === -1
+      ) {
+        throw new Error('second page is not processed!');
+      }
     } else if (StepState.secondStep === StepTYPES.specific) {
+      if (
+        SpecificSituationState.select === -1 ||
+        SpecificSituationState.situations.status !== statusTypes.success
+      ) {
+        throw new Error('second page is not processed!');
+      }
     }
 
     if (!ContentState.content) {
@@ -49,6 +69,24 @@ const LoadingScreen = ({ completeLoading }) => {
     dispatch,
   ]);
 
+  const getResult = useCallback(async () => {
+    let results = null;
+    const contentType = ContentState.content;
+
+    if (StepState.secondStep === TYPES.normal) {
+      const { mood, member } = NormalSituationState;
+      const emotion = mood.moods[mood.select].key;
+      const withWhom = member.members[member.select].key;
+      results = await normalRecommendApi({ emotion, withWhom, contentType });
+    } else if (StepState.secondStep === TYPES.specific) {
+      const { select, situations } = SpecificSituationState;
+      const contentId = situations.data[select].commentId;
+      results = await specificRecommendApi({ contentId, contentType });
+    }
+
+    return results;
+  }, [StepState, NormalSituationState, SpecificSituationState, ContentState]);
+
   useEffect(() => {
     const callCheck = async () => {
       try {
@@ -61,51 +99,60 @@ const LoadingScreen = ({ completeLoading }) => {
     };
 
     callCheck();
-  }, [dispatch, navigate, check]);
+  }, [navigate, check]);
 
   useEffect(() => {
-    const tempApi = () => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          console.log('temp api called!');
-          resolve();
-        }, 3000);
-      });
-    };
-
     /**
-     *
      * 이 페이지에서는 항상 api호출.
      * api에 들어가는 데이터는 redux state에 저장되어 있고,
      * redux 데이터가 채워져 있지 않은 상황 ex) find-page로 바로 접속
      * 일 때는 오류 처리, 혹은 첫 페이지로 보내기
      */
 
+    const waitingTime = 3000; // 3초
     const callApi = async () => {
       try {
-        await tempApi(); // call api
-        completeLoading(['temp', 'temp', 'temp']);
+        const startTime = Date.now();
+        const result = await getResult(); // call api
+        const endTime = Date.now();
+
+        // API 호출이 3초 이상 걸렸는지 확인
+        const elapsedTime = endTime - startTime;
+        if (elapsedTime < waitingTime) {
+          // 3초 전에 API 호출이 완료된 경우, 남은 시간만큼 대기
+          await new Promise((resolve) =>
+            setTimeout(resolve, waitingTime - elapsedTime)
+          );
+        }
+        console.log(`api 호출 완료!`);
+        console.log(result);
+        completeLoading(result);
       } catch (err) {
+        // 오류 처리 필요
         console.log(err.message);
+        window.alert(err.message);
       }
     };
 
     if (isChecked) {
       callApi();
     }
-  }, [isChecked, dispatch, completeLoading]);
+  }, [isChecked, completeLoading, getResult]);
 
   return (
-    <MaxWidthWrapper className='flex flex-col items-center justify-center py-20 sm:py-30 '>
-      <LogoIcon width='85' height='80' className='mb-8' />
-      <Typography.H2>
-        내게 딱 맞는 밥 친구를
-        <br /> 찾고 있어요!
-      </Typography.H2>
-      <Typography.Body2 className='mt-6'>
-        잠시만 기다려주세요! :&#41;
-      </Typography.Body2>
-    </MaxWidthWrapper>
+    <ResultPageWrapper>
+      <Banner>
+        <AdvertiseBox />
+      </Banner>
+      <MaxWidthWrapper className='flex flex-col items-center justify-center pt-[200px] pb-[240px]'>
+        <LogoIcon width='85' height='80' />
+        <Typography.H3 className='my-10'>
+          내게 딱 맞는 밥 친구를
+          <br /> 찾고 있어요!
+        </Typography.H3>
+        <Typography.Body2>잠시만 기다려주세요! :&#41;</Typography.Body2>
+      </MaxWidthWrapper>
+    </ResultPageWrapper>
   );
 };
 

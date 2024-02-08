@@ -1,26 +1,15 @@
 import React, { useCallback } from 'react';
 import FindPageWrapper from '../../../components/FindPage/FindPageWrapper';
 import RoundButton from '../../../components/FindPage/RoundButton';
-import RoundBox from '../../../components/FindPage/Situation/RoundBox';
 import { useDispatch, useSelector } from 'react-redux';
-import { minusStep, plusStep } from '../../../states/StepState';
+import { minusStep, plusStep } from '../../../store/StepState';
 import Typography from '../../../components/FindPage/Typography';
 import SituationTitle from '../../../components/FindPage/Situation/SituationTitle';
-import {
-  MoodTypes,
-  selectMember,
-  setMood,
-} from '../../../states/NormalSituationState';
+import { selectMember, selectMood } from '../../../store/NormalSituationState';
+import MemberBox from '../../../components/FindPage/Situation/MemberBox';
+import classNames from 'classnames';
 
-const moodPerks = [
-  { content: '기쁨', title: '😊', value: MoodTypes.joy },
-  { content: '즐거움', title: '😆', value: MoodTypes.pleasure },
-  { content: '슬픔', title: '😢', value: MoodTypes.sadness },
-  { content: '우울', title: '😔', value: MoodTypes.depression },
-  { content: '분노', title: '😡', value: MoodTypes.anger },
-];
-
-const NormalSituationPage = () => {
+const NormalSituationScreen = () => {
   const dispatch = useDispatch();
   const { mood, member } = useSelector((state) => {
     return state.NormalSituationState;
@@ -28,8 +17,8 @@ const NormalSituationPage = () => {
 
   const onRoundButtonClick = useCallback(
     (e) => {
-      const value = e.currentTarget.value;
-      dispatch(setMood(value));
+      const value = parseInt(e.currentTarget.value);
+      dispatch(selectMood(value));
     },
     [dispatch]
   );
@@ -47,14 +36,14 @@ const NormalSituationPage = () => {
   }, [dispatch]);
 
   const nextOnClick = useCallback(() => {
+    if (mood.select < 0 || mood.select > 4) {
+      return;
+    }
     if (member.select < 0 || member.select > 3) {
       return;
     }
-    if (Object.values(mood).every((item) => item === false)) {
-      return;
-    }
     dispatch(plusStep());
-  }, [dispatch, member.select, mood]);
+  }, [dispatch, member.select, mood.select]);
 
   return (
     <>
@@ -65,48 +54,60 @@ const NormalSituationPage = () => {
         step='2단계'
         prevOnClick={prevOnClick}
         nextOnClick={nextOnClick}
-        className='lg:px-60'
       >
-        <Typography.H2>지금 당신의 기분을 선택해주세요!</Typography.H2>
-        <section className='flex flex-wrap justify-center '>
-          {moodPerks.map((item) => {
-            return (
-              <RoundButton
-                key={item.content}
-                title={item.title}
-                isSelected={mood[item.value]}
-                value={item.value}
-                className='lg:mx-8 md:mx-6 h-36 w-36 lg:w-48 lg:h-48'
-                onClick={onRoundButtonClick}
-              >
-                {item.content}
-              </RoundButton>
-            );
-          })}
-        </section>
+        <Typography.H2 className='mb-20'>
+          지금 당신의 기분을 선택해주세요!
+        </Typography.H2>
+        <div className='flex flex-col items-center gap-y-10'>
+          {[mood.moods.slice(0, 2), mood.moods.slice(2)].map(
+            (row, rowIndex) => (
+              <div className='flex' key={rowIndex}>
+                {row.map((item, index) => {
+                  const realIndex = index + rowIndex * 2;
+                  return (
+                    <RoundButton
+                      key={item.key}
+                      isSelected={realIndex === mood.select}
+                      value={realIndex}
+                      className={classNames('h-[228px] w-[228px] sm:mx-[90px]')}
+                      onClick={onRoundButtonClick}
+                    >
+                      <img
+                        src={item.icon}
+                        alt={item.content}
+                        className='w-9 h-9'
+                      />
+                      <Typography.SubH>{item.content}</Typography.SubH>
+                    </RoundButton>
+                  );
+                })}
+              </div>
+            )
+          )}
+        </div>
 
-        <Typography.H1 className='mb-10 my-28'>
+        <Typography.H2 className='mb-20 my-[200px]'>
           식사 구성원을 선택해주세요!
-        </Typography.H1>
+        </Typography.H2>
 
-        <section className='grid grid-cols-1 mb-8 lg:grid-cols-2 md:grid-cols-2 gap-x-4 gap-y-4'>
+        <div className='grid grid-cols-1 mb-8 lg:grid-cols-2 md:grid-cols-2 gap-x-6 gap-y-6'>
           {member.members.map((item, index) => {
             return (
-              <RoundBox
-                key={item}
+              <MemberBox
+                key={item.key}
                 isSelected={index === member.select}
-                className='w-40 lg:w-60 lg:h-30'
                 value={index}
                 onClick={onRoundBoxClick}
+                title={item.icon}
               >
-                {item}
-              </RoundBox>
+                {item.content}
+              </MemberBox>
             );
           })}
-        </section>
+        </div>
       </FindPageWrapper>
     </>
   );
 };
 
-export default NormalSituationPage;
+export default NormalSituationScreen;
