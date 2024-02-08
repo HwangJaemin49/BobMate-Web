@@ -12,9 +12,6 @@ export const normalRecommendApi = async ({
   withWhom,
   contentType,
 }) => {
-  return ['temp', 'temp', 'temp'];
-
-  /* eslint-disable-next-line */
   const { data } = await api.get(
     `contents/recommend/daily?emotion=${emotion}&withWhom=${withWhom}&contentType=${contentType}`
   );
@@ -25,9 +22,6 @@ export const normalRecommendApi = async ({
 };
 
 export const specificRecommendApi = async ({ contentId, contentType }) => {
-  return ['temp', 'temp', 'temp'];
-
-  /* eslint-disable-next-line */
   const { data } = await api.get(
     `contents/recommend/special/${contentId}?type=${contentType}`
   );
