@@ -124,7 +124,6 @@ const LoadingScreen = ({ completeLoading }) => {
             setTimeout(resolve, waitingTime - elapsedTime)
           );
         }
-        console.log(`api 호출 완료!`);
         console.log(result);
         completeLoading(result);
       } catch (err) {
