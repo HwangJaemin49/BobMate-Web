@@ -48,7 +48,7 @@ const NormalSituationScreen = () => {
   return (
     <>
       <SituationTitle title='일반 상황'>
-        당신의 감정, 식사 구성원을 고려한 상황을 직접 설명해주세요.
+        당신의 감정, 식사 구성원을 고려한 상황을 직접 설정해 주세요.
       </SituationTitle>
       <FindPageWrapper
         step='2단계'
@@ -56,7 +56,7 @@ const NormalSituationScreen = () => {
         nextOnClick={nextOnClick}
       >
         <Typography.H2 className='mb-20'>
-          지금 당신의 기분을 선택해주세요!
+          지금 당신의 기분을 선택해 주세요!
         </Typography.H2>
         <div className='flex flex-col items-center gap-y-10'>
           {[mood.moods.slice(0, 2), mood.moods.slice(2)].map(
@@ -87,7 +87,7 @@ const NormalSituationScreen = () => {
         </div>
 
         <Typography.H2 className='mb-20 my-[200px]'>
-          식사 구성원을 선택해주세요!
+          식사 구성원을 선택해 주세요!
         </Typography.H2>
 
         <div className='grid grid-cols-1 mb-8 lg:grid-cols-2 md:grid-cols-2 gap-x-6 gap-y-6'>

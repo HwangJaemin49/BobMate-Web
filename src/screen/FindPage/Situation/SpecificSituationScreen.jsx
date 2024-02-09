@@ -67,7 +67,7 @@ const SpecificSituationPage = () => {
   return (
     <>
       <SituationTitle title='특정 상황'>
-        '밥 친구'가 제공하는 구체적인 예시 상황 4가지 중 하나를 선택해주세요.
+        '밥 친구'가 제공하는 구체적인 예시 상황들 중 하나를 선택해 주세요.
       </SituationTitle>
       <FindPageWrapper
         step='2단계'
@@ -76,9 +76,9 @@ const SpecificSituationPage = () => {
         className='px-80 3xl:px-[462px]'
       >
         <Typography.H2 className='mb-20'>
-          지금 당신의 기분을 선택해주세요!
+          지금 당신의 상황을 선택해 주세요!
         </Typography.H2>
-        <div className='flex flex-col items-start w-full gap-y-2'>
+        <div className='flex flex-col items-start w-full gap-y-2 mb-[120px]'>
           {status === statusTypes.failed ? (
             <Typography.Body2 className='self-center'>{error}</Typography.Body2>
           ) : (
@@ -102,6 +102,9 @@ const SpecificSituationPage = () => {
             })
           )}
         </div>
+        <Typography.Body2>
+          '나의 한 줄 코멘트'를 바탕으로 더 다양한 특정 상황이 제공됩니다.
+        </Typography.Body2>
       </FindPageWrapper>
     </>
   );
