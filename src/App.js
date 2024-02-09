@@ -31,8 +31,8 @@ function App() {
               <Route path='/' element={<Home accessToken={accessToken} />} />
               <Route path='/find' element={<FindMatePage />} />
               <Route path='/find-result' element={<FindResultPage />} />
-              <Route path='/mypage' element={<MyPage />} />
-              <Route path='/profile' element={<ProfileEditPage />} />
+              <Route path='/mypage' element={<MyPage accessToken={accessToken}/>} />
+              <Route path='/profile' element={<ProfileEditPage accessToken={accessToken}/>} />
               <Route path='/login' element={<Login />} />
               <Route path='/kakaoLogin' element={<KakaoLogin setAccessToken = {setAccessToken} />} />
             </Routes>

@@ -20,11 +20,7 @@ export default function MyPageComment() {
             [e.target.name]: e.target.value
         })
     }
-    const userInputs = {
-        food: "피자",  // 예시로 고정된 값, 실제로는 사용자 입력에 따라 동적으로 설정
-        emotion: "ANGRY",  // 예시로 고정된 값, 실제로는 사용자 입력에 따라 동적으로 설정
-        genre: "ANIMATION"  // 예시로 고정된 값, 실제로는 사용자 입력에 따라 동적으로 설정
-    };
+
     const commentSave = () => {
         console.log('코멘트 저장 버튼 클릭');
         console.log(comments);
@@ -36,7 +32,7 @@ export default function MyPageComment() {
         }
 
         // axios를 사용하여 서버에 데이터 전송
-        axios.post(`http://43.202.23.75/api/v1/members/comment`, comments,
+        axios.post(`/api/v1/members/comment`, comments,
             {
                 headers: {
                     'Content-Type': 'application/json', // 필요에 따라 Content-Type을 설정
@@ -47,10 +43,16 @@ export default function MyPageComment() {
             .then(response => {
                 // 성공적으로 응답 받았을 때 수행할 작업
                 console.log(response.data);
+
             })
             .catch(error => {
-                // 오류 발생 시 수행할 작업
-                console.error(error);
+                // 여기서 에러 메시지 출력
+                console.error('에러 발생:', error);
+
+                // 에러 응답이 있다면 에러 응답의 데이터를 출력
+                if (error.response) {
+                    console.error('에러 응답 데이터:', error.response.data);
+                }
             });
 
     };

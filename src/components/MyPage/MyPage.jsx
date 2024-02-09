@@ -4,10 +4,10 @@ import { MyPageTab } from './MyPageTab';
 
 
 
-export default function MyPage() {
+export default function MyPage({accessToken}) {
     return (
         <div className='mypage-container' style={{}}>
-            <NameDiv />
+            <NameDiv accessToken={accessToken}/>
             <MyPageTab />
         </div>
     );
