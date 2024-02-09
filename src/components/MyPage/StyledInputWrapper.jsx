@@ -20,7 +20,8 @@ const StyledInput = styled.input`
         `}
         `;
 export default function StyledInputWrapper(props) {
-    console.log("isCentered prop:", props.isCentered);
+    // console.log("isCentered prop:", props.isCentered);
     return <StyledInput placeholder={props.placeholder}
-    style={props.style} />;
+    style={props.style} name={props.name}
+    onChange={props.onChange}/>;
 }

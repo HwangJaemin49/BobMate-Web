@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import headerLogo from '../images/bxs_bowl-rice.png';
 import SaveButton from './SaveButton';
+import axios from "axios";
 
-export default function MyPageFavorite() {
+export default function MyPageFavorite({accessToken}) {
   const [userInputs, setUserInputs] = useState(['', '', '']);
 
   const handleInputChange = (index, value) => {
@@ -11,6 +12,27 @@ export default function MyPageFavorite() {
     setUserInputs(newInputs);
   };
 
+  const handleSaveButtonClick = () => {
+    console.log('콘텐츠 선호도 저장 버튼 클릭');
+    console.log(userInputs);
+    // API에 보낼 데이터 준비
+    const postData = {
+      Authorization: `${accessToken}`,
+      userInputs: userInputs
+    };
+
+    
+    // API 요청 보내기
+    axios.post('/api/v1/~~', postData)
+      .then(response => {
+        // 성공적으로 응답 받았을 때 수행할 작업
+        console.log(response.data);
+      })
+      .catch(error => {
+        // 오류 발생 시 수행할 작업
+        console.error(error);
+      });
+  };
   return (
     <div className='mypage-favorite-wrap' style={{ margin: '20px', display: 'flex', flexDirection: 'column' }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom:'20px', marginLeft:'300px' }}>
@@ -31,7 +53,7 @@ export default function MyPageFavorite() {
         ))}
       </ol>
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-        <SaveButton>저장</SaveButton>
+        <SaveButton onClick={handleSaveButtonClick}>저장</SaveButton>
       </div>
     </div>
   );

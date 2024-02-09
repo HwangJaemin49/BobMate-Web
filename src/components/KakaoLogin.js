@@ -21,7 +21,7 @@ function KakaoLogin({setAccessToken}) {
             setAccessTokenFetching(true);
 
             const response = await axios.post(
-                `${SERVER_URI}/auth/kakao`,
+                `http://43.202.23.75/api/v1/auth/kakao`,
                 {
                     "authorizationCode": `${KAKAO_CODE}`,
                 },

@@ -2,6 +2,7 @@ import React from "react";
 import ProfileIcon from '../images/person-icon.png';
 import styled from 'styled-components';
 
+
 const ProfileImg = styled.img`
     width: 150px;
     height: 150px;
