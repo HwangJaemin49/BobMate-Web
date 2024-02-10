@@ -149,7 +149,7 @@ const LoadingScreen = ({ completeLoading }) => {
           내게 딱 맞는 밥 친구를
           <br /> 찾고 있어요!
         </Typography.H3>
-        <Typography.Body2>잠시만 기다려주세요! :&#41;</Typography.Body2>
+        <Typography.Body2>잠시만 기다려 주세요! :&#41;</Typography.Body2>
       </MaxWidthWrapper>
     </ResultPageWrapper>
   );
