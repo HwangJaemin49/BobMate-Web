@@ -17,13 +17,6 @@ export default function MyPageFavorite() {
     console.log('콘텐츠 선호도 저장 버튼 클릭');
     console.log(preferenceList);
 
-    // // API에 보낼 데이터 준비
-    // const postData = {
-
-    //   userInputs: userInputs
-    // };
-
-
     // API 요청 보내기
     axios.post('/api/v1/members/preference', {preferenceList},
       {
