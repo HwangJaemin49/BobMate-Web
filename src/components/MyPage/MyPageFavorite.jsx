@@ -28,6 +28,7 @@ export default function MyPageFavorite() {
       .then(response => {
         // 성공적으로 응답 받았을 때 수행할 작업
         console.log(response.data);
+        alert(preferenceList);
       })
       .catch(error => {
         // 오류 발생 시 수행할 작업

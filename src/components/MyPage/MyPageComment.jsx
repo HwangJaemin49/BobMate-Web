@@ -43,7 +43,7 @@ export default function MyPageComment() {
             .then(response => {
                 // 성공적으로 응답 받았을 때 수행할 작업
                 console.log(response.data);
-
+                alert("저장완료 "+comments.emotion+":" +comments.food+":"+comments.genre);
             })
             .catch(error => {
                 // 여기서 에러 메시지 출력
