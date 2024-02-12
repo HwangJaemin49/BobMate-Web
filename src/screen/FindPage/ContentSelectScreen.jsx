@@ -52,7 +52,9 @@ const ContentSelectPage = () => {
         >
           <Typography.H3>{'영상 콘텐츠'}</Typography.H3>
           <Typography.Body2>
-            {'영화, 드라마, 예능 프로그램, 다큐멘터리 등'}
+            영화, 드라마, 예능 프로그램,
+            <br />
+            다큐멘터리 등
           </Typography.Body2>
         </RoundButton>
         <RoundButton
