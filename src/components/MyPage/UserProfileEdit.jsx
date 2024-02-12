@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import StyledInput from './StyledInputWrapper';
 import SaveButton from './SaveButton';
@@ -13,14 +13,15 @@ const UserProfileEdit = () => {
   const [request, setRequest] = useState({
     name: ""
   }); //닉네임 변경
- 
+  const [dpNameCheck, setDpNameCheck] = useState(false); //닉네임 중복체크 여부
+
   const [modalOpen, setModalOpen] = useState(false);
   const modalBackground = useRef();
   const [nextModalOpen, setNextModalOpen] = useState(false);
   const [endModalOpen, setEndModalOpen] = useState(false);
   const accessToken = localStorage.getItem('accessToken');
 
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
   const nextModalConfirm = () => {
     // 모달 닫기 및 다음 모달로 이동
     setModalOpen(false);
@@ -84,31 +85,35 @@ const UserProfileEdit = () => {
     }));
   };
 
-  //프로필 사진 변경, 닉네임 변경 버튼 클릭
+  //프로필 사진 변경, 닉네임 변경 저장버튼 클릭
   const handleSaveChanges = (e) => {
     e.preventDefault();
-    const form = new FormData();
-    form.append("profileImage", image);
-
-    form.append(
-      "request",
-      new Blob([JSON.stringify(request)], {
-        type: "application/json",
-      })
-    );
-    axios.post('/api/v1/members/edit', form,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': accessToken
-        }
-      }).then(res => {
-        alert("성공");
-      }).catch(err => {
-        console.error('Error while saving changes', err);
-        alert("문제 있음", err.message); // 에러 메시지 출력
-        console.log(err.message);
-      });
+    try {
+      if (!dpNameCheck) throw new Error('닉네임 중복 여부를 확인해주세요.');
+      const form = new FormData();
+      form.append("profileImage", image);
+      form.append(
+        "request",
+        new Blob([JSON.stringify(request)], {
+          type: "application/json",
+        })
+      );
+      axios.post('/api/v1/members/edit', form,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': accessToken
+          }
+        }).then(res => {
+          alert("성공");
+        }).catch(err => {
+          console.error('Error while saving changes', err);
+          alert("문제 있음", err.message); // 에러 메시지 출력
+          console.log(err.message);
+        });
+    } catch (error) {
+      alert(error.message);
+    }
 
   }
 
@@ -138,44 +143,87 @@ const UserProfileEdit = () => {
       });
   }, [accessToken], [request]);
 
+  //닉네임 중복확인
+  const checkDuplicateNickname = (e) => {
+    const temp = request.name;
+    const encodedTemp = encodeURIComponent(temp);
+
+    axios.get(`api/v1/members/duplicate?name=${encodedTemp}`)
+      .then(res => {
+        // 여기에서 response를 처리하면 됩니다.
+        console.log(res.data.result);
+        if (res.data.result) {
+          alert('닉네임 중복 다시 입력해주세요');
+          setDpNameCheck(false);
+        } else {
+          alert(`${temp}은 사용할 수 있는 닉네임입니다`);
+          setDpNameCheck(true);
+        }
+      }).catch(error => {
+        // 에러 처리
+        console.error('API 요청 중 에러 발생:', error);
+      })
+  };
+
+
   return (
     <div style={{ flexDirection: 'column', display: 'flex', width: '70%', height: '70%', paddingTop: '100px', paddingBottom: '100px' }}>
-      <h2 style={{ textAlign: 'center', fontSize: '20px' }}>프로필 편집</h2>
-      <div style={{ marginLeft: '200px', display: 'flex', flexDirection: 'column', paddingTop: '40px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-          <label style={{ marginLeft: '10px', marginRight: '10px' }}>프로필 사진</label>
-          <div style={{
-            width: '100px', height: '100px', borderRadius: '70%',
-            overflow: 'hidden', backgroundImage: prevImage ? `url(${prevImage})` : (image ? `url(${image})` : 'none'), backgroundSize: 'cover',
-            backgroundColor: 'white', border: '1px #e9e9e9 solid', marginLeft: '100px'
-          }} />
-          <input
-            type='file'
-            style={{ marginLeft: '10px' }}
-            // accept='image/jpg,impge/png,image/jpeg'
-            name='profile_img'
-            onChange={handleProfilePictureChange}
-            ref={fileInput}
-            accept="image/*" />
-          {image && (
-            <div style={{ marginLeft: '10px' }}>
-              <div class="profile-img" />
-              <button onClick={handleProfilePictureDelete}>Delete Picture</button>
+      <h2 style={{ textAlign: 'center', fontSize: '30px' }}>프로필 편집</h2>
+      <div style={{ marginLeft: '300px', display: 'flex', flexDirection: 'column', paddingTop: '40px' }}>
+        <div style={{ display: 'flex', marginBottom: '10px', flexDirection: 'column' }}>
+          <label style={{ marginLeft: '10px', marginRight: '10px' }}>프로필 사진 변경</label>
+          <div style={{ display: 'flex', flexDirection: 'row', marginTop: '30px' }}>
+            <div style={{
+              width: '100px', height: '100px', borderRadius: '70%',
+              overflow: 'hidden', backgroundImage: prevImage ? `url(${prevImage})` : (image ? `url(${image})` : 'none'), backgroundSize: 'cover',
+              backgroundColor: 'white', border: '1px #e9e9e9 solid', marginRight: '30px'
+            }} />
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <input
+                type='file'
+                style={{ display: 'none' }} // 원래 파일 입력 요소를 감춥니다.
+                name='profile_img'
+                onChange={handleProfilePictureChange}
+                ref={fileInput}
+                accept="image/*"
+                id="fileInput"
+              />
+              <label
+                style={{
+                  marginLeft: '10px',
+                  border: '2px solid black',
+                  padding: '3px',
+                  borderRadius: '10%',
+                  width: '120px',
+                  textAlign: 'center',
+                  cursor: 'pointer' // 포인터 커서를 통해 사용자에게 클릭 가능함을 알립니다.
+                }}
+                htmlFor="fileInput" // 레이블과 파일 입력 요소를 연결합니다.
+              >
+                사진 불러오기
+              </label>
             </div>
-          )}
+            {image && (
+              <div style={{ marginLeft: '10px' }}>
+                <div class="profile-img" />
+                <button onClick={handleProfilePictureDelete} style={{ marginTop: '33px',marginLeft: '10px', border: '2px solid black', padding: '3px', borderRadius: '10%', width: '120px' }}>사진 삭제</button>
+              </div>
+            )}
+          </div>
+
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '10px', marginBottom: '10px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '10px', marginBottom: '10px',marginTop: '30px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', marginRight: '10px' }}>
-            <label style={{ marginBottom: '23px' }}>닉네임</label>
+            <label style={{ marginBottom: '23px' }}>닉네임 변경</label>
           </div>
           <div style={{ flexDirection: 'row', marginLeft: '-10px', marginBottom: '10px' }}>
             <StyledInput type="text" value={request.name} onChange={handleNicknameChange} placeholder="새 닉네임을 입력해 주세요" style={{ marginLeft: '10px', width: '400px' }} />
-            <button style={{ marginLeft: '10px', border: '2px solid black', padding: '3px', borderRadius: '10%', width: '100px' }}>중복확인</button>
+            <button onClick={checkDuplicateNickname} style={{ marginLeft: '10px', border: '2px solid black', padding: '3px', borderRadius: '10%', width: '100px' }}>중복확인</button>
           </div>
         </div>
       </div>
       <div className={'btn-wrapper'}>
-        <SaveButton onClick={handleSaveChanges} style={{ marginBottom: '10px' }} >변경사항 저장</SaveButton>
+        <SaveButton onClick={handleSaveChanges} style={{ marginBottom: '10px', marginTop:'30px' }} >변경사항 저장</SaveButton>
         <button className={'modal-open-btn'} onClick={() => setModalOpen(true)} style={{ marginTop: '10px', marginBottom: '10px', textDecoration: 'underline' }}>
           회원 탈퇴
         </button>

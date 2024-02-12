@@ -16,14 +16,13 @@ const TabMenu = styled.ul`
   align-items: center;
   list-style: none;
   margin-bottom: 7rem;
-  margin-top: 100px;
+  margin-top: 80px;
   margin-left: 200px;
   margin-right: 200px;
 
   .submenu {
   // 기본 Tabmenu 에 대한 CSS를 구현
     display: flex;
-    /* justify-content: space-between;
     width: 380px;
     heigth: 30px; */
     width: calc(100% /3);
@@ -31,6 +30,12 @@ const TabMenu = styled.ul`
     font-size: 15px;
     transition: 0.5s;
     border-radius: 10px 10px 0px 0px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .first-submenu {
+    margin-left: 10%; 
   }
 
   .focused {
@@ -76,7 +81,9 @@ export const MyPageTab = () => {
           <li className="submenu">{menuArr[1].name}</li>
           <li className="submenu">{menuArr[2].name}</li> */}
           {menuArr.map((el,index) => (
-              <li className={index === currentTab ? "submenu focused" : "submenu" }
+              <li className={index === currentTab
+                ? "submenu focused" + (index === 0 ? " first-submenu" : "")
+                : "submenu" + (index === 0 ? " first-submenu" : "") }
               onClick={() => selectMenuHandler(index)}>{el.name}</li>
             ))}
         </TabMenu>

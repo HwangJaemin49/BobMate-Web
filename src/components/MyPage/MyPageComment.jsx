@@ -58,13 +58,13 @@ export default function MyPageComment() {
     };
     return (
         <div className='mypage-comment-wrap' style={{ margin: '30px', display: 'flex', flexDirection: 'column' }} >
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', marginLeft: '300px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', marginLeft: '500px' }}>
                 <img src={headerLogo} alt='header logo' style={{ marginRight: '15px', width: '25px' }} />
-                <p style={{ fontSize: '20px' }}>오늘의 한 줄 코멘트를 완성해주세요!</p>
+                <p style={{ fontSize: '20px' }}>오늘의 한 줄 코멘트를 완성해 주세요!</p>
             </div>
             <div className='comment-box' style={{
-                border: '2px solid #000', padding: '10px', borderRadius: '20px', width: '50%', height: '200px', alignItems: 'center', display: 'flex', justifyContent: 'center',
-                flexDirection: 'column', marginLeft: '25%', marginTop: '20px'
+                border: '2px solid #000', padding: '10px', borderRadius: '20px', width: '47%', height: '200px', alignItems: 'center', display: 'flex', justifyContent: 'center',
+                flexDirection: 'column', marginLeft: '26%', marginTop: '20px'
             }}>
                 <div style={{ display: 'flex', flexDirection: 'row', margin: '10px' }}>
                     <p style={{ fontSize: '20px', margin: '5px' }}>나는</p>

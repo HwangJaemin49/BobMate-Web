@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from 'react';
-import headerLogo from '../images/bxs_bowl-rice.png';
+import youtubeIcon from '../images/youtube.png';
+import menuIcon from '../images/menu.png';
 import ContentGrid from './ContentGrid';
 import axios from 'axios';
 
@@ -47,14 +48,14 @@ export default function MyPageWish() {
 
     return (
         <div className='mypage-wish-wrap' style={{ margin: '30px', display: 'flex', alignItems: 'center', flexDirection: 'column' }} >
-            <div style={{ display: 'flex', alignItems: 'left', marginBottom: '20px', marginLeft: '-35%' }}>
-                <img src={headerLogo} alt='header logo' style={{ marginRight: '15px', width: '25px' }} />
-                <p style={{ fontSize: '20px' }}>내가 찜한 콘텐츠</p>
+            <div style={{ display: 'flex', alignItems: 'left', marginBottom: '20px', marginLeft: '-50%' }}>
+                <img src={youtubeIcon} alt='header logo' style={{ marginRight: '15px', width: '25px' }} />
+                <p style={{ fontSize: '25px' }}>내가 찜한 콘텐츠</p>
             </div>
             <ContentGrid inputDataList={contents} keyName="contentId"/>
-            <div style={{ display: 'flex', width: '100%', marginBottom: '20px', marginLeft: '300px', marginTop: '50px' }}>
-                <img src={headerLogo} alt='header logo' style={{ marginRight: '15px', width: '25px' }} />
-                <p style={{ fontSize: '20px' }}>내가 찜한 메뉴</p>
+            <div style={{ display: 'flex', alignItems: 'left', marginBottom: '20px', marginLeft: '-50%', marginTop: '50px' }}>
+                <img src={menuIcon} alt='header logo' style={{ marginRight: '15px', width: '25px' }} />
+                <p style={{ fontSize: '25px' }}>내가 찜한 메뉴</p>
             </div>
             <ContentGrid inputDataList={menus} keyName="menuId"/>
         </div>

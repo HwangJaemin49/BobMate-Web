@@ -36,10 +36,10 @@ export default function MyPageFavorite() {
       });
   };
   return (
-    <div className='mypage-favorite-wrap' style={{ margin: '20px', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', marginLeft: '300px' }}>
+    <div className='mypage-favorite-wrap' style={{ marginTop: '20px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', marginLeft: '500px' }}>
         <img src={headerLogo} alt='header logo' style={{ marginRight: '15px', width: '25px' }} />
-        <p style={{ fontSize: '20px' }}>당신의 콘텐츠 선호도를 기록해 주세요!</p>
+        <p style={{ fontSize: '20px',}}>당신의 콘텐츠 선호도를 기록해 주세요!</p>
       </div>
       <ol style={{ marginTop: '20px', paddingLeft: '20px', alignItems: 'center' }}>
         {preferenceList.map((input, index) => (
@@ -51,7 +51,7 @@ export default function MyPageFavorite() {
               placeholder={`선호하는 콘텐츠 ${index + 1}위를 입력해 주세요`}
               style={{
                 width: '400px', padding: '8px', marginBottom: '30px', float: 'left', border: '1px solid gray',
-                borderRadius: '5px'
+                borderRadius: '5px', height:'50px'
               }} />
           </div>
         ))}
