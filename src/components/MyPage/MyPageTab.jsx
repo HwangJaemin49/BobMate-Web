@@ -62,9 +62,9 @@ export const MyPageTab = () => {
   const [currentTab, clickTab] = useState(0);
 
   const menuArr = [
-    { name: '나의 선호도', content: <MyPageFavorite/> },
-    { name: '나의 한 줄 코멘트', content: <MyPageComment/> },
-    { name: '나의 찜', content: <MyPageWish/> },
+    { name: '나의 선호도', content: <MyPageFavorite /> },
+    { name: '나의 한 줄 코멘트', content: <MyPageComment /> },
+    { name: '나의 찜', content: <MyPageWish /> },
   ];
 
   const selectMenuHandler = (index) => {
@@ -77,18 +77,20 @@ export const MyPageTab = () => {
     <>
       <div>
         <TabMenu>
-         {/* <li className="submenu">{menuArr[0].name}</li>
+          {/* <li className="submenu">{menuArr[0].name}</li>
           <li className="submenu">{menuArr[1].name}</li>
           <li className="submenu">{menuArr[2].name}</li> */}
-          {menuArr.map((el,index) => (
-              <li className={index === currentTab
+          {menuArr.map((el, index) => (
+            <li
+              key={index}
+              className={index === currentTab
                 ? "submenu focused" + (index === 0 ? " first-submenu" : "")
-                : "submenu" + (index === 0 ? " first-submenu" : "") }
+                : "submenu" + (index === 0 ? " first-submenu" : "")}
               onClick={() => selectMenuHandler(index)}>{el.name}</li>
-            ))}
+          ))}
         </TabMenu>
         <Desc>
-          <p>{menuArr[currentTab].content}</p>
+          {menuArr[currentTab].content}
         </Desc>
       </div>
     </>

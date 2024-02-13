@@ -43,7 +43,9 @@ const UserProfileEdit = () => {
         alert('그동안 이용해주셔서 감사합니다.');
         localStorage.clear();
         setEndModalOpen(false);
+        // dispatch({ type: 'LOGOUT' });
         navigate('/');
+        window.location.reload();
       })
       .catch((err) => {
         alert(err.response.data.message);
@@ -205,7 +207,7 @@ const UserProfileEdit = () => {
             </div>
             {image && (
               <div style={{ marginLeft: '10px' }}>
-                <div class="profile-img" />
+                <div className="profile-img" />
                 <button onClick={handleProfilePictureDelete} style={{ marginTop: '33px',marginLeft: '10px', border: '2px solid black', padding: '3px', borderRadius: '10%', width: '120px' }}>사진 삭제</button>
               </div>
             )}

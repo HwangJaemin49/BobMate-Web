@@ -43,9 +43,10 @@ export default function MyPageFavorite() {
       </div>
       <ol style={{ marginTop: '20px', paddingLeft: '20px', alignItems: 'center' }}>
         {preferenceList.map((input, index) => (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <input
               type="text"
+              key={index}
               value={input}
               onChange={(e) => handleInputChange(index, e.target.value)}
               placeholder={`선호하는 콘텐츠 ${index + 1}위를 입력해 주세요`}

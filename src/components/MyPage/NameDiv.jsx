@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -15,34 +15,40 @@ const ProfileImg = styled.img`
     left: 50%;
     transform: translate(-50%, -50%);
 }
-`   
-const NameDiv = ({accessToken}) => {
-    
-    const [content, setContent] = useState({});
-    const SERVER_URI = process.env.REACT_APP_SERVER_URI;
+`
+const NameDiv = () => {
 
+    const [content, setContent] = useState({});
+    const accessToken = localStorage.getItem('accessToken');
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`/api/v1/members/edit`, {
                     headers: {
-                        Authorization: `${accessToken}`
+                        Authorization: accessToken
                     },
                 });
-                setContent(response.data.result);
                 console.log(response.data);
-            } catch(e){
+                setContent(response.data.result);
+
+            } catch (e) {
                 console.log(e);
+                const statusCode = e.response.status; // 400
+                const statusText = e.response.statusText; // Bad Request
+                const message = e.response.data.message; // id should not be empty
+                console.log(`${statusCode} - ${statusText} - ${message}`);
             }
         }
         fetchData();
-    }, [accessToken, SERVER_URI]);
-    
+    },[accessToken]);
+
     return (
-        <div className='mypage-header' style={{ height: '250px', backgroundColor: '#FFFDE5', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', textAlign: 'center', position: 'relative',
-        borderBottom:'1px solid #E9E9E9' }}>
+        <div className='mypage-header' style={{
+            height: '250px', backgroundColor: '#FFFDE5', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', textAlign: 'center', position: 'relative',
+            borderBottom: '1px solid #E9E9E9'
+        }}>
             <p className="mypage-name" style={{ margin: '10px', fontSize: '20px' }}>{content.nickname}님의</p>
-            <p className="mypage-name" style={{ margin: '10px', fontSize: '30px', marginBottom: '50px'}}>밥 친구 기록</p>
+            <p className="mypage-name" style={{ margin: '10px', fontSize: '30px', marginBottom: '50px' }}>밥 친구 기록</p>
             <ProfileImg src={content.profileImage} alt='Profile' />
         </div>
     );

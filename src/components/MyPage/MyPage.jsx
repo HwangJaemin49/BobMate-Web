@@ -7,7 +7,7 @@ import { MyPageTab } from './MyPageTab';
 export default function MyPage({accessToken}) {
     return (
         <div className='mypage-container' style={{}}>
-            <NameDiv accessToken={accessToken}/>
+            <NameDiv/>
             <MyPageTab />
         </div>
     );
