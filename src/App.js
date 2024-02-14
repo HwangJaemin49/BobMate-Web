@@ -13,10 +13,22 @@ import KakaoLogin from './components/KakaoLogin';
 function App() {
   const [accessToken, setAccessToken] = useState();
   useEffect(() => {
-    // 페이지가 로드될 때 로컬 스토리지에서 accessToken 가져오기
     const storedAccessToken = localStorage.getItem('accessToken');
-    if (storedAccessToken) {
-      setAccessToken(storedAccessToken);
+    const storedAccessTokenTimestamp = localStorage.getItem('accessTokenTimestamp');
+
+    if (storedAccessToken && storedAccessTokenTimestamp) {
+      const fiveHoursInMilliseconds = 5 * 60 * 60 * 1000;
+      const storedTime = new Date(storedAccessTokenTimestamp).getTime();
+      const currentTime = new Date().getTime();
+      const elapsedTime = currentTime - storedTime;
+
+      if (elapsedTime < fiveHoursInMilliseconds) {
+        setAccessToken(storedAccessToken);
+      } else {
+        // 5시간이 지난 경우, 로컬 스토리지에서 accessToken 및 타임스탬프 삭제
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('accessTokenTimestamp');
+      }
     }
   }, []);
 

@@ -1,19 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios'
+import Dropdown from './Dropdown';
 import headerLogo from './images/logo.png';
 import homeLogo from './images/ic_round-home.png';
 import "./Header.css";
 import "./Dropdown";
-import Dropdown from './Dropdown';
 
 export default function Header({accessToken}) {
   
 
-  const [is_login, setIsLogin] = useState(true);
-  const [view, setView] = useState(false);
+  const login = {accessToken};
+
+  const [profileImage, setProfileImage] = useState('');
+  const [nickname, setNickname] = useState('');
+
+  useEffect(() => {
+    const fetchProfileInfo = async () => {
+      try {
+        const response = await axios.get('/api/v1/members/edit', {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `${accessToken}`,
+              
+          },
+      });
+      const {profileImage, nickname} = response.data.result;
+      setProfileImage(profileImage);
+      setNickname(nickname);
+      console.log(response)
+      } catch (error) {
+        console.error('Error fetching profile info: ', error);
+      }
+    };
+    fetchProfileInfo();
+  }, []);
+  
 
 
-  if(accessToken) {
+  if(login) {
     return (
       <div className='header-container' style = {{height: '88px'}} >
           <div className='header-wrap'>
@@ -28,23 +53,16 @@ export default function Header({accessToken}) {
                   <img className="home" alt="home" src={homeLogo} style={{display: 'flex', alignItems: 'center', paddingRight: '15px'}}/>
                 </Link>
               </li>
+              <img src={profileImage} style={{width: "50px", height: "50px", borderRadius: "50%"}}></img>
               <div className='container'>
                 <input id="dropdown" type='checkbox' />
                 <label className='dropdownLabel' for='dropdown'>
-                  <div>ooo 님 ▾</div>
+                  <div>{nickname} 님 ▾</div>
                 </label>
                 <div className='content'>
                   <Dropdown />
                 </div>
               </div>
-              <li>
-              |
-              </li>
-              <li>
-                <Link className='header-nav-item' to='/' style={{ color: 'black', textDecoration: "none" }} >
-                로그아웃
-                </Link>
-              </li>
             </ul>
           </div>
 
