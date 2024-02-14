@@ -8,28 +8,58 @@ import button from '../components/images/button_home.png';
 import axios from 'axios';
 
 export default function FindDone({ results }) {
+  const accessToken = localStorage.getItem('accessToken');
 
-  const handleThumbUpClick = async (contentId) => {
-    try {
-      const response = await axios.post(`evaluation/create`, {
-        contentId: contentId,
-        good: true
-    });
-      console.log(response.data); // 요청에 대한 응답 처리
-    } catch (error) {
-      console.error('Error sending thumb up evaluation: ', error);
-    }
-  };
+  const [evaluations, setEvaluations] = useState({});
 
-  const handleThumbDownClick = async (contentId) => {
+  const handleThumbClick = async (contentId, isGood) => {
     try {
-      const response = await axios.post(`/evaluation/create`, {
-        contentId: contentId,
-        good: false
-    });
-      console.log(response.data); // 요청에 대한 응답 처리
+      // 해당 컨텐츠에 대한 평가 상태 가져오기
+      const existingEvaluation = evaluations[contentId];
+
+      if (existingEvaluation !== undefined) {
+        // 이미 평가가 있는 경우
+        if ((isGood && existingEvaluation === true) || (!isGood && existingEvaluation === false)) {
+          // 이미 같은 평가를 한 경우, 삭제 요청 보내기
+          await axios.delete(`api/v1/evaluation/delete/${contentId}`, {
+            headers: {
+              Authorization: accessToken,
+            }
+          });
+          console.log('삭제됨')
+          // 해당 컨텐츠의 평가 상태 업데이트 (평가 삭제)
+          setEvaluations(prevState => ({ ...prevState, [contentId]: undefined }));
+        } else {
+          // 다른 평가를 한 경우, 업데이트 요청 보내기
+          await axios.patch(`api/v1/evaluation/update/${contentId}`, {
+            contentId: contentId,
+            good: isGood
+          }, {
+            headers: {
+              Authorization: accessToken,
+            }
+          });
+          console.log('패치됨');
+          // 해당 컨텐츠의 평가 상태 업데이트 (평가 변경)
+          setEvaluations(prevState => ({ ...prevState, [contentId]: isGood }));
+        }
+      } else {
+        // 평가가 없는 경우, 새로운 평가 생성 요청 보내기
+        await axios.post(`api/v1/evaluation/create`, {
+          contentId: contentId,
+          good: isGood
+        }, {
+          headers: {
+            Authorization: accessToken,
+          }
+        });
+        console.log('생성됨');
+        // 해당 컨텐츠의 평가 상태 업데이트 (새로운 평가 생성)
+        setEvaluations(prevState => ({ ...prevState, [contentId]: isGood }));
+      }
+
     } catch (error) {
-      console.error('Error sending thumb down evaluation: ', error);
+      console.error('Error updating or deleting evaluation: ', error);
     }
   };
 
@@ -119,12 +149,12 @@ export default function FindDone({ results }) {
               <img
                 src={thumbdown}
                 style={{ float: "right", marginRight: "20px", cursor: "pointer" }}
-                onClick={() => handleThumbDownClick(content.contentId)}
+                onClick={() => handleThumbClick(content.contentId, false)}
               />
               <img
                 src={thumbup}
                 style={{ float: "right", marginRight: "10px", cursor: "pointer" }}
-                onClick={() => handleThumbUpClick(content.contentId)}
+                onClick={() => handleThumbClick(content.contentId, true)}
               />
             </p><br/>
           </div>
