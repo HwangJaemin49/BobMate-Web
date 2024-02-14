@@ -7,38 +7,37 @@ import homeLogo from './images/ic_round-home.png';
 import "./Header.css";
 import "./Dropdown";
 
-export default function Header({accessToken}) {
+export default function Header() {
   
 
-  const login = {accessToken};
+  const accessToken = localStorage.getItem('accessToken');
 
-  const [profileImage, setProfileImage] = useState('');
-  const [nickname, setNickname] = useState('');
+  const [content, setContent] = useState({});
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`/api/v1/members/edit`, {
+                    headers: {
+                        Authorization: accessToken
+                    },
+                });
+                console.log(response.data);
+                setContent(response.data.result);
 
-  useEffect(() => {
-    const fetchProfileInfo = async () => {
-      try {
-        const response = await axios.get('/api/v1/members/edit', {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `${accessToken}`,
-              
-          },
-      });
-      const {profileImage, nickname} = response.data.result;
-      setProfileImage(profileImage);
-      setNickname(nickname);
-      console.log(response)
-      } catch (error) {
-        console.error('Error fetching profile info: ', error);
-      }
-    };
-    fetchProfileInfo();
-  }, []);
+            } catch (e) {
+                console.log(e);
+                const statusCode = e.response.status; // 400
+                const statusText = e.response.statusText; // Bad Request
+                const message = e.response.data.message; // id should not be empty
+                console.log(`${statusCode} - ${statusText} - ${message}`);
+            }
+        }
+        fetchData();
+    },[accessToken]);
   
 
 
-  if(login) {
+  if(accessToken) {
     return (
       <div className='header-container' style = {{height: '88px'}} >
           <div className='header-wrap'>
@@ -53,11 +52,11 @@ export default function Header({accessToken}) {
                   <img className="home" alt="home" src={homeLogo} style={{display: 'flex', alignItems: 'center', paddingRight: '15px'}}/>
                 </Link>
               </li>
-              <img src={profileImage} style={{width: "50px", height: "50px", borderRadius: "50%"}}></img>
+              <img src={content.profileImage} style={{width: "50px", height: "50px", borderRadius: "50%"}}></img>
               <div className='container'>
                 <input id="dropdown" type='checkbox' />
                 <label className='dropdownLabel' for='dropdown'>
-                  <div>{nickname} 님 ▾</div>
+                  <div>{content.nickname} 님 ▾</div>
                 </label>
                 <div className='content'>
                   <Dropdown />

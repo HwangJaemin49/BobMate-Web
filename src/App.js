@@ -8,6 +8,7 @@ import MyPage from './components/MyPage/MyPage';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import KakaoLogin from './components/KakaoLogin';
+// import NaverLogin from './components/NaverLogin';
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
     <div className='root-wrap'>
       <BrowserRouter>
         <div id='wrapper'>
-          <Header accessToken={accessToken} />
+          <Header />
           <div id='main-content'>
             <Routes>
               <Route path='/' element={<Home accessToken={accessToken} />} />
@@ -47,6 +48,7 @@ function App() {
               <Route path='/profile' element={<ProfileEditPage accessToken={accessToken}/>} />
               <Route path='/login' element={<Login />} />
               <Route path='/kakaoLogin' element={<KakaoLogin setAccessToken = {setAccessToken} />} />
+              {/* <Route path='/naverLogin' element={<NaverLogin setAccessToken = {setAccessToken} />} /> */}
             </Routes>
           </div>
         </div>
