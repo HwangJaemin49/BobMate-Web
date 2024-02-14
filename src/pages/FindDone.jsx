@@ -1,12 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import Recommend from '../components/Recommend';
 import retry from '../components/images/Retry.png';
 import thumbup from '../components/images/thumbUP.png';
 import thumbdown from '../components/images/thumbDOWN.png';
 import button from '../components/images/button_home.png';
+import axios from 'axios';
 
 export default function FindDone({ results }) {
+
+  const handleThumbUpClick = async (contentId) => {
+    try {
+      const response = await axios.post(`evaluation/create`, {
+        contentId: contentId,
+        good: true
+    });
+      console.log(response.data); // 요청에 대한 응답 처리
+    } catch (error) {
+      console.error('Error sending thumb up evaluation: ', error);
+    }
+  };
+
+  const handleThumbDownClick = async (contentId) => {
+    try {
+      const response = await axios.post(`/evaluation/create`, {
+        contentId: contentId,
+        good: false
+    });
+      console.log(response.data); // 요청에 대한 응답 처리
+    } catch (error) {
+      console.error('Error sending thumb down evaluation: ', error);
+    }
+  };
+
   return (
     <div style={{fontFamily: "Pretendard-SemiBold"}}>
       <div
@@ -32,12 +58,12 @@ export default function FindDone({ results }) {
           fontFamily: 'Pretendard-Bold',
         }}
       >
-        오늘의 밥 친구는?
+        오늘의 밥 친구는? 
       </div>
       <br />
       <br />
       <br />
-      <Recommend />
+      <Recommend results = {results} />
       <br />
       <br />
       <br />
@@ -64,7 +90,7 @@ export default function FindDone({ results }) {
             paddingRight: '5px',
           }}
         ></img>
-        <div style={{ paddingTop: '10px' }}>다시 추천받기</div>
+        <Link to='/find'><div style={{ paddingTop: '10px' }}>다시 추천받기</div></Link>
       </div>
       <br />
       <br />
@@ -86,34 +112,23 @@ export default function FindDone({ results }) {
           <h3>OOO님의 평가가 더 나은 밥 친구를 만듭니다 :)</h3>
         </div><br/>
         <div className='result-rate' style={{width: "250px", margin: "0 auto"}}>
-        
-          <p style={{width: "250px"}}>
-            추천 결과 1
-            <img src={thumbdown} style={{float: "right", marginRight: "20px"}}></img>
-            <img
-              src={thumbup}
-              style={{ float: "right", marginRight: "10px" }}
-            ></img>
-            
-          </p><br/>
-          <p style={{width: "250px"}}>
-            추천 결과 2{' '}
-            <img src={thumbdown} style={{float: "right", marginRight: "20px"}}></img>
-            <img
-              src={thumbup}
-              style={{ float: "right", marginRight: "10px" }}
-            ></img>
-            
-          </p><br/>
-          <p style={{width: "250px"}}>
-            추천 결과 3{' '}
-            <img src={thumbdown} style={{float: "right", marginRight: "20px"}}></img>
-            <img
-              src={thumbup}
-              style={{ float: "right", marginRight: "10px" }}
-            ></img>
-            
-          </p>
+          {results.map((content, index) => (
+          <div key={index}>
+            <p style={{ width: "300px" }}>
+              {content.name}
+              <img
+                src={thumbdown}
+                style={{ float: "right", marginRight: "20px", cursor: "pointer" }}
+                onClick={() => handleThumbDownClick(content.contentId)}
+              />
+              <img
+                src={thumbup}
+                style={{ float: "right", marginRight: "10px", cursor: "pointer" }}
+                onClick={() => handleThumbUpClick(content.contentId)}
+              />
+            </p><br/>
+          </div>
+        ))}
         </div>
       </div>
       <br />
@@ -138,7 +153,7 @@ export default function FindDone({ results }) {
               src={button}
               style={{ margin: "0 auto" }}
             ></img>
-            <span style={{}}>홈으로 돌아가기</span>
+            <span>홈으로 돌아가기</span>
           </Link>
         </div>
       </div>

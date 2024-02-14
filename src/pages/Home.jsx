@@ -23,7 +23,7 @@ export default function Home({accessToken}) {
                 <p style={{fontSize: "70px", fontFamily: 'Cafe24surround'}}>밥 친구</p>
               </div>
 
-            <div className="start-button" style={{width: "180px", height:"60px", backgroundColor:"#FFD900", borderRadius:"40px", fontSize:"20px", margin: "0px auto", display: "table"}}><Link to='/find' style={{display:"table-cell", verticalAlign:"middle"}}>시작하기</Link></div><br /><br />
+            <div className="start-button" style={{width: "180px", height:"60px", backgroundColor: ({accessToken})? "#FFD900" : "gery", borderRadius:"40px", fontSize:"20px", margin: "0px auto", display: "table"}}><Link to='/find' style={{display:"table-cell", verticalAlign:"middle"}}>시작하기</Link></div><br /><br />
           </div>
 
 

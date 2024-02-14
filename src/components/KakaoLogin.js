@@ -4,12 +4,10 @@ import axios from "axios";
 
 
 function KakaoLogin({setAccessToken}) {
-    const [userInfo, setUserInfo] = useState();
     const navigate = useNavigate();
     const PARAMS = new URL(document.location).searchParams;
     const KAKAO_CODE = PARAMS.get("code");
     const [accessTokenFetching, setAccessTokenFetching] = useState(false);
-    const SERVER_URI = process.env.REACT_APP_SERVER_URI;
 
 
     const getAccessToken = async () => {
