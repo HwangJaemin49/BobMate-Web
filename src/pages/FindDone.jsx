@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Recommend from '../components/Recommend';
 import retry from '../components/images/Retry.png';
@@ -12,6 +12,28 @@ export default function FindDone({ results }) {
   const accessToken = localStorage.getItem('accessToken');
 
   const [evaluations, setEvaluations] = useState({});
+
+  const [content, setContent] = useState({});
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/v1/members/edit`, {
+          headers: {
+            Authorization: accessToken,
+          },
+        });
+        console.log(response.data);
+        setContent(response.data.result);
+      } catch (e) {
+        console.log(e);
+        const statusCode = e.response.status; // 400
+        const statusText = e.response.statusText; // Bad Request
+        const message = e.response.data.message; // id should not be empty
+        console.log(`${statusCode} - ${statusText} - ${message}`);
+    }
+  }
+  fetchData();
+  },[accessToken]);
 
   const handleThumbClick = async (contentId, isGood) => {
     try {
@@ -119,10 +141,11 @@ export default function FindDone({ results }) {
       <div
         className='re'
         style={{
+          fontFamily: "Pretendard-Bold",
           width: '180px',
           height: '40px',
-          backgroundColor: 'black',
-          color: 'white',
+          backgroundColor: '#FFD900',
+          color: 'black',
           borderRadius: '10px',
           display: 'block',
           margin: '0px auto',
@@ -133,13 +156,13 @@ export default function FindDone({ results }) {
           src={retry}
           style={{
             float: 'left',
-            paddingLeft: '30px',
+            paddingLeft: '26px',
             paddingTop: '7px',
             paddingRight: '5px',
           }}
         ></img>
         <Link to='/find'>
-          <div style={{ paddingTop: '10px' }}>다시 추천받기</div>
+          <div style={{ paddingTop: '10px', fontSize: "17px" }}>다시 추천받기</div>
         </Link>
       </div>
       <br />
@@ -150,17 +173,18 @@ export default function FindDone({ results }) {
           textAlign: 'center',
           border: '2px solid',
           borderRadius: '10px',
-          width: '700px',
+          width: '500px',
           paddingTop: '30px',
           paddingBottom: '50px',
-          marginLeft: '390px',
-          fontFamily: "Pretendard-Bold"
+          marginLeft: '500px',
+          fontFamily: "Pretendard-Bold",
+          height: "300px"
         }}
       >
         <div className='result-text'>
           <h2>잠깐!</h2>
           <h2>추천 결과에 만족하시나요?</h2>
-          <h3>OOO님의 평가가 더 나은 밥 친구를 만듭니다 :)</h3>
+          <h3>{content.nickname}님의 평가가 더 나은 밥 친구를 만듭니다 :)</h3>
         </div>
         <br />
         <div
@@ -199,15 +223,14 @@ export default function FindDone({ results }) {
       </div>
       <br />
       <br />
-      <br />
-      <br />
       <div
         className='home-button'
         style={{
+          fontFamily: "Pretendard-Bold",
           width: '180px',
           height: '40px',
-          backgroundColor: 'black',
-          color: 'white',
+          backgroundColor: '#FFD900',
+          color: 'black',
           borderRadius: '10px',
           display: 'block',
           margin: '0px auto',
@@ -215,14 +238,16 @@ export default function FindDone({ results }) {
       >
         <div
           style={{
-            color: 'white',
             textDecoration: 'none',
             textAlign: 'center',
           }}
         >
           <Link to='/' style={{}}>
-            <img alt='홈 버튼' src={button} style={{ margin: '0 auto' }}></img>
-            <span>홈으로 돌아가기</span>
+            <img alt='홈 버튼' src={button} style={{ float: 'left',
+            paddingLeft: '25px',
+            paddingTop: '7px',
+            paddingRight: '0px',}}></img>
+            <div style={{paddingTop: '10px', fontSize: "17px", paddingRight: "10px"}}>홈으로 가기</div>
           </Link>
         </div>
       </div>

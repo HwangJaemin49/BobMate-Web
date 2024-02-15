@@ -12,7 +12,11 @@ export default function Login() {
     }
 
     return(
+<<<<<<< HEAD
+    <div style={{textAlign:"center", height: "450px"}}>
+=======
     <div style={{textAlign:"center", marginBottom:"100px"}}>
+>>>>>>> 663f349bfb59c7b13f11993a280f80c8cc474706
         <div className="login" style={{marginTop: "100px"}}>
             <p style={{fontSize: "36px"}}>로그인</p><br /><br />
             <p style={{fontSize: "18px"}}>간편 로그인으로 바로 시작해 보세요!</p><br />
