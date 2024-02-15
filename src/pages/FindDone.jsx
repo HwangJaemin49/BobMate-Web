@@ -30,11 +30,7 @@ export default function FindDone({ results }) {
               Authorization: accessToken,
             },
           });
-<<<<<<< HEAD
           alert('평가가 삭제되었습니다!');
-=======
-          console.log('삭제됨');
->>>>>>> 4289bd372879d05ca5a7950da647f03b99411f14
           // 해당 컨텐츠의 평가 상태 업데이트 (평가 삭제)
           setEvaluations((prevState) => ({
             ...prevState,
@@ -53,13 +49,8 @@ export default function FindDone({ results }) {
                 Authorization: accessToken,
               },
             }
-<<<<<<< HEAD
-          });
-          alert('평가가 수정되었습니다!');
-=======
           );
-          console.log('패치됨');
->>>>>>> 4289bd372879d05ca5a7950da647f03b99411f14
+          alert('평가가 수정되었습니다!');
           // 해당 컨텐츠의 평가 상태 업데이트 (평가 변경)
           setEvaluations((prevState) => ({
             ...prevState,
@@ -79,13 +70,8 @@ export default function FindDone({ results }) {
               Authorization: accessToken,
             },
           }
-<<<<<<< HEAD
-        });
-        alert('평가가 완료되었습니다!');
-=======
         );
-        console.log('생성됨');
->>>>>>> 4289bd372879d05ca5a7950da647f03b99411f14
+        alert('평가가 완료되었습니다!');
         // 해당 컨텐츠의 평가 상태 업데이트 (새로운 평가 생성)
         setEvaluations((prevState) => ({ ...prevState, [contentId]: isGood }));
       }
@@ -168,6 +154,7 @@ export default function FindDone({ results }) {
           paddingTop: '30px',
           paddingBottom: '50px',
           marginLeft: '390px',
+          fontFamily: "Pretendard-Bold"
         }}
       >
         <div className='result-text'>
