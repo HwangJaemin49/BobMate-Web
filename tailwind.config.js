@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       pre: ['Pretendard'],
+      cafe24: ['Cafe24surround'],
     },
     colors: {
       'yellow-900': '#FE7A00',

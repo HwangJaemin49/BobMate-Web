@@ -53,7 +53,7 @@ const SituationPage = () => {
           isSelected={secondStep === TYPES.normal}
         >
           <Typography.H3>{'일반 상황'}</Typography.H3>
-          <Typography.Body2>{'내 상황을 직접 설명할께요'}</Typography.Body2>
+          <Typography.Body2>{'내 상황을 직접 설명할게요'}</Typography.Body2>
         </RoundButton>
         <RoundButton
           className='w-[330px] h-[330px] px-[34px]'
@@ -62,7 +62,7 @@ const SituationPage = () => {
         >
           <Typography.H3>{'특정 상황'}</Typography.H3>
           <Typography.Body2>
-            {"'밥 친구'가 알려주는 상황으로 선택할께요"}
+            {"'밥 친구'가 알려주는 상황으로 선택할게요"}
           </Typography.Body2>
         </RoundButton>
       </MaxWidthWrapper>
