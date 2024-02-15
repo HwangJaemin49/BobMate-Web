@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import StyledInput from './StyledInputWrapper';
 import SaveButton from './SaveButton';
+import alertIcon from '../images/circleAlert.png';
 import './UserProfileEdit.css';
 
 const UserProfileEdit = () => {
+  // const [firstImage, setFirstImage] = useState(null); //인풋받은 이미지
   const [image, setImage] = useState(null); //프로필 이미지
   const [prevImage, setPrevImage] = useState(null); //미리보기 이미지
   // const [imageFile, setImageFile] = useState(null); //인풋 이미지 파일
@@ -40,10 +42,11 @@ const UserProfileEdit = () => {
       }
     })
       .then(() => {
-        alert('그동안 이용해주셔서 감사합니다.');
+        alert('로그인 화면으로 돌아갑니다.');
         localStorage.clear();
         setEndModalOpen(false);
         navigate('/');
+        // window.location.reload();
       })
       .catch((err) => {
         alert(err.response.data.message);
@@ -205,14 +208,14 @@ const UserProfileEdit = () => {
             </div>
             {image && (
               <div style={{ marginLeft: '10px' }}>
-                <div class="profile-img" />
-                <button onClick={handleProfilePictureDelete} style={{ marginTop: '33px',marginLeft: '10px', border: '2px solid black', padding: '3px', borderRadius: '10%', width: '120px' }}>사진 삭제</button>
+                <div className="profile-img" />
+                <button onClick={handleProfilePictureDelete} style={{ marginTop: '33px', marginLeft: '10px', border: '2px solid black', padding: '3px', borderRadius: '10%', width: '120px' }}>사진 삭제</button>
               </div>
             )}
           </div>
 
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '10px', marginBottom: '10px',marginTop: '30px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '10px', marginBottom: '10px', marginTop: '30px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', marginRight: '10px' }}>
             <label style={{ marginBottom: '23px' }}>닉네임 변경</label>
           </div>
@@ -223,7 +226,7 @@ const UserProfileEdit = () => {
         </div>
       </div>
       <div className={'btn-wrapper'}>
-        <SaveButton onClick={handleSaveChanges} style={{ marginBottom: '10px', marginTop:'30px' }} >변경사항 저장</SaveButton>
+        <SaveButton onClick={handleSaveChanges} style={{ marginBottom: '10px', marginTop: '30px' }} >변경사항 저장</SaveButton>
         <button className={'modal-open-btn'} onClick={() => setModalOpen(true)} style={{ marginTop: '10px', marginBottom: '10px', textDecoration: 'underline' }}>
           회원 탈퇴
         </button>
@@ -237,9 +240,9 @@ const UserProfileEdit = () => {
         }}>
           <div className={'modal-content'}>
             <div style={{ paddingLeft: '30px', textAlign: 'center' }}>
-              <h3 className={'modal-inner'} style={{ fontSize: '25px', marginBottom: '20px' }}>{nickname}님<br />정말 탈퇴하시겠어요?</h3>
+              <h3 className={'modal-inner'} style={{ fontSize: '25px', marginBottom: '20px' }}>{nickname} 님,<br />정말 탈퇴하시겠어요?</h3>
             </div>
-            <div className="btn-wrapper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+            <div className="btn-wrapper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginTop: '25px' }}>
               <SaveButton type="button" className={'modal-close-btn'} style={{ backgroundColor: '#d9d9d9' }} onClick={() => setModalOpen(false)}>취소</SaveButton>
               <SaveButton type="button" className={'modal-withdraw-btn'} onClick={nextModalConfirm}>확인</SaveButton>
             </div>
@@ -254,9 +257,15 @@ const UserProfileEdit = () => {
         }}>
           <div className={'modal-content'}>
             <div style={{ paddingLeft: '30px' }}>
-              <h3 className={'modal-inner'} style={{ fontSize: '25px', marginBottom: '20px' }}>잠깐! 꼭 확인해주세요 😢</h3>
-              <p className={'modal-inner'} style={{ marginBottom: '10px' }}>! 탈퇴 시, 더 이상 해당 계정으로 밥 친구를 이용할 수 없습니다.</p>
-              <p className={'modal-inner'} style={{ marginBottom: '30px' }}>! 탈퇴 시, 고객님의 모든 활동 기록이 삭제되며 삭제된 정보는 복구할 수 없습니다.</p>
+              <h3 className={'modal-inner'} style={{ fontSize: '25px', marginBottom: '20px', textAlign: 'center' }}>잠깐! 꼭 확인해주세요 😢</h3>
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <img src={alertIcon} alt='alert-icon' style={{ marginRight: '10px', height: '23px', width: '23px' }} />
+                <p className={'modal-inner'} style={{ marginBottom: '10px' }}>탈퇴 시, 더 이상 해당 계정으로 밥 친구를 이용할 수 없습니다.</p>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <img src={alertIcon} alt='alert-icon' style={{ marginRight: '10px', height: '23px', width: '23px' }} />
+                <p className={'modal-inner'} style={{ marginBottom: '30px' }}>탈퇴 시, 고객님의 모든 활동 기록이 삭제되며 삭제된 정보는 복구할 수 없습니다.</p>
+              </div>
             </div>
 
             <div className="btn-wrapper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
@@ -276,10 +285,10 @@ const UserProfileEdit = () => {
           {/*마지막 모달 컴포넌트를 렌더링*/}
           <div className={'modal-content'}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <h3 className={'modal-inner'} style={{ fontSize: '25px', marginBottom: '20px' }}>회원 탈퇴가 완료되었어요.</h3>
+              <h3 className={'modal-inner'} style={{ fontSize: '25px', marginBottom: '30px' }}>회원 탈퇴가 완료되었어요.</h3>
               <p className={'modal-inner'} style={{ marginBottom: '10px' }}>그동안 밥 친구를 이용해 주셔서 감사합니다 :)</p>
             </div>
-            <div className="btn-wrapper">
+            <div className="btn-wrapper" style={{marginTop: '40px'}}>
               <SaveButton className={'modal-close-btn'} onClick={withdrawEnd}>확인</SaveButton>
             </div>
           </div>
