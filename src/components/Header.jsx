@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import Dropdown from './Dropdown';
 import headerLogo from './images/logo.png';
@@ -8,8 +8,7 @@ import "./Header.css";
 import "./Dropdown";
 
 export default function Header() {
-  
-
+  const navigate = useNavigate();
   const accessToken = localStorage.getItem('accessToken');
 
   const [content, setContent] = useState({});
@@ -25,11 +24,18 @@ export default function Header() {
                 setContent(response.data.result);
 
             } catch (e) {
-                console.log(e);
-                const statusCode = e.response.status; // 400
-                const statusText = e.response.statusText; // Bad Request
-                const message = e.response.data.message; // id should not be empty
+              console.log(e);
+              if (e.response && e.response.status === 400) {
+                // 400 오류일 경우(accessToken 만료) accessToken을 삭제하고 로그인 화면으로 리다이렉트
+                localStorage.removeItem('accessToken');
+                navigate('/login'); // 로그인 화면으로 리다이렉트
+              } else {
+                // 그 외의 오류는 콘솔에 출력
+                const statusCode = e.response.status;
+                const statusText = e.response.statusText;
+                const message = e.response.data.message;
                 console.log(`${statusCode} - ${statusText} - ${message}`);
+              }
             }
         }
         fetchData();

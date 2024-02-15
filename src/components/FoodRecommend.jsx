@@ -22,7 +22,6 @@ const Menu = ({accessToken}) => {
 
                 const likedIds = likedResponse.data.result.map(item => item.menuId);
                 setLikedMenuIds(likedIds);
-                console.log(likedIds);
             } catch(e) {
               console.log(e);
             }
