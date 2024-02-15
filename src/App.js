@@ -9,7 +9,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import KakaoLogin from './components/KakaoLogin';
 import NaverLogin from './components/NaverLogin';
-import Footer from './components/Footer';
+import Footer2 from './components/Footer2';
 
 function App() {
   const [accessToken, setAccessToken] = useState();
@@ -50,7 +50,7 @@ function App() {
               />
             </Routes>
           </div>
-          <Footer />
+          <Footer2 />
         </div>
       </BrowserRouter>
     </div>
