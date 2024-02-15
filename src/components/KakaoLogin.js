@@ -8,8 +8,6 @@ function KakaoLogin({setAccessToken}) {
     const PARAMS = new URL(document.location).searchParams;
     const KAKAO_CODE = PARAMS.get("code");
     const [accessTokenFetching, setAccessTokenFetching] = useState(false);
-    const [accessTokenExpiresAt, setAccessTokenExpiresAt] = useState(null); // 만료 시간 상태 추가
-
 
 
     const getAccessToken = async () => {

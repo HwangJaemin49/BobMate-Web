@@ -6,15 +6,14 @@ const Menu = ({accessToken}) => {
 
   const [menu, setMenu] = useState();
   const [likedMenuIds, setLikedMenuIds] = useState([]);
-  const SERVER_URI = process.env.REACT_APP_SERVER_URI;
 
   
   useEffect(() => {
       const fetchData = async () => {
           try {
-              const response = await axios.get(`${SERVER_URI}/menus`);
+              const response = await axios.get(`api/v1/menus`);
               setMenu(response.data.result);
-              const likedResponse = await axios.get(`${SERVER_URI}/likes/menu`, {
+              const likedResponse = await axios.get(`api/v1/likes/menu`, {
                     headers: {
                         Authorization: `${accessToken}`,
                     },
@@ -33,7 +32,7 @@ const Menu = ({accessToken}) => {
   const handleLike = async (menuId) => {
     try {
         
-        await axios.post(`${SERVER_URI}/menus/like?menuId=${menuId}`, {}, {
+        await axios.post(`api/v1/menus/like?menuId=${menuId}`, {}, {
             headers: {
                 Authorization: `${accessToken}`,
             },
@@ -50,7 +49,7 @@ const Menu = ({accessToken}) => {
 const handleUnLike = async (menuId) => {
     try {
         
-        await axios.post(`${SERVER_URI}/menus/unlike?menuId=${menuId}`, {}, {
+        await axios.post(`api/v1/menus/unlike?menuId=${menuId}`, {}, {
             headers: {
                 Authorization: `${accessToken}`,
             },

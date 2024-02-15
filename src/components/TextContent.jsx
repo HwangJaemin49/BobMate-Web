@@ -6,15 +6,14 @@ const Content = ({accessToken}) => {
 
     const [content, setContent] = useState([]);
     const [likedContentIds, setLikedContentIds] = useState([]);
-    const SERVER_URI = process.env.REACT_APP_SERVER_URI;
     
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${SERVER_URI}/contents/top3?section=1`);
+                const response = await axios.get(`api/v1/contents/top3?section=1`);
                 setContent(response.data.result);
                 console.log(response.data);
-                const likedResponse = await axios.get(`${SERVER_URI}/likes/content`, {
+                const likedResponse = await axios.get(`api/v1/likes/content`, {
                     headers: {
                         Authorization: `${accessToken}`,
                     },
@@ -28,13 +27,13 @@ const Content = ({accessToken}) => {
         }
         fetchData();
 
-    }, [accessToken, SERVER_URI]);
+    }, [accessToken]);
 
     const handleLike = async (contentId) => {
         try {
             
 
-            await axios.post(`${SERVER_URI}/contents/like?contentId=${contentId}`, {}, {
+            await axios.post(`api/v1/contents/like?contentId=${contentId}`, {}, {
                 headers: {
                     Authorization: `${accessToken}`,
                 },
@@ -52,7 +51,7 @@ const Content = ({accessToken}) => {
         try {
             
 
-            await axios.post(`${SERVER_URI}/contents/unlike?contentId=${contentId}`, {}, {
+            await axios.post(`api/v1/contents/unlike?contentId=${contentId}`, {}, {
                 headers: {
                     Authorization: `${accessToken}`,
                 },
