@@ -83,7 +83,7 @@ export default function MyPageComment() {
                     <p style={{ fontSize: '20px', margin: '5px' }}>를 봐!</p>
                 </div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginTop: '50px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
                 <SaveButton onClick={commentSave}>저장</SaveButton>
             </div>
         </div>
