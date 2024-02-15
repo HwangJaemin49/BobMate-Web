@@ -26,7 +26,7 @@ export default function FindDone({ results }) {
               Authorization: accessToken,
             }
           });
-          console.log('삭제됨')
+          alert('평가가 삭제되었습니다!');
           // 해당 컨텐츠의 평가 상태 업데이트 (평가 삭제)
           setEvaluations(prevState => ({ ...prevState, [contentId]: undefined }));
         } else {
@@ -39,7 +39,7 @@ export default function FindDone({ results }) {
               Authorization: accessToken,
             }
           });
-          console.log('패치됨');
+          alert('평가가 수정되었습니다!');
           // 해당 컨텐츠의 평가 상태 업데이트 (평가 변경)
           setEvaluations(prevState => ({ ...prevState, [contentId]: isGood }));
         }
@@ -53,7 +53,7 @@ export default function FindDone({ results }) {
             Authorization: accessToken,
           }
         });
-        console.log('생성됨');
+        alert('평가가 완료되었습니다!');
         // 해당 컨텐츠의 평가 상태 업데이트 (새로운 평가 생성)
         setEvaluations(prevState => ({ ...prevState, [contentId]: isGood }));
       }
