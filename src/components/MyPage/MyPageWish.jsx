@@ -50,12 +50,12 @@ export default function MyPageWish() {
         <div className='mypage-wish-wrap' style={{ margin: '30px', display: 'flex', alignItems: 'center', flexDirection: 'column' }} >
             <div style={{ display: 'flex', alignItems: 'left', marginBottom: '20px', marginLeft: '-50%' }}>
                 <img src={youtubeIcon} alt='header logo' style={{ marginRight: '15px', width: '25px' }} />
-                <p style={{ fontSize: '25px' }}>내가 찜한 콘텐츠</p>
+                <p style={{ fontSize: '20px' }}>내가 찜한 콘텐츠</p>
             </div>
             <ContentGrid inputDataList={contents} keyName="contentId"/>
             <div style={{ display: 'flex', alignItems: 'left', marginBottom: '20px', marginLeft: '-50%', marginTop: '50px' }}>
                 <img src={menuIcon} alt='header logo' style={{ marginRight: '15px', width: '25px' }} />
-                <p style={{ fontSize: '25px' }}>내가 찜한 메뉴</p>
+                <p style={{ fontSize: '20px' }}>내가 찜한 메뉴</p>
             </div>
             <ContentGrid inputDataList={menus} keyName="menuId"/>
         </div>
