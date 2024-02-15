@@ -1,18 +1,11 @@
-import api from '..';
-/**
-{
-  "isSuccess": true,
-  "code": "COMMON200",
-  "message": "성공입니다.",
-  "result": [{...}, {...}]
-}
-*/
+import makeAxiosInstance from '..';
+
 export const normalRecommendApi = async ({
   emotion,
   withWhom,
   contentType,
 }) => {
-  const { data } = await api.get(
+  const { data } = await makeAxiosInstance().get(
     `contents/recommend/daily?emotion=${emotion}&withWhom=${withWhom}&contentType=${contentType}`
   );
   if (!data.isSuccess) {
@@ -22,7 +15,7 @@ export const normalRecommendApi = async ({
 };
 
 export const specificRecommendApi = async ({ contentId, contentType }) => {
-  const { data } = await api.get(
+  const { data } = await makeAxiosInstance().get(
     `contents/recommend/special/${contentId}?type=${contentType}`
   );
   if (!data.isSuccess) {
@@ -31,61 +24,8 @@ export const specificRecommendApi = async ({ contentId, contentType }) => {
   return data.result;
 };
 
-/**
- "result": [
-        {
-            "food": "피자",
-            "emotion": "EXCITED",
-            "genre": "ROMANCE",
-            "commentId": 3
-        },
-        {
-            "food": "샤브샤브",
-            "emotion": "GLOOMY",
-            "genre": "DRAMA",
-            "commentId": 37
-        },
-        {
-            "food": "치킨",
-            "emotion": "GLOOMY",
-            "genre": "ACTION",
-            "commentId": 4
-        },
-        {
-            "food": "떡볶이",
-            "emotion": "ANGRY",
-            "genre": "ANIMATION",
-            "commentId": 27
-        }
-    ]
-  }
- */
-
 export const getSpecificSituations = async () => {
-  // return [
-  //   {
-  //     sentence: 'temp',
-  //     commentId: 1,
-  //   },
-
-  //   {
-  //     sentence: 'temp2jj',
-  //     commentId: 2,
-  //   },
-
-  //   {
-  //     sentence: 'tem3jp',
-  //     commentId: 3,
-  //   },
-
-  //   {
-  //     sentence: 'temp4',
-  //     commentId: 4,
-  //   },
-  // ];
-
-  // eslint-disable-next-line
-  const { data } = await api.post(`comment/make/situation`);
+  const { data } = await makeAxiosInstance().post(`comment/make/situation`);
   if (!data.isSuccess) {
     throw new Error(data.message);
   }

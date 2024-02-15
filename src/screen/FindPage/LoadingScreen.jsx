@@ -124,7 +124,6 @@ const LoadingScreen = ({ completeLoading }) => {
             setTimeout(resolve, waitingTime - elapsedTime)
           );
         }
-        console.log(result);
         completeLoading(result);
       } catch (err) {
         // 오류 처리 필요
