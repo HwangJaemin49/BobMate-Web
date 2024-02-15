@@ -57,7 +57,7 @@ export default function MyPageFavorite() {
           </div>
         ))}
       </ol>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: '40px' }}>
         <SaveButton onClick={handleSaveButtonClick}>저장</SaveButton>
       </div>
     </div>
