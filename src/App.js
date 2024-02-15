@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import FindMatePage from './pages/FindPage/FindMatePage';
@@ -9,7 +9,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import KakaoLogin from './components/KakaoLogin';
 import NaverLogin from './components/NaverLogin';
-
+import Footer from './components/Footer';
 
 function App() {
   const [accessToken, setAccessToken] = useState();
@@ -21,7 +21,6 @@ function App() {
     }
   }, []);
 
-
   return (
     <div className='root-wrap'>
       <BrowserRouter>
@@ -32,13 +31,26 @@ function App() {
               <Route path='/' element={<Home accessToken={accessToken} />} />
               <Route path='/find' element={<FindMatePage />} />
               <Route path='/find-result' element={<FindResultPage />} />
-              <Route path='/mypage' element={<MyPage accessToken={accessToken}/>} />
-              <Route path='/profile' element={<ProfileEditPage accessToken={accessToken}/>} />
+              <Route
+                path='/mypage'
+                element={<MyPage accessToken={accessToken} />}
+              />
+              <Route
+                path='/profile'
+                element={<ProfileEditPage accessToken={accessToken} />}
+              />
               <Route path='/login' element={<Login />} />
-              <Route path='/kakaoLogin' element={<KakaoLogin setAccessToken = {setAccessToken} />} />
-              <Route path='/naverLogin' element={<NaverLogin setAccessToken = {setAccessToken} />} />
+              <Route
+                path='/kakaoLogin'
+                element={<KakaoLogin setAccessToken={setAccessToken} />}
+              />
+              <Route
+                path='/naverLogin'
+                element={<NaverLogin setAccessToken={setAccessToken} />}
+              />
             </Routes>
           </div>
+          <Footer />
         </div>
       </BrowserRouter>
     </div>
