@@ -15,7 +15,6 @@ function KakaoLogin({setAccessToken}) {
     const getAccessToken = async () => {
         if (accessTokenFetching || !KAKAO_CODE) return;
 
-        console.log("getAccessToken 호출");
 
         try {
             setAccessTokenFetching(true);
@@ -33,14 +32,8 @@ function KakaoLogin({setAccessToken}) {
             );
 
             const accessToken = response.data.result.accessToken;
-            const expiresIn = response.data.result.expiresIn; // 만료 시간 받아오기
-            const expiresAt = Date.now() + expiresIn * 1000; // 만료 시간 계산 (현재 시간에 expiresIn을 더하여 밀리초로 변환)
             localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('accessTokenExpiresAt', expiresAt); // 만료 시간 저장
             setAccessToken(accessToken);
-            setAccessTokenExpiresAt(expiresAt); // 만료 시간 상태 업데이트
-
-            console.log(response);
 
             setAccessTokenFetching(false);
             navigate("/");

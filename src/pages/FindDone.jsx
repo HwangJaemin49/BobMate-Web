@@ -112,6 +112,7 @@ export default function FindDone({ results }) {
         }}
       >
         <img
+          alt='다시 선택하기'
           src={retry}
           style={{
             float: 'left',
@@ -147,11 +148,13 @@ export default function FindDone({ results }) {
             <p style={{ width: "300px" }}>
               {content.name}
               <img
+                alt='엄지 올린 사진'
                 src={thumbdown}
                 style={{ float: "right", marginRight: "20px", cursor: "pointer" }}
                 onClick={() => handleThumbClick(content.contentId, false)}
               />
               <img
+                alt='엄지 내린 사진'
                 src={thumbup}
                 style={{ float: "right", marginRight: "10px", cursor: "pointer" }}
                 onClick={() => handleThumbClick(content.contentId, true)}
@@ -180,6 +183,7 @@ export default function FindDone({ results }) {
         <div style={{ color: 'white', textDecoration: 'none', textAlign: "center" }}>
           <Link to='/' style={{ }}>
             <img
+              alt='홈 버튼'
               src={button}
               style={{ margin: "0 auto" }}
             ></img>
