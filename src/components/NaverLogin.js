@@ -20,7 +20,7 @@ function NaverLogin({setAccessToken}) {
             setAccessTokenFetching(true);
 
             const response = await axios.post(
-                `${SERVER_URI}/auth/naver`,
+                `http://43.202.23.75/api/v1/auth/naver`,
                 {
                     "authorizationCode": `${NAVER_CODE}`,
                 },

@@ -5,10 +5,9 @@ import Kakao from "./images/Kakao.png";
 const SocialKakao = ()=>
 {
 
-    const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
-    const REDIRECT_URI = process.env.REACT_APP_KAKAO_REDIRECT_URI; //Redirect URI
+    
     // oauth 요청 URL
-    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=http://localhost:3000/kakaoLogin&response_type=code`;
+    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=89811d2c9d52ab22379601480cd3a0ba&redirect_uri=http://localhost:3000/kakaoLogin&response_type=code`;
     const handleLogin = ()=>{
         window.location.href = kakaoURL
     }
