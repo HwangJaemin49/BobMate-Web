@@ -3,8 +3,9 @@ import NaverLogo from "./images/Naver.png";
 
 
 const Naver = () => {
-    const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_REST_API_KEY;
-    const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&redirect_uri=http://localhost:3000/naverLogin`
+
+    
+    const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=xUNJVV_1pGBhygWCqKeW&redirect_uri=http://localhost:3000/naverLogin`
     
 
     const NaverLogin = () => {
