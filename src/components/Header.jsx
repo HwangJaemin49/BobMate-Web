@@ -15,13 +15,20 @@ export default function Header() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/v1/members/edit`, {
-          headers: {
-            Authorization: accessToken,
-          },
-        });
-        console.log(response.data);
-        setContent(response.data.result);
+        if (accessToken) {
+          const response = await axios.get(`/api/v1/members/edit`, {
+            headers: {
+              Authorization: accessToken,
+            },
+          });
+          console.log(response.data);
+          setContent(response.data.result);
+
+        }
+        else {
+          navigate('/login');
+
+        }
       } catch (e) {
         console.log(e);
         if (

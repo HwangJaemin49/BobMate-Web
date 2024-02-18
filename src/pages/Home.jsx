@@ -52,7 +52,7 @@ export default function Home({ accessToken }) {
             style={{
               width: '180px',
               height: '60px',
-              backgroundColor: { accessToken } ? '#FFD900' : 'gery',
+              backgroundColor:  '#FFD900',
               borderRadius: '40px',
               fontSize: '20px',
               margin: '0px auto',

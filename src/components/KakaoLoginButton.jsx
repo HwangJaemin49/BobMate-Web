@@ -7,7 +7,7 @@ const SocialKakao = ()=>
 
     
     // oauth 요청 URL
-    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=89811d2c9d52ab22379601480cd3a0ba&redirect_uri=http://localhost:3000/kakaoLogin&response_type=code`;
+    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=89811d2c9d52ab22379601480cd3a0ba&redirect_uri=http://43.202.23.75/kakaoLogin&response_type=code`;
     const handleLogin = ()=>{
         window.location.href = kakaoURL
     }

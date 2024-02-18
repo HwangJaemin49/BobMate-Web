@@ -13,14 +13,6 @@ const Menu = ({accessToken}) => {
           try {
               const response = await axios.get(`api/v1/menus`);
               setMenu(response.data.result);
-              const likedResponse = await axios.get(`api/v1/likes/menu`, {
-                    headers: {
-                        Authorization: `${accessToken}`,
-                    },
-                });
-
-                const likedIds = likedResponse.data.result.map(item => item.menuId);
-                setLikedMenuIds(likedIds);
             } catch(e) {
               console.log(e);
             }
@@ -28,6 +20,26 @@ const Menu = ({accessToken}) => {
         fetchData();
 
   }, []);
+
+  useEffect(() => {
+    const fetchLikedFoodIds = async () => {
+        try {
+            if (accessToken){
+                const likedResponse = await axios.get(`api/v1/likes/menu`, {
+                    headers: {
+                        Authorization: `${accessToken}`,
+                    },
+                });
+
+                const likedIds = likedResponse.data.result.map(item => item.menuId);
+                setLikedMenuIds(likedIds);
+            }
+        } catch(error) {
+            console.log(error);
+        }
+    };
+    fetchLikedFoodIds();
+  }, [accessToken]);
 
   const handleLike = async (menuId) => {
     try {

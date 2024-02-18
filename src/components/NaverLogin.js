@@ -8,7 +8,6 @@ function NaverLogin({setAccessToken}) {
     const PARAMS = new URL(document.location).searchParams;
     const NAVER_CODE = PARAMS.get("code");
     const [accessTokenFetching, setAccessTokenFetching] = useState(false);
-    const SERVER_URI = process.env.REACT_APP_SERVER_URI;
 
 
     const getAccessToken = async () => {

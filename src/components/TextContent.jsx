@@ -12,21 +12,32 @@ const Content = ({accessToken}) => {
             try {
                 const response = await axios.get(`api/v1/contents/top3?section=1`);
                 setContent(response.data.result);
-                console.log(response.data);
-                const likedResponse = await axios.get(`api/v1/likes/content`, {
-                    headers: {
-                        Authorization: `${accessToken}`,
-                    },
-                });
-
-                const likedIds = likedResponse.data.result.map(item => item.contentId);
-                setLikedContentIds(likedIds);
             } catch(e) {
                 console.log(e);
             }
         }
         fetchData();
 
+    }, []);
+
+    useEffect(() => {
+        const fetchLikedContentIds = async () => {
+            try {
+                if (accessToken) {
+                    const likedResponse = await axios.get(`api/v1/likes/content`, {
+                        headers: {
+                            Authorization: `${accessToken}`,
+                        },
+                    });
+
+                    const likedIds = likedResponse.data.result.map(item => item.contentId);
+                    setLikedContentIds(likedIds);
+                }
+            } catch(error) {
+                console.log(error);
+            }
+        };
+        fetchLikedContentIds();
     }, [accessToken]);
 
     const handleLike = async (contentId) => {
