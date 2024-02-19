@@ -3,7 +3,7 @@ import StepState from './StepState';
 import NormalSituationState from './NormalSituationState';
 import SpecificSituationState from './SpecificSituationState';
 import ContentState from './ContentState';
-import ResultState from './ResultState';
+import TokenState from './tokenState';
 import { configureStore } from '@reduxjs/toolkit';
 // import ReduxThunk from 'redux-thunk';
 
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   NormalSituationState,
   SpecificSituationState: SpecificSituationState.reducer,
   ContentState,
-  ResultState,
+  TokenState,
 });
 
 export const store = configureStore({
