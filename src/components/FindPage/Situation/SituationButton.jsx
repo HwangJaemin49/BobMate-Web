@@ -17,7 +17,7 @@ const SituationButton = ({
         {
           'hover:scale-105 transition-transform ease-in-out duration-500':
             !disabled,
-          'scale-105 ': isSelected,
+          'scale-105 bg-grayscale-200': isSelected,
         },
         className
       )}
