@@ -15,8 +15,8 @@ const MemberBox = ({
       <div
         className={classNames(
           'rounded-[20px] bg-white border-2 border-grayscale-800 flex justify-center items-center text-center w-[384px] h-[156px] ',
-          'hover:scale-105 transition-transform ease-in-out duration-500 ',
-          { 'scale-105 bg-grayscale-200': isSelected },
+          'hover:scale-105 hover:bg-grayscale-100  transition-transform ease-in-out duration-200 ',
+          { 'scale-105 bg-grayscale-300': isSelected },
           className
         )}
       >
