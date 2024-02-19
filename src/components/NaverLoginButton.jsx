@@ -5,7 +5,7 @@ import NaverLogo from "./images/Naver.png";
 const Naver = () => {
 
     
-    const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=xUNJVV_1pGBhygWCqKeW&redirect_uri=http://43.202.23.75/naverLogin&response_type=code`
+    const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=xUNJVV_1pGBhygWCqKeW&redirect_uri=http://43.202.23.75/naverLogin`
     
 
     const NaverLogin = () => {

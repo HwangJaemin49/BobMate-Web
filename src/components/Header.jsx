@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Dropdown from './Dropdown';
 import headerLogo from './images/logo.png';
 import homeLogo from './images/ic_round-home.png';
 import './Header.css';
 import './Dropdown';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteToken } from '../store/tokenState';
 
 export default function Header() {
-  const navigate = useNavigate();
-  const accessToken = localStorage.getItem('accessToken');
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  const accessToken = useSelector((state) => {
+    return state.TokenState;
+  });
 
   const [content, setContent] = useState({});
   useEffect(() => {
@@ -21,13 +26,9 @@ export default function Header() {
               Authorization: accessToken,
             },
           });
-          console.log(response.data);
           setContent(response.data.result);
-
-        }
-        else {
-          navigate('/login');
-
+        } else {
+          // navigate('/login');
         }
       } catch (e) {
         console.log(e);
@@ -38,7 +39,8 @@ export default function Header() {
           // 400 오류일 경우(accessToken 만료) accessToken을 삭제하고 로그인 화면으로 리다이렉트
           // 500번대 오류일 경우(accessToken 변조) accessToken을 삭제하고 로그인 화면으로 리다이렉트
           localStorage.removeItem('accessToken');
-          navigate('/login'); // 로그인 화면으로 리다이렉트
+          dispatch(deleteToken());
+          // navigate('/login'); // 로그인 화면으로 리다이렉트
         } else {
           // 그 외의 오류는 콘솔에 출력
           const statusCode = e.response.status;
@@ -49,7 +51,7 @@ export default function Header() {
       }
     };
     fetchData();
-  }, [accessToken]);
+  }, [accessToken, dispatch]);
 
   if (accessToken) {
     return (
@@ -96,6 +98,7 @@ export default function Header() {
             <img
               src={content.profileImage}
               style={{ width: '50px', height: '50px', borderRadius: '50%' }}
+              alt='프로필이미지'
             ></img>
             <div className='container'>
               <input id='dropdown' type='checkbox' />
@@ -117,13 +120,14 @@ export default function Header() {
       <div className='header-wrap'>
         <div
           className='header-wrap-left'
-          style={{ display: 'flex', alignItems: 'center', fontSize: '30px' }}
+          style={{ display: 'flex', alignItems: 'center', fontSize: '30px', fontFamily: 'Cafe24surround', }}
         >
           <img
             className='bob'
             alt='bob'
             src={headerLogo}
             style={{ paddingRight: '10px' }}
+            
           />
           밥 친구
         </div>

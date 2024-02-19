@@ -14,6 +14,13 @@ import SituationButton from '../../../components/FindPage/Situation/SituationBut
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
+const tempPerks = [
+  '비 오는 날 혼술 하는 중',
+  '자취방에서 친구들과 치킨 먹는 중',
+  '너무 짜증나서 야식 먹는 중',
+  '시험 기간 기념 떡볶이 먹는 중',
+];
+
 const SpecificSituationPage = () => {
   const dispatch = useDispatch();
   const select = useSelector((state) => {
@@ -93,7 +100,8 @@ const SpecificSituationPage = () => {
                   disabled={isLoading}
                 >
                   {item ? (
-                    item.sentence
+                    // item.sentence
+                    tempPerks[index]
                   ) : (
                     <Skeleton width='300px' height='30px' />
                   )}
