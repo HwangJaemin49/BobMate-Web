@@ -70,17 +70,17 @@ export default function MyPageComment() {
                     <p style={{ fontSize: '20px', margin: '5px' }}>나는</p>
                     <StyledInput placeholder="😊감정 입력" name="emotion" isCentered={true} style={{ width: '200px' }}
                         onChange={handleOnChange} />
-                    <p style={{ fontSize: '20px', margin: '5px' }}>일 때</p>
+                    <p style={{ fontSize: '20px', margin: '5px' }}>때</p>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row', margin: '10px' }}>
                     <StyledInput placeholder="🍚음식 입력" name="food" isCentered={true} style={{ width: '200px' }}
                         onChange={handleOnChange} />
-                    <p style={{ fontSize: '20px', margin: '5px' }}>을 먹으면서</p>
+                    <p style={{ fontSize: '20px', margin: '5px' }}>을(를) 먹으면서</p>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row', margin: '10px' }}>
                     <StyledInput placeholder="🎬장르 입력" name="genre" isCentered={true} style={{ width: '200px' }}
                         onChange={handleOnChange} />
-                    <p style={{ fontSize: '20px', margin: '5px' }}>를 봐!</p>
+                    <p style={{ fontSize: '20px', margin: '5px' }}>을(를) 봐!</p>
                 </div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>

@@ -42,11 +42,11 @@ const UserProfileEdit = () => {
       }
     })
       .then(() => {
-        alert('로그인 화면으로 돌아갑니다.');
+        alert('메인 화면으로 돌아갑니다.');
         localStorage.clear();
         setEndModalOpen(false);
         navigate('/');
-        // window.location.reload();
+        window.location.reload();
       })
       .catch((err) => {
         alert(err.response.data.message);
