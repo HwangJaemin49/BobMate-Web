@@ -13,7 +13,6 @@ function KakaoLogin({ setAccessToken }) {
 
   const getAccessToken = async () => {
     if (accessTokenFetching || !KAKAO_CODE) return;
-
     try {
       setAccessTokenFetching(true);
 
@@ -47,7 +46,6 @@ function KakaoLogin({ setAccessToken }) {
     getAccessToken();
   }, [KAKAO_CODE, setAccessToken]);
 
-  return <div>Loading...</div>;
 }
 
 export default KakaoLogin;

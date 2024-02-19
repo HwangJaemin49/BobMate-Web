@@ -26,7 +26,6 @@ export default function Header() {
               Authorization: accessToken,
             },
           });
-          console.log(response.data);
           setContent(response.data.result);
         } else {
           // navigate('/login');
@@ -121,13 +120,14 @@ export default function Header() {
       <div className='header-wrap'>
         <div
           className='header-wrap-left'
-          style={{ display: 'flex', alignItems: 'center', fontSize: '30px' }}
+          style={{ display: 'flex', alignItems: 'center', fontSize: '30px', fontFamily: 'Cafe24surround', }}
         >
           <img
             className='bob'
             alt='bob'
             src={headerLogo}
             style={{ paddingRight: '10px' }}
+            
           />
           밥 친구
         </div>
