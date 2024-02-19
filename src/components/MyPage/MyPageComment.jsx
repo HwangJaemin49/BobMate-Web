@@ -85,7 +85,7 @@ export default function MyPageComment() {
                     <p style={{ fontSize: '20px', margin: '5px' }}>때</p>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row', margin: '10px' }}>
-                    <StyledInput placeholder="🍚음식 입력" name="food" isCentered={true} style={{ width: '200px' }}
+                    <StyledInput placeholder="🍚음식 입력" name="food" isCentered={true} style={{ width: '200px', textAlign:'center' }}
                         onChange={handleOnChange} />
                     <p style={{ fontSize: '20px', margin: '5px' }}>을(를) 먹으면서</p>
                 </div>
