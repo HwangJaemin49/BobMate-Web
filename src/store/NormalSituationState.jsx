@@ -1,13 +1,13 @@
-import gladImage from '../assets/images/FindPage/glad-image.jpg';
-import excitedImage from '../assets/images/FindPage/excited-image.jpg';
-import sadImage from '../assets/images/FindPage/sad-image.jpg';
-import gloomyImage from '../assets/images/FindPage/gloomy-image.jpg';
-import angryImage from '../assets/images/FindPage/angry-image.jpg';
+import gladImage from '../assets/images/FindPage/glad-image.png';
+import excitedImage from '../assets/images/FindPage/excited-image.png';
+import sadImage from '../assets/images/FindPage/sad-image.png';
+import gloomyImage from '../assets/images/FindPage/gloomy-image.png';
+import angryImage from '../assets/images/FindPage/angry-image.png';
 
-import aloneImage from '../assets/images/FindPage/alone-image.jpg';
-import familyImage from '../assets/images/FindPage/family-image.jpg';
-import friendImage from '../assets/images/FindPage/friend-image.jpg';
-import loverImage from '../assets/images/FindPage/lover-image.jpg';
+import aloneImage from '../assets/images/FindPage/alone-image.png';
+import familyImage from '../assets/images/FindPage/family-image.png';
+import friendImage from '../assets/images/FindPage/friend-image.png';
+import loverImage from '../assets/images/FindPage/lover-image.png';
 
 // Action Types
 const SELECT_MOOD = 'NormalState/SELECT_MOOD';
