@@ -43,7 +43,7 @@ export default function MyPageComment() {
             .then(response => {
                 // 성공적으로 응답 받았을 때 수행할 작업
                 console.log(response.data);
-                alert("저장완료 "+comments.emotion+":" +comments.food+":"+comments.genre);
+                alert("[한 줄 코멘트 저장] 감정:"+comments.emotion+", 음식:" +comments.food+", 장르:"+comments.genre);
             })
             .catch(error => {
                 // 여기서 에러 메시지 출력
@@ -57,8 +57,8 @@ export default function MyPageComment() {
 
     };
     return (
-        <div className='mypage-comment-wrap' style={{ margin: '30px', display: 'flex', flexDirection: 'column' }} >
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', marginLeft: '500px' }}>
+        <div className='mypage-comment-wrap' style={{ margin: '5px 30px 30px 30px', display: 'flex', flexDirection: 'column' }} >
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', marginLeft: '380px' }}>
                 <img src={headerLogo} alt='header logo' style={{ marginRight: '15px', width: '25px' }} />
                 <p style={{ fontSize: '20px' }}>오늘의 한 줄 코멘트를 완성해 주세요!</p>
             </div>
@@ -68,8 +68,20 @@ export default function MyPageComment() {
             }}>
                 <div style={{ display: 'flex', flexDirection: 'row', margin: '10px' }}>
                     <p style={{ fontSize: '20px', margin: '5px' }}>나는</p>
-                    <StyledInput placeholder="😊감정 입력" name="emotion" isCentered={true} style={{ width: '200px' }}
-                        onChange={handleOnChange} />
+                    <select name="emotion" onChange={handleOnChange} style={{
+                        width: '200px', fontSize: '16px', padding: '5px', borderRadius: '5px',
+                        border: '1px solid gray',
+                        backgroundColor: 'white',
+                        color: 'gray',
+                        textAlign: 'center'
+                    }}>
+                        <option value="" disabled selected hidden>😊감정 입력</option>
+                        <option value="GLAD">기쁠</option>
+                        <option value="EXCITED">신날</option>
+                        <option value="GLOOMY">우울할</option>
+                        <option value="ANGRY">화가 날</option>
+                        <option value="SAD">슬플</option>
+                    </select>
                     <p style={{ fontSize: '20px', margin: '5px' }}>때</p>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row', margin: '10px' }}>
@@ -78,12 +90,32 @@ export default function MyPageComment() {
                     <p style={{ fontSize: '20px', margin: '5px' }}>을(를) 먹으면서</p>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row', margin: '10px' }}>
-                    <StyledInput placeholder="🎬장르 입력" name="genre" isCentered={true} style={{ width: '200px' }}
-                        onChange={handleOnChange} />
+                <select name="genre" onChange={handleOnChange} style={{
+                        width: '200px', fontSize: '16px', padding: '5px', borderRadius: '5px',
+                        border: '1px solid gray',
+                        backgroundColor: 'white',
+                        color: 'gray',
+                        textAlign: 'center'
+                    }}>
+                        <option value="" disabled selected hidden>🎬장르 입력</option>
+                        <option value="DRAMA">드라마</option>
+                        <option value="MOVIE">영화</option>
+                        <option value="ANIMATION">애니메이션</option>
+                        <option value="MYSTERY">미스테리</option>
+                        <option value="COMIC">만화</option>
+                        <option value="COMEDY">코미디</option>
+                        <option value="ROMANCE">로맨스</option>
+                        <option value="ACTION">액션</option>
+                        <option value="THRILLER">스릴러</option>
+                        <option value="CRIME">범죄</option>
+                        <option value="FANTASY">판타지</option>
+                        <option value="HIGHTEEN">하이틴</option>
+                        <option value="FAMILY">가족</option>
+                    </select>
                     <p style={{ fontSize: '20px', margin: '5px' }}>을(를) 봐!</p>
                 </div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '45px' }}>
                 <SaveButton onClick={commentSave}>저장</SaveButton>
             </div>
         </div>

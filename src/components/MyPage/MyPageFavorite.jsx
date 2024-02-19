@@ -37,7 +37,7 @@ export default function MyPageFavorite() {
   };
   return (
     <div className='mypage-favorite-wrap' style={{ marginTop: '20px', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', marginLeft: '500px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', marginLeft: '410px' }}>
         <img src={headerLogo} alt='header logo' style={{ marginRight: '15px', width: '25px' }} />
         <p style={{ fontSize: '20px',}}>당신의 콘텐츠 선호도를 기록해 주세요!</p>
       </div>

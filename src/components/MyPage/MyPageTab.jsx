@@ -17,9 +17,11 @@ const TabMenu = styled.ul`
   list-style: none;
   margin-bottom: 7rem;
   margin-top: 80px;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: auto; /* auto로 설정하여 화면 가운데 정렬 */
+  margin-right: auto; /* auto로 설정하여 화면 가운데 정렬 */
+  justify-content: center;
 
+  
   .submenu {
   // 기본 Tabmenu 에 대한 CSS를 구현
     display: flex;
@@ -34,9 +36,9 @@ const TabMenu = styled.ul`
     align-items: center;
   }
 
-  .first-submenu {
-    margin-left: 10%; 
-  }
+  // .first-submenu {
+  //   margin-left: 10%; 
+  // }
 
   .focused {
    //선택된 Tabmenu 에만 적용되는 CSS를 구현
