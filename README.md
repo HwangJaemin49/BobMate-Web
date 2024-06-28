@@ -12,9 +12,5 @@
 2023.12 - 2024.02<br/>
 
 ## 개발에 참여한 페이지
-<img src='https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/22902d2e-0d71-4de3-b14d-f49c55f7fdff' />
-
-
 메인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Home.jsx)<br/><br/>
-![밥친구 찾기 완료 페이지](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/3f5212f7-048d-4422-9c64-e216fe525e0b)<br/>
 컨텐츠 결과 찾기 완료 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/FindDone.jsx)<br/><br/>
