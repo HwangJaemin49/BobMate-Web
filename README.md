@@ -12,7 +12,7 @@
 2023.12 - 2024.02<br/>
 
 ## 개발에 참여한 페이지
-![메인 화면](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/182aa926-27bc-4751-9658-275bee6ced05)<br/>
+https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/182aa926-27bc-4751-9658-275bee6ced05<br/>
 메인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Home.jsx)<br/><br/>
 
 
