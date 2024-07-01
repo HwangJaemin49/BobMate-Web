@@ -12,11 +12,9 @@
 2023.12 - 2024.02<br/>
 
 ## 개발에 참여한 페이지
-![ezgif-4-780c078fcf](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/0252dffd-4784-49b2-ab81-b6d95bad7cb5)
-
-<br/>
+![ezgif-4-780c078fcf](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/0252dffd-4784-49b2-ab81-b6d95bad7cb5)<br/>
 메인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Home.jsx)<br/><br/>
 <img src="https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/25918c90-79d9-45de-8f74-cd6eedcdfd5c" width = "600px" height = "300px" /><br/>
 소셜 로그인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Login.jsx)<br/><br/>
-![ezgif-4-08d735af3e](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/9060bf82-3d58-4dfd-bc0e-4ff898d59082)<br/>
+![image](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/a9bd5ba1-8201-4112-b181-3ef689c0008a)<br/>
 컨텐츠 결과 찾기 완료 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/FindDone.jsx)<br/><br/>
