@@ -12,7 +12,9 @@
 2023.12 - 2024.02<br/>
 
 ## 개발에 참여한 페이지
-![ezgif-4-780c078fcf](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/df9de83a-a35c-474f-9737-07b5ae46bfca)<br/>
+![제목 없는 동영상 - Clipchamp로 제작 (1)](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/1c57d49c-aa85-4451-a97f-ef3aef71f977)
+![제목 없는 동영상 - Clipchamp로 제작 (2)](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/7a056924-ffd1-40b9-99a2-bfd047ddc153)
+<br/>
 메인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Home.jsx)<br/><br/>
 <img src="https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/25918c90-79d9-45de-8f74-cd6eedcdfd5c" width = "600px" height = "300px" /><br/>
 소셜 로그인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Login.jsx)<br/><br/>
