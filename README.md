@@ -13,4 +13,7 @@
 
 ## 개발에 참여한 페이지
 메인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Home.jsx)<br/><br/>
+
+![제목 없는 동영상 - Clipchamp로 제작](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/f859ef34-688b-438f-a9e9-ec655ece1b2a)<br/>
+
 컨텐츠 결과 찾기 완료 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/FindDone.jsx)<br/><br/>
