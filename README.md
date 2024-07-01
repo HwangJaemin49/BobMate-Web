@@ -18,5 +18,5 @@
 메인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Home.jsx)<br/><br/>
 <img src="https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/25918c90-79d9-45de-8f74-cd6eedcdfd5c" width = "600px" height = "300px" /><br/>
 소셜 로그인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Login.jsx)<br/><br/>
-![ezgif-4-08d735af3e](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/1568c86a-7438-40ba-bfb9-895495e162f4)<br/>
+![ezgif-4-08d735af3e](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/9060bf82-3d58-4dfd-bc0e-4ff898d59082)<br/>
 컨텐츠 결과 찾기 완료 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/FindDone.jsx)<br/><br/>
