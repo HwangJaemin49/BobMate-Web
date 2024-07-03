@@ -24,7 +24,7 @@
 - 하지만 이를 빌드하고 서버에서 제공하는 방식일 때 카카오(및 네이버) redirect uri에 대해 SPA 처리가 되지 않음(자세한 이유는 불명)
 - 그 redirect uri 자체에 접근이 되고 있어 whitelabel error 발생<br/>
 
-해결 방법<br/>
+#### 해결 방법<br/>
 https://copyprogramming.com/howto/whitelabel-error-page-after-refresh<br/>
 링크의 solution 2 방식으로 백엔드 코드 수정
 <br/><br/>
