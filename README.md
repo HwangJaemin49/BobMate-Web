@@ -26,7 +26,7 @@
 
 #### 해결 방법<br/>
 https://copyprogramming.com/howto/whitelabel-error-page-after-refresh<br/>
-링크의 solution 2 방식으로 백엔드 코드 수정
+링크의 solution 2 방식(Spring Boot 앱에 새로운 컨트롤러를 통합하여 White label Error 매핑을 관리)으로 백엔드 코드 수정
 <br/><br/>
 
 ![ezgif-4-08d735af3e](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/fcb7f90a-740c-47df-b3c9-4e8e501c6119)<br/>
