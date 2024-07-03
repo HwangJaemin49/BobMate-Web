@@ -15,9 +15,9 @@
 ![ezgif-4-780c078fcf](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/0252dffd-4784-49b2-ab81-b6d95bad7cb5)<br/>
 메인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Home.jsx)<br/><br/>
 <img src="https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/25918c90-79d9-45de-8f74-cd6eedcdfd5c" width = "600px" height = "300px" /><br/>
-소셜 로그인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Login.jsx)<br/>
+소셜 로그인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Login.jsx)<br/><br/>
 
-### 에러 사항
+에러 사항
 로컬에서 테스트 할 때는 문제가 없었으나 서버와 연결한 뒤 카카오, 네이버 간편 로그인 기능이 제대로 동작하지 않고 white label page가 뜨는 이슈 발생<br/>
 팀원분이 분석하신 바로는,<br/>
 - 리액트는 SPA를 사용, 따라서 카카오 redirect uri에 대해서도 SPA로 처리
