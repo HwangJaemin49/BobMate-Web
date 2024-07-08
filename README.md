@@ -11,6 +11,19 @@
 ## 개발 기간
 2023.12 - 2024.02<br/>
 
+## 주요 기능
+![ezgif-4-780c078fcf](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/0252dffd-4784-49b2-ab81-b6d95bad7cb5)<br/>
+Top3 콘텐츠 및 오늘의 메뉴 추천<br/><br/>
+- 이용자 편의성과 인기를 고려하여 직관적인 UI를 통해 인기 Top3 콘텐츠와 랜덤 메뉴를 추천합니다.<br/><br/>
+![제목 없는 동영상 - Clipchamp로 제작 (3)](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/6e8aaecd-c5d2-460a-976a-c692d6263e05)<br/>
+![제목 없는 동영상 - Clipchamp로 제작 (4)](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/1ca2537a-468f-493f-b40e-e2dadc7dd50f)<br/>
+콘텐츠 추천 서비스
+- 사용자가 일반 상황 혹은 특정 상황을 선택한 후, 콘텐츠 종류를 고르게 되면 해당되는 콘텐츠를 추천해 줍니다. 콘텐츠는 영상(영화, 드라마 등)과 텍스트(웹소설, 웹툰 등) 콘텐츠 중 선택할 수 있습니다.
+- 일반 상황에서는 사용자가 선택한 감정 상태와 식사 인원을 선택하면 이를 고려한 장르의 콘텐츠를 추천해 줍니다. 특정 상황이란 ‘비 오는 날 혼술 할 때’, ‘친구와 치킨 먹을 때’와 같이 더욱 구체적이고 직접적인 상황을 제시해, 이와 어울리는 장르의 콘텐츠를 추천해 줍니다.<br/><br/>
+![제목 없는 동영상 - Clipchamp로 제작 (5)](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/60818a89-0248-40ca-89c8-41406f14c4f4)<br/>
+한 줄 코멘트
+- 마이 페이지 내의 한 줄 코멘트 기능을 통해 특정 기분일 때 선호하는 콘텐츠 및 음식을 데이터베이스에 저장할 수 있습니다. 이 데이터가 축적되어 콘텐츠 추천 서비스의 특정 상황이 업데이트됩니다.<br/><br/>
+
 ## 개발에 참여한 페이지
 ![ezgif-4-780c078fcf](https://github.com/HwangJaemin49/BobMate-Web/assets/97292379/0252dffd-4784-49b2-ab81-b6d95bad7cb5)<br/>
 메인 페이지(https://github.com/HwangJaemin49/BobMate-Web/blob/main/src/pages/Home.jsx)<br/><br/>
